@@ -26,7 +26,7 @@ usuarios y roles.
     │   └── README.md
     ├── arquitectura-inicial.drawio
     ├── arquitectura-inicial.md
-    ├── decisiones-arquitectonicas.md
+    ├── 07-decisiones-arquitectonicas.md
     └── estilo-arquitectonico.md
 ```
 
@@ -47,7 +47,7 @@ usuarios y roles.
 - [Enfoque arquitectónico](./arquitectura/enfoque/README.md)
 - [Estilo arquitectónico](./arquitectura/estilo-arquitectonico.md)
 - [Diagrama de arquitectura inicial](./arquitectura/arquitectura-inicial.drawio)
-- [Decisiones arquitectónicas](./arquitectura/decisiones-arquitectonicas.md)
+- [07 - Decisiones arquitectónicas](./arquitectura/07-decisiones-arquitectonicas.md)
 
 Los documentos establecen la trazabilidad entre las necesidades de los actores,
 las capacidades del sistema, las prioridades de calidad y la arquitectura

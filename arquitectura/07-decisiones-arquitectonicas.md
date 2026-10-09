@@ -1,4 +1,4 @@
-# Decisiones arquitectónicas
+# 07 - Decisiones arquitectónicas
 
 ## Estado del registro
 
