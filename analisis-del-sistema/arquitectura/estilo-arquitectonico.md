@@ -78,6 +78,6 @@ de escalado independiente, autonomía de equipos o disponibilidad por módulo.
 
 ## Referencias
 
-- [Enfoque arquitectónico](./enfoque/README.md)
+- [Enfoque arquitectónico](./enfoque/enfoque-arquitectonico.md)
 - [Arquitectura inicial](./arquitectura-inicial.md)
-- [Drivers arquitectónicos](../requisitos/06-drivers-arquitectonicos.md)
+- [Drivers arquitectónicos](../06-drivers-arquitectonicos.md)

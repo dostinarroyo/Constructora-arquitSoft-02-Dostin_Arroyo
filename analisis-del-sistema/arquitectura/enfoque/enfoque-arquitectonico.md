@@ -68,6 +68,6 @@ restricciones operativas que lo justifiquen.
 
 ## Trazabilidad
 
-El enfoque responde principalmente a los drivers [DA01–DA08](../../requisitos/06-drivers-arquitectonicos.md),
+El enfoque responde principalmente a los drivers [DA01–DA08](../../06-drivers-arquitectonicos.md),
 en particular a la integración de proyectos y recursos, la seguridad, la
 integridad de la información, la mantenibilidad y el crecimiento funcional.

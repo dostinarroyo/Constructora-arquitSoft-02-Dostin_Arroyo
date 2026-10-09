@@ -71,11 +71,11 @@ Las decisiones deberán revisarse cuando se validen el despliegue, la cantidad
 de usuarios, las políticas de seguridad y recuperación, las integraciones
 requeridas o las condiciones tecnológicas del equipo. Una revisión debe
 actualizar el estado y las consecuencias de la decisión afectada, y mantener
-la trazabilidad con los [drivers arquitectónicos](../requisitos/06-drivers-arquitectonicos.md).
+la trazabilidad con los [drivers arquitectónicos](./06-drivers-arquitectonicos.md).
 
 ## Documentos relacionados
 
-- [Enfoque arquitectónico](./enfoque/README.md)
-- [Estilo arquitectónico](./estilo-arquitectonico.md)
-- [Arquitectura inicial](./arquitectura-inicial.md)
-- [Diagrama de arquitectura inicial](./arquitectura-inicial.drawio)
+- [Enfoque arquitectónico](./arquitectura/enfoque/enfoque-arquitectonico.md)
+- [Estilo arquitectónico](./arquitectura/estilo-arquitectonico.md)
+- [Arquitectura inicial](./arquitectura/arquitectura-inicial.md)
+- [Diagrama de arquitectura inicial](./arquitectura/arquitectura-inicial.drawio)

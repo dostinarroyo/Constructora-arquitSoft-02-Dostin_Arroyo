@@ -36,7 +36,7 @@ proyecto.
 
 ## Uso en la arquitectura inicial
 
-El documento de [arquitectura inicial](../arquitectura/arquitectura-inicial.md)
+El documento de [arquitectura inicial](./arquitectura/arquitectura-inicial.md)
 mostrará cómo los componentes, las capas y la persistencia propuesta atienden
 estos drivers. Cualquier decisión que no responda a una necesidad o restricción
 identificada deberá considerarse una hipótesis pendiente, no una obligación del
