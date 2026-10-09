@@ -22,7 +22,12 @@ usuarios y roles.
 │   ├── 05-restricciones.md
 │   └── 06-drivers-arquitectonicos.md
 └── arquitectura/
-    └── arquitectura-inicial.md
+    ├── enfoque/
+    │   └── README.md
+    ├── arquitectura-inicial.drawio
+    ├── arquitectura-inicial.md
+    ├── decisiones-arquitectonicas.md
+    └── estilo-arquitectonico.md
 ```
 
 ## Documentos
@@ -39,6 +44,10 @@ usuarios y roles.
 - [Restricciones](./requisitos/05-restricciones.md)
 - [Drivers arquitectónicos](./requisitos/06-drivers-arquitectonicos.md)
 - [Arquitectura inicial](./arquitectura/arquitectura-inicial.md)
+- [Enfoque arquitectónico](./arquitectura/enfoque/README.md)
+- [Estilo arquitectónico](./arquitectura/estilo-arquitectonico.md)
+- [Diagrama de arquitectura inicial](./arquitectura/arquitectura-inicial.drawio)
+- [Decisiones arquitectónicas](./arquitectura/decisiones-arquitectonicas.md)
 
 Los documentos establecen la trazabilidad entre las necesidades de los actores,
 las capacidades del sistema, las prioridades de calidad y la arquitectura
