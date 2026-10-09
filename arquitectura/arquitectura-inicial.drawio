@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net" modified="2026-10-09T22:00:00.000Z" agent="Copilot" version="24.7.17">
+  <diagram id="arquitectura-inicial" name="Arquitectura inicial">
+    <mxGraphModel dx="1100" dy="760" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="users" value="Actores internos&#xa;autorizados" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="60" y="345" width="160" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="web" value="Presentación&#xa;Interfaz web&#xa;Formularios · consultas · panel · reportes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="280" y="325" width="230" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="app" value="Aplicación y dominio&#xa;Controladores · casos de uso · reglas de negocio&#xa;Autorización por roles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="570" y="285" width="280" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="modules" value="Módulos de negocio&#xa;Proyectos y actividades · almacén&#xa;Personal · maquinaria · finanzas&#xa;Reportes · usuarios y roles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="590" y="520" width="240" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="data-access" value="Acceso a datos&#xa;Repositorios / adaptadores" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="900" y="345" width="210" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="Persistencia centralizada&#xa;MySQL (tecnología prevista)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f5f5f5;strokeColor=#666666;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="900" y="530" width="210" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="solicitudes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="users" target="web">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="interacción" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="web" target="app">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="coordina" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="app" target="modules">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="consulta / persiste" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="modules" target="data-access">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="lectura / escritura" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="data-access" target="db">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

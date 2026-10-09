@@ -137,6 +137,9 @@ flowchart TD
     CTRL --> WEB
 ```
 
+El diagrama editable está disponible en
+[arquitectura-inicial.drawio](./arquitectura-inicial.drawio).
+
 ## 6. Persistencia e integridad
 
 La persistencia centralizada permitirá que los módulos consulten datos
