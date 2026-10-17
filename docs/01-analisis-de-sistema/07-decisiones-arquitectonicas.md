@@ -75,7 +75,7 @@ la trazabilidad con los [drivers arquitectónicos](./06-drivers-arquitectonicos.
 
 ## Documentos relacionados
 
-- [Enfoque arquitectónico](./arquitectura/enfoque/enfoque-arquitectonico.md)
-- [Estilo arquitectónico](./arquitectura/estilo-arquitectonico.md)
-- [Arquitectura inicial](./arquitectura/arquitectura-inicial.md)
-- [Diagrama de arquitectura inicial](./arquitectura/arquitectura-inicial.drawio)
+- [Enfoque arquitectónico](../02-arquitectura-software/enfoque-arquitectonico.md)
+- [Estilo arquitectónico](../02-arquitectura-software/estilo-arquitectonico.md)
+- [Arquitectura inicial](../02-arquitectura-software/arquitectura-inicial.md)
+- [Diagrama de arquitectura inicial](../../img/fuentes/arquitectura-inicial.drawio)
