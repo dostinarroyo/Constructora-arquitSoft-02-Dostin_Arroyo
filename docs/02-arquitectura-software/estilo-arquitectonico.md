@@ -2,28 +2,33 @@
 
 ## Estilo propuesto
 
-El sistema se propone como un **monolito modular organizado en capas**. Es una
-aplicación web desplegable como una unidad, cuyos módulos de dominio mantienen
-responsabilidades diferenciadas y se apoyan en capas con límites explícitos.
-Esta es una propuesta inicial, no una decisión de implementación irreversible.
+El sistema se propone como un **monolito modular que aplica Clean
+Architecture**. Es una aplicación web desplegable como una unidad, cuyos
+módulos mantienen responsabilidades diferenciadas dentro de cuatro capas con
+límites explícitos. Esta es una propuesta inicial, no una decisión de
+implementación irreversible.
 
 ## Capas
 
 | Capa | Responsabilidad | Evita |
 |---|---|---|
-| Presentación | Exponer la interfaz web, recibir solicitudes y presentar resultados. | Contener reglas de negocio o acceder directamente a la base de datos. |
-| Aplicación y dominio | Coordinar casos de uso, validar reglas y controlar operaciones relacionadas. | Depender de la tecnología concreta de interfaz o persistencia. |
-| Acceso a datos | Implementar consultas y persistencia mediante repositorios o adaptadores. | Definir reglas funcionales propias de los módulos. |
-| Persistencia | Conservar información relacional centralizada y sus relaciones. | Ser accedida directamente desde la presentación. |
+| Presentación | Exponer la interfaz web y los puntos de entrada; transformar solicitudes y resultados. | Contener reglas de negocio o acceder directamente a la persistencia. |
+| Aplicación | Implementar casos de uso, coordinar el dominio y declarar los puertos requeridos por esos casos. | Depender de frameworks, protocolos de transporte o implementaciones concretas. |
+| Dominio | Representar entidades, conceptos y reglas de negocio invariantes. | Depender de la aplicación, la interfaz, frameworks o tecnologías de persistencia. |
+| Infraestructura | Implementar adaptadores para los puertos y conectar frameworks, seguridad y base de datos. | Ser fuente de reglas de negocio o ser invocada directamente por Presentación. |
 
-![Diagrama a color del estilo de monolito modular en capas](../../img/estilo-monolito-capas.png)
+![Diagrama a color del monolito modular con Clean Architecture](../../img/estilo-monolito-capas.png)
 
 Fuente Mermaid editable: [estilo-monolito-capas.mmd](../../img/fuentes/estilo-monolito-capas.mmd).
 
-La dirección de dependencias debe apuntar hacia las reglas de aplicación y
-dominio: la presentación invoca casos de uso y estos utilizan abstracciones de
-acceso a datos. Los detalles de persistencia no deben dictar las reglas del
-negocio.
+### Regla de dependencias
+
+Las dependencias de código apuntan hacia adentro: Presentación invoca los
+casos de uso de Aplicación; Aplicación utiliza el Dominio y define los puertos
+que necesita; e Infraestructura implementa esos puertos. En tiempo de ejecución
+un caso de uso puede invocar un puerto cuya implementación concreta está en
+Infraestructura, pero el código de Aplicación no conoce ese adaptador. MySQL y
+Spring son detalles reemplazables y no deben dictar las reglas del negocio.
 
 ## Módulos de negocio
 
@@ -35,10 +40,10 @@ negocio.
 - **Reportes e información general:** consultas consolidadas y panel principal.
 - **Usuarios y roles:** cuentas, autenticación y permisos.
 
-Los módulos deben colaborar a través de servicios o interfaces definidos.
-Cuando una operación abarque datos relacionados, la capa de aplicación debe
-coordinarla para conservar la integridad. No se presupone una separación física
-de bases de datos.
+Los módulos deben colaborar a través de casos de uso, servicios de dominio o
+contratos explícitos, según corresponda. Cuando una operación abarque datos
+relacionados, la capa de aplicación debe coordinarla y el dominio proteger sus
+invariantes. No se presupone una separación física de bases de datos.
 
 ## Mecanismos transversales
 
@@ -54,11 +59,11 @@ de bases de datos.
 
 ## Correspondencia tecnológica prevista
 
-La propuesta del caso contempla Java y Spring Boot para la aplicación y los
-servicios, Spring Security para el control de acceso, tecnologías web para la
-presentación y MySQL para la persistencia. Estas tecnologías son compatibles
-con el estilo propuesto, pero deben confirmarse antes de considerarse
-restricciones definitivas.
+La propuesta del caso contempla Java y Spring Boot para la aplicación,
+Spring Security para el control de acceso, tecnologías web para la presentación
+y MySQL para la persistencia. Estas tecnologías son compatibles con el estilo
+propuesto si se mantienen en los límites de Presentación o Infraestructura,
+pero deben confirmarse antes de considerarse restricciones definitivas.
 
 ## Consecuencias y riesgos
 

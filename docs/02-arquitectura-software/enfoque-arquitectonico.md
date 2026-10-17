@@ -9,23 +9,34 @@ delimita qué aspectos siguen pendientes de confirmación.
 
 ## Enfoque propuesto
 
-Se propone una aplicación web centralizada, organizada como un **monolito
-modular con separación en capas**. Los usuarios internos acceden desde un
-navegador a una aplicación que coordina módulos de negocio y persiste la
-información en una base de datos relacional central.
+Se propone una aplicación web centralizada como **monolito modular con
+Clean Architecture**. Los usuarios internos acceden desde un navegador a una
+aplicación que organiza sus funcionalidades por módulos de negocio y persiste
+la información en una base de datos relacional central.
 
-La propuesta combina dos criterios complementarios:
+La solución separa cuatro capas:
 
-- **Capas** para separar la presentación, los casos de uso y reglas de negocio,
-  el acceso a datos y la persistencia.
-- **Módulos de negocio** para mantener agrupadas las responsabilidades de
-  proyectos y actividades, almacén, personal, maquinaria, finanzas, reportes y
-  usuarios y roles.
+- **Presentación:** interfaz web y puntos de entrada que reciben solicitudes,
+  validan el formato de entrada y presentan resultados.
+- **Aplicación:** casos de uso que coordinan operaciones y dependen de
+  abstracciones, no de frameworks ni de persistencia concreta.
+- **Dominio:** entidades, conceptos y reglas de negocio independientes de la
+  aplicación web y de las tecnologías externas.
+- **Infraestructura:** adaptadores que implementan los puertos requeridos por
+  la aplicación y conectan con tecnologías como Spring, Spring Security y
+  MySQL.
 
-Los módulos forman parte de una misma aplicación y comparten los límites de
-despliegue y persistencia iniciales. La separación modular busca reducir el
-acoplamiento interno sin introducir la complejidad operativa de distribuir el
-sistema en servicios independientes.
+La regla de dependencias apunta hacia el núcleo: Presentación depende de
+Aplicación; Infraestructura implementa contratos definidos por Aplicación; el
+Dominio no depende de las capas externas. Los puertos de persistencia son
+propiedad de la capa que los necesita (Aplicación).
+Los módulos de negocio —proyectos y actividades, almacén, personal, maquinaria,
+finanzas, reportes y usuarios— se organizan dentro de estas capas, no como
+capas adicionales.
+
+Los módulos comparten los límites iniciales de despliegue y persistencia. Esta
+separación busca reducir el acoplamiento interno sin introducir la complejidad
+operativa de distribuir el sistema en servicios independientes.
 
 ## Razones para esta propuesta
 
@@ -33,8 +44,8 @@ sistema en servicios independientes.
    registros relacionados, por lo que necesitan consistencia y trazabilidad.
 2. **Simplicidad operativa:** el caso no establece despliegues independientes,
    equipos separados ni una escala que justifique microservicios.
-3. **Mantenibilidad:** la separación por capas y módulos ofrece límites
-   comprensibles para localizar reglas y cambios.
+3. **Mantenibilidad:** las capas y módulos delimitan responsabilidades; la
+   regla de dependencias protege las reglas de negocio de los cambios técnicos.
 4. **Seguridad coherente:** la autenticación y autorización pueden aplicarse de
    forma transversal a los puntos de entrada y a los casos de uso protegidos.
 5. **Evolución gradual:** la solución puede ampliarse mientras se mantengan
@@ -59,7 +70,7 @@ sistema en servicios independientes.
 
 | Alternativa | Evaluación para el alcance actual |
 |---|---|
-| Monolito modular en capas | Propuesta inicial: mantiene una operación sencilla y permite separar responsabilidades de dominio. |
+| Monolito modular con Clean Architecture | Propuesta inicial: mantiene una operación sencilla y separa el dominio de los detalles técnicos mediante puertos y adaptadores. |
 | Microservicios | No se proponen porque no se han identificado necesidades de despliegue independiente, escalado autónomo o propiedad por equipos distintos. |
 | Arquitectura dirigida por eventos | No se propone como base porque el caso no define procesos asíncronos o integraciones que la requieran. |
 

@@ -10,11 +10,12 @@ documentado.
 
 ## 2. Enfoque arquitectónico
 
-Se propone una **arquitectura web en capas** para una aplicación de gestión
-centralizada. La separación en capas busca mantener diferenciadas la
-interacción con los usuarios, las reglas de negocio, el acceso a la persistencia
-y el almacenamiento de datos. Este enfoque es coherente con la tecnología
-prevista en el caso y facilita el mantenimiento y la evolución del sistema.
+Se propone una **arquitectura web con Clean Architecture** para una aplicación
+de gestión centralizada. La solución se organiza como monolito modular y
+separa Presentación, Aplicación, Dominio e Infraestructura. El objetivo es que
+las reglas y los casos de uso no dependan de la interfaz web, de Spring ni de
+MySQL, de modo que los detalles técnicos puedan cambiar sin obligar a modificar
+el núcleo del sistema.
 
 La propuesta considera una aplicación central que atiende las solicitudes de
 los usuarios desde un navegador y utiliza una base de datos centralizada. No se
@@ -23,7 +24,7 @@ porque el caso no establece una necesidad que las justifique.
 
 ## 3. Capas y responsabilidades
 
-### 3.1 Capa de presentación
+### 3.1 Presentación
 
 Es la interfaz web utilizada por los actores internos autorizados. Presenta
 formularios, consultas y vistas para:
@@ -37,14 +38,14 @@ formularios, consultas y vistas para:
 - panel principal y reportes;
 - administración de usuarios y roles.
 
-La presentación recopila las solicitudes del usuario, las envía a la capa de
-aplicación y muestra el resultado. No debe contener reglas de negocio que
-requieran aplicarse de manera uniforme a todas las operaciones.
+La presentación recopila las solicitudes del usuario, las convierte al formato
+esperado por los casos de uso y presenta sus resultados. No contiene reglas de
+negocio ni accede directamente a la base de datos.
 
-### 3.2 Capa de aplicación y lógica de negocio
+### 3.2 Aplicación
 
-Coordina los casos de uso del sistema y aplica las reglas del dominio. Sus
-servicios de aplicación pueden organizarse en módulos funcionales:
+Coordina los casos de uso del sistema y declara los puertos que estos necesitan
+para interactuar con el exterior. Puede organizarse en módulos funcionales:
 
 - **Proyectos y actividades:** administración de proyectos, registro de
   actividades y actualización del avance.
@@ -58,30 +59,29 @@ servicios de aplicación pueden organizarse en módulos funcionales:
 - **Usuarios y roles:** administración de cuentas, roles y permisos.
 
 Los controladores o puntos de entrada reciben las solicitudes web y delegan su
-procesamiento en los servicios de aplicación. Las reglas de validación se
-aplican en esta capa para proteger la consistencia del sistema, sin depender de
-la interfaz desde la que se origine una operación.
+procesamiento en los casos de uso. La aplicación valida el flujo y coordina
+operaciones, pero las reglas que definen la validez del negocio pertenecen al
+Dominio.
 
-### 3.3 Capa de acceso a datos
+### 3.3 Dominio
 
-Proporciona los repositorios o componentes de persistencia que permiten a los
-servicios consultar y guardar información. Esta capa abstrae las operaciones de
-lectura y escritura sobre proyectos, actividades, movimientos de almacén,
-trabajadores, asignaciones, equipos, presupuestos, gastos, usuarios y roles.
+Contiene los conceptos, entidades y reglas que expresan el negocio: proyectos,
+actividades, movimientos de almacén, trabajadores, asignaciones, equipos,
+presupuestos, gastos, usuarios y roles, según se precisen durante el diseño.
+Sus reglas no dependen de Spring, HTTP, SQL ni de los casos de uso concretos.
 
-La capa de negocio utiliza estos componentes mediante interfaces definidas; no
-debería acoplarse a consultas o detalles específicos de la base de datos.
+### 3.4 Infraestructura
 
-### 3.4 Capa de datos
+Implementa los puertos declarados por Aplicación y conecta el núcleo con
+detalles externos: adaptadores de persistencia y MySQL, integración con Spring
+Boot y mecanismos técnicos de autenticación. Almacena la información central
+del sistema en una base de datos relacional. Los registros deben permitir
+relacionar proyectos con sus actividades, recursos, movimientos de materiales,
+asignaciones y datos financieros.
 
-Almacena la información central del sistema en una base de datos relacional. La
-propuesta del caso identifica MySQL para esta responsabilidad. Los registros
-deben permitir relacionar proyectos con sus actividades, recursos, movimientos
-de materiales, asignaciones y datos financieros.
-
-La integridad referencial y las transacciones de la base de datos respaldan las
-validaciones efectuadas en la capa de negocio. La estrategia y frecuencia de
-copias de seguridad deberán acordarse como parte de la operación del sistema.
+La integridad referencial y las transacciones respaldan las reglas del dominio,
+pero no las reemplazan. La estrategia y frecuencia de copias de seguridad
+deberán acordarse como parte de la operación del sistema.
 
 ## 4. Componentes y comunicación
 
@@ -90,17 +90,22 @@ El flujo normal de una operación es el siguiente:
 1. Un usuario autorizado interactúa con la interfaz web.
 2. La interfaz envía una solicitud al controlador correspondiente.
 3. El controlador delega el caso de uso en un servicio de aplicación.
-4. El servicio valida los datos y las reglas del proceso.
-5. Cuando se requiere consultar o persistir información, el servicio utiliza
-   repositorios de la capa de acceso a datos.
-6. Los repositorios operan sobre la base de datos relacional.
-7. El resultado vuelve por las mismas capas y se presenta al usuario.
+4. El caso de uso coordina la operación y solicita al Dominio validar sus
+   reglas.
+5. Cuando necesita leer o persistir información, invoca un puerto declarado
+   hacia adentro; el adaptador de Infraestructura implementa ese puerto.
+6. El adaptador opera sobre la base de datos relacional.
+7. El resultado vuelve por las capas de Aplicación y Presentación.
 
-La autenticación y la autorización por roles son preocupaciones transversales:
-la identidad del usuario se verifica al acceder al sistema y los permisos deben
-comprobarse para las operaciones protegidas, no solo ocultando opciones en la
-interfaz. Spring Security es la tecnología prevista para implementar este
-control, sujeta a confirmación de viabilidad.
+La dirección de dependencias en el código apunta hacia el Dominio y los
+contratos internos. La llamada en tiempo de ejecución a un adaptador no
+significa que el caso de uso dependa de su implementación concreta.
+
+La autenticación y la autorización por roles son preocupaciones transversales.
+La identidad y los permisos se verifican en el servidor para cada operación
+protegida, no solo ocultando opciones en la interfaz. Spring Security es el
+mecanismo técnico previsto; las políticas que condicionan cada caso de uso
+deben permanecer independientes del framework.
 
 ## 5. Diagrama arquitectónico
 
@@ -131,11 +136,11 @@ diseño detallado; este documento no presupone fórmulas que el caso no define.
 |---|---|
 | DA01. Integrar proyectos y recursos | Los módulos de negocio relacionan actividades, materiales, personal, maquinaria y finanzas con sus proyectos. |
 | DA02. Proteger el acceso | El control por roles se aplica transversalmente y las operaciones protegidas verifican permisos en la capa de aplicación. |
-| DA03. Preservar integridad y trazabilidad | Los servicios validan reglas de dominio y los repositorios y la base de datos mantienen relaciones consistentes. |
-| DA04. Proporcionar información oportuna | Los componentes de reportes y panel consultan los módulos de origen mediante servicios y acceso a datos comunes. |
-| DA05. Facilitar mantenimiento | La separación en capas y módulos delimita responsabilidades y puntos de cambio. |
+| DA03. Preservar integridad y trazabilidad | Los casos de uso coordinan las reglas del Dominio y los adaptadores y la base de datos mantienen relaciones consistentes. |
+| DA04. Proporcionar información oportuna | Los componentes de reportes y panel consultan los módulos de origen mediante casos de uso y puertos definidos. |
+| DA05. Facilitar mantenimiento | Las cuatro capas y los módulos delimitan responsabilidades; las dependencias hacia adentro aíslan el núcleo de los cambios técnicos. |
 | DA06. Centralizar y recuperar información | La solución utiliza una persistencia centralizada; la operación deberá establecer y probar respaldos. |
-| DA07. Permitir crecimiento | Los módulos y las interfaces entre capas permiten incorporar cambios sin convertir cada ampliación en una reestructuración completa. |
+| DA07. Permitir crecimiento | Los módulos y los puertos entre capas permiten incorporar cambios sin convertir cada ampliación en una reestructuración completa. |
 | DA08. Respetar el contexto tecnológico | El enfoque web y las tecnologías Java, Spring Boot, Spring Security y MySQL son compatibles con la propuesta tecnológica del caso, pendientes de confirmación final. |
 
 ## 8. Tecnologías previstas y decisiones pendientes

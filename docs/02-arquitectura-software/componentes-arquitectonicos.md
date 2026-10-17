@@ -15,26 +15,22 @@ Fuente Mermaid editable: [arquitectura-componentes.mmd](../../img/fuentes/arquit
 
 ## Responsabilidades y límites
 
-| Componente | Responsabilidad | No debe |
-|---|---|---|
-| Interfaz web | Capturar solicitudes, mostrar consultas y comunicar resultados y errores. | Ser la única barrera de autorización o implementar reglas de negocio críticas. |
-| Autenticación y autorización | Identificar al usuario y verificar permisos para cada operación protegida. | Confiar solo en opciones ocultas de la interfaz. |
-| Proyectos y actividades | Administrar obras, actividades y sus avances. | Mantener copias independientes de los datos de otros módulos. |
-| Materiales y almacén | Administrar materiales, movimientos y existencias por proyecto. | Confirmar una salida que deje existencias inválidas. |
-| Personal y asignaciones | Administrar trabajadores y sus asignaciones a obras o actividades. | Definir reglas de maquinaria o presupuestos. |
-| Maquinaria | Administrar equipos, estado y asignación. | Incorporar telemetría física, excluida del alcance inicial. |
-| Finanzas | Administrar presupuestos y gastos asociados a proyectos. | Sustituir un sistema contable o emitir comprobantes externos. |
-| Reportes e información general | Consolidar datos ya gestionados por los módulos para reportes y panel. | Convertirse en una segunda fuente de verdad. |
-| Usuarios y roles | Administrar cuentas y roles del sistema. | Decidir permisos únicamente desde el cliente web. |
-| Repositorios | Exponer operaciones de lectura y escritura usadas por los casos de uso. | Contener reglas propias de los procesos de negocio. |
-| MySQL | Conservar los datos relacionales y aplicar integridad referencial y transacciones. | Ser accedida directamente desde la interfaz. |
+| Capa | Componentes | Responsabilidad | No debe |
+|---|---|---|---|
+| Presentación | Interfaz web y controladores | Capturar solicitudes, validar su formato y comunicar resultados y errores. | Ser la única barrera de autorización, implementar reglas de negocio o acceder directamente a MySQL. |
+| Aplicación | Casos de uso y puertos de entrada/salida | Coordinar operaciones de proyectos, almacén, personal, maquinaria, finanzas, reportes y usuarios; declarar contratos requeridos. | Depender de frameworks, transporte web o adaptadores concretos. |
+| Dominio | Entidades, objetos de valor y servicios/reglas de dominio | Proteger invariantes como la validez de movimientos y relaciones del negocio. | Depender de las otras capas o contener detalles técnicos. |
+| Infraestructura | Adaptadores de repositorio, Spring Security y MySQL | Implementar los puertos y conectar con persistencia y mecanismos técnicos externos. | Ser dueña de las reglas del negocio o filtrar sus detalles hacia el Dominio. |
 
 ## Colaboración de ejemplo: registrar una salida de almacén
 
 1. El encargado de almacén solicita registrar una salida para un proyecto.
-2. La autorización valida que su rol permita esa operación.
-3. El caso de uso valida cantidad, material, proyecto y stock disponible.
-4. El repositorio guarda el movimiento y actualiza las existencias en una
+2. El punto de entrada protegido verifica que el usuario tenga permiso; el
+   caso de uso aplica las políticas que le correspondan.
+3. El caso de uso coordina la validación de cantidad, material, proyecto y
+   stock con las reglas del Dominio.
+4. El caso de uso invoca un puerto de persistencia; el adaptador de
+   Infraestructura guarda el movimiento y actualiza las existencias en una
    transacción.
 5. La interfaz muestra la confirmación solo si la persistencia termina con
    éxito; ante un error, informa el fallo y no presenta una salida como
@@ -45,9 +41,12 @@ almacenes o concurrencia deben acordarse antes de implementar el flujo real.
 
 ## Reglas de dependencia
 
-- La interfaz depende de casos de uso, no de consultas SQL ni de MySQL.
-- Los casos de uso dependen de contratos de repositorio y reglas del dominio.
-- Los adaptadores de persistencia implementan esos contratos.
+- Presentación depende de los casos de uso, no de consultas SQL ni de MySQL.
+- Aplicación depende del Dominio y declara los puertos que necesita.
+- Infraestructura implementa esos puertos; Aplicación no conoce sus
+  implementaciones concretas.
+- Las dependencias de código apuntan hacia adentro, aunque el flujo de
+  ejecución pueda llegar desde un caso de uso a un adaptador.
 - Los módulos comparten identificadores y contratos explícitos; no deben
   invocar directamente detalles internos de otros módulos.
 - La autorización se aplica en el servidor para todas las operaciones

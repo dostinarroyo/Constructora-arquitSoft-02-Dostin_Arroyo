@@ -4,38 +4,39 @@ flowchart LR
     subgraph PRESENTACION["CAPA DE PRESENTACIÓN"]
         direction TB
         WEB["Interfaz web<br/>Formularios · Consultas<br/>Panel · Reportes"]
-    end
-
-    subgraph APLICACION["CAPA DE APLICACIÓN"]
-        direction TB
         CTRL["Controladores<br/>Puntos de entrada"]
-        AUTH["Autenticación y autorización<br/>Permisos por rol"]
-        SERV["Servicios de aplicación<br/>Reglas de negocio"]
-        MOD["Módulos<br/>Proyectos · Actividades · Almacén<br/>Personal · Maquinaria · Finanzas<br/>Reportes · Usuarios"]
-        CTRL --> AUTH --> SERV --> MOD
     end
 
-    subgraph DATOS["ACCESO A DATOS"]
+    subgraph APLICACION["APLICACIÓN"]
         direction TB
-        REPO["Repositorios<br/>Contratos y persistencia"]
+        USECASE["Casos de uso<br/>Coordinar operaciones"]
+        PORT["Puertos requeridos<br/>Contratos de repositorio"]
     end
 
-    subgraph PERSISTENCIA["PERSISTENCIA"]
+    subgraph DOMINIO["DOMINIO"]
         direction TB
+        RULES["Entidades y reglas<br/>de negocio"]
+    end
+
+    subgraph INFRAESTRUCTURA["INFRAESTRUCTURA"]
+        direction TB
+        ADAPTER["Adaptadores de persistencia<br/>Spring Security"]
         DB[("MySQL<br/>Base de datos central")]
+        ADAPTER --> DB
     end
 
-    U --> WEB --> CTRL
-    MOD --> REPO --> DB
+    U --> WEB --> CTRL --> USECASE
+    USECASE --> RULES
+    ADAPTER -. "implementa" .-> PORT
 
     classDef user fill:#f4f4f5,stroke:#52525b,color:#18181b,stroke-width:1.5px
     classDef presentation fill:#e7f0ff,stroke:#2563a6,color:#17365d,stroke-width:1.5px
     classDef application fill:#e9f7ef,stroke:#2d8a57,color:#14532d,stroke-width:1.5px
-    classDef data fill:#fff3df,stroke:#c27a12,color:#713f12,stroke-width:1.5px
-    classDef persistence fill:#e6faff,stroke:#0891b2,color:#164e63,stroke-width:1.5px
+    classDef domain fill:#fff3df,stroke:#c27a12,color:#713f12,stroke-width:1.5px
+    classDef infrastructure fill:#f2eaff,stroke:#7646b8,color:#4c1d95,stroke-width:1.5px
 
     class U user
     class WEB presentation
-    class CTRL,AUTH,SERV,MOD application
-    class REPO data
-    class DB persistence
+    class USECASE,PORT application
+    class RULES domain
+    class ADAPTER,DB infrastructure

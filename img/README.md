@@ -11,7 +11,7 @@ Esta es la carpeta de recursos gráficos en la raíz del repositorio.
 
 - [Arquitectura inicial](./arquitectura-inicial.png)
 - [Componentes arquitectónicos](./arquitectura-componentes.png)
-- [Estilo de monolito en capas](./estilo-monolito-capas.png)
+- [Monolito modular con Clean Architecture](./estilo-monolito-capas.png)
 - [C4 nivel 1 - Contexto](./nivel1-contexto.png)
 - [C4 nivel 2 - Contenedores](./nivel2-contenedores.png)
 - [C4 nivel 3 - Componentes](./nivel3-componentes.png)

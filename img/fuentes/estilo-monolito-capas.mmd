@@ -9,14 +9,15 @@ flowchart LR
     subgraph application["APLICACIÓN"]
         direction TB
         usecases["Casos de uso"]
+        ports["Puertos requeridos<br/>Repositorios"]
         modules["Proyectos · Actividades · Almacén<br/>Personal · Maquinaria · Finanzas<br/>Reportes · Usuarios y roles"]
         usecases --> modules
+        usecases --> ports
     end
 
     subgraph domain["DOMINIO"]
         direction TB
         rules["Entidades y reglas<br/>de negocio"]
-        ports["Contratos de repositorio"]
     end
 
     subgraph infrastructure["INFRAESTRUCTURA"]
@@ -28,7 +29,6 @@ flowchart LR
 
     browser --> ui --> usecases
     modules --> rules
-    modules --> ports
     adapters -. "implementan" .-> ports
 
     classDef user fill:#f4f4f5,stroke:#52525b,color:#18181b,stroke-width:1.5px
@@ -40,5 +40,6 @@ flowchart LR
     class browser user
     class ui presentationStyle
     class usecases,modules applicationStyle
-    class rules,ports domainStyle
+    class rules domainStyle
+    class ports applicationStyle
     class adapters,db infrastructureStyle

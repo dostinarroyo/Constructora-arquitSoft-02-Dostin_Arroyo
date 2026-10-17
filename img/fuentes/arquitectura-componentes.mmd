@@ -1,35 +1,21 @@
 flowchart LR
     actor["Usuarios internos<br/>Gerencia · Proyectos · Obra<br/>Almacén · RR. HH. · Finanzas · Admin"]
-    web["Interfaz web<br/>formularios · consultas · panel · reportes"]
-    security["Autenticación y autorización<br/>identidad · permisos por rol"]
+    web["Presentación<br/>Interfaz web · controladores"]
 
     subgraph app["Aplicación monolítica modular"]
-        projects["Proyectos y actividades"]
-        warehouse["Materiales y almacén"]
-        people["Personal y asignaciones"]
-        equipment["Maquinaria"]
-        finance["Finanzas"]
-        reports["Reportes e información general"]
-        accounts["Usuarios y roles"]
+        usecases["Casos de uso<br/>Proyectos · Almacén · Personal<br/>Maquinaria · Finanzas · Reportes · Usuarios"]
+        ports["Puertos de entrada/salida<br/>Contratos de repositorio"]
+        usecases --> ports
     end
 
-    repos["Repositorios<br/>interfaces de persistencia"]
-    mysql[("MySQL<br/>persistencia central")]
+    domain["Dominio<br/>Entidades · objetos de valor<br/>reglas e invariantes"]
+    subgraph infra["Infraestructura"]
+        adapters["Adaptadores<br/>Persistencia · seguridad"]
+        mysql[("MySQL<br/>persistencia central")]
+        adapters --> mysql
+    end
 
     actor --> web
-    web --> security
-    security --> projects
-    security --> warehouse
-    security --> people
-    security --> equipment
-    security --> finance
-    security --> reports
-    security --> accounts
-    projects --> repos
-    warehouse --> repos
-    people --> repos
-    equipment --> repos
-    finance --> repos
-    reports --> repos
-    accounts --> repos
-    repos --> mysql
+    web --> usecases
+    usecases --> domain
+    adapters -. "implementan" .-> ports

@@ -14,5 +14,6 @@ de la empresa constructora.
 - [07 - Decisiones arquitectónicas](../01-analisis-de-sistema/07-decisiones-arquitectonicas.md)
 - [Modelo C4](../04-modelo-c4/README.md)
 
-La propuesta es un monolito modular en capas. Las tecnologías mencionadas en el
-caso permanecen como propuestas pendientes de confirmación.
+La propuesta es un monolito modular con Clean Architecture y cuatro capas:
+Presentación, Aplicación, Dominio e Infraestructura. Las tecnologías
+mencionadas en el caso permanecen como propuestas pendientes de confirmación.

@@ -5,10 +5,10 @@ diagramas del proyecto.
 
 | Fuente editable | Gráfico PNG |
 |---|---|
-| [arquitectura-inicial.drawio](./arquitectura-inicial.drawio) | [Arquitectura inicial por capas](../arquitectura-inicial.png) (exportada desde Mermaid). |
-| [arquitectura-inicial.mmd](./arquitectura-inicial.mmd) | [Arquitectura inicial por capas](../arquitectura-inicial.png). |
+| [arquitectura-inicial.drawio](./arquitectura-inicial.drawio) | [Arquitectura inicial con Clean Architecture](../arquitectura-inicial.png) (exportada desde Mermaid). |
+| [arquitectura-inicial.mmd](./arquitectura-inicial.mmd) | [Arquitectura inicial con Clean Architecture](../arquitectura-inicial.png). |
 | [arquitectura-componentes.mmd](./arquitectura-componentes.mmd) | [Componentes arquitectónicos](../arquitectura-componentes.png). |
-| [estilo-monolito-capas.mmd](./estilo-monolito-capas.mmd) | [Módulos y capas](../estilo-monolito-capas.png). |
+| [estilo-monolito-capas.mmd](./estilo-monolito-capas.mmd) | [Monolito modular con Clean Architecture](../estilo-monolito-capas.png). |
 | [nivel1-contexto.mmd](./nivel1-contexto.mmd) | [C4, nivel 1: contexto](../nivel1-contexto.png). |
 | [nivel2-contenedores.mmd](./nivel2-contenedores.mmd) | [C4, nivel 2: contenedores](../nivel2-contenedores.png). |
 | [nivel3-componentes.mmd](./nivel3-componentes.mmd) | [C4, nivel 3: componentes](../nivel3-componentes.png). |

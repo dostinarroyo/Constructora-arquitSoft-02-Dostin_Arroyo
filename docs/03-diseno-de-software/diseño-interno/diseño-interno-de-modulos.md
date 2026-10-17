@@ -41,20 +41,26 @@ infraestructura/
 
 Esta estructura ilustra límites y no exige una distribución exacta de paquetes.
 Los módulos permanecen dentro de una sola aplicación y una persistencia
-centralizada.
+centralizada. Los puertos de persistencia pertenecen a `aplicacion/`; sus
+implementaciones se ubican en `infraestructura/persistencia/`. El dominio no
+depende de los adaptadores ni de las tecnologías externas.
 
 ## Responsabilidades por módulo
 
 | Módulo | Casos de uso principales | Conceptos del dominio | Dependencias permitidas |
 |---|---|---|---|
-| Proyectos | Registrar, modificar, consultar proyectos y revisar su estado. | Proyecto, estado de proyecto. | Contratos de persistencia; consulta de avances y resúmenes de módulos relacionados. |
-| Actividades | Registrar actividades y actualizar su avance. | Actividad, avance. | Proyecto mediante identificador/contrato definido. |
-| Materiales y almacén | Registrar materiales, entradas, salidas y consultar stock. | Material, movimiento, tipo de movimiento. | Proyecto para asociar consumos; contrato de almacén. |
-| Personal | Administrar trabajadores y consultar sus asignaciones. | Trabajador, asignación. | Proyectos y actividades mediante identificadores. |
+| Proyectos | Registrar, modificar, consultar proyectos y revisar su estado. | Proyecto, estado de proyecto. | Puertos de Aplicación; consulta de avances y resúmenes mediante contratos explícitos. |
+| Actividades | Registrar actividades y actualizar su avance. | Actividad, avance. | Proyecto mediante identificador y contrato definido. |
+| Materiales y almacén | Registrar materiales, entradas, salidas y consultar stock. | Material, movimiento, tipo de movimiento. | Proyecto mediante identificador; puerto de persistencia declarado en Aplicación. |
+| Personal | Administrar trabajadores y consultar sus asignaciones. | Trabajador, asignación. | Proyectos y actividades mediante identificadores y contratos definidos. |
 | Maquinaria | Administrar equipos, su estado y asignación. | Equipo, estado, asignación. | Proyectos mediante identificador. |
 | Finanzas | Registrar presupuesto y gastos por proyecto. | Presupuesto, gasto. | Proyecto mediante identificador. |
-| Reportes e información general | Construir consultas de resumen y reportes basados en los módulos de origen. | Proyecciones de lectura. | Interfaces de consulta; no es dueño de datos operativos. |
-| Usuarios y roles | Administrar cuentas y asignación de roles. | Usuario, rol, permiso. | Infraestructura de autenticación; políticas de acceso del servidor. |
+| Reportes e información general | Construir consultas de resumen y reportes basados en los módulos de origen. | Proyecciones de lectura. | Puertos de consulta; no es dueño de datos operativos. |
+| Usuarios y roles | Administrar cuentas y asignación de roles. | Usuario, rol, permiso. | Políticas de autorización de Aplicación; adaptadores técnicos de autenticación en Infraestructura. |
+
+Los casos de uso dependen de puertos definidos en Aplicación y de reglas del
+Dominio. Infraestructura implementa esos puertos; no se invierten las
+dependencias para hacer que el núcleo conozca MySQL o Spring.
 
 Los conceptos son candidatos para el diseño detallado; sus atributos,
 relaciones, estados válidos y reglas finales deben validarse con los
@@ -80,15 +86,18 @@ no carpetas de código ya implementadas.
 sequenceDiagram
     actor Almacenista
     participant UI as Interfaz web
-    participant Auth as Autorización
+    participant Auth as Adaptador de autenticación y autorización
     participant UC as RegistrarSalidaMaterial
-    participant Repo as RepositorioAlmacen
+    participant Domain as Dominio
+    participant Repo as Adaptador de RepositorioAlmacen
     participant DB as MySQL
 
     Almacenista->>UI: Solicita salida(material, proyecto, cantidad)
     UI->>Auth: Verifica permiso de almacén
     Auth-->>UI: Operación permitida
     UI->>UC: ejecutar(solicitud)
+    UC->>Domain: Validar reglas de negocio
+    Domain-->>UC: Reglas satisfechas
     UC->>Repo: buscarMaterial(id)
     Repo->>DB: Consultar material y stock
     DB-->>Repo: Material
@@ -106,11 +115,13 @@ Si falla la validación o la transacción, el caso de uso devuelve un resultado
 de error explícito. No debe notificarse éxito ni persistirse parcialmente el
 movimiento.
 
-## Contratos internos propuestos
+## Puertos requeridos por Aplicación
 
-Los contratos mantienen la lógica de negocio independiente de los detalles de
-persistencia:
+Estos puertos mantienen los casos de uso independientes de los detalles de
+persistencia; sus adaptadores concretos pertenecen a Infraestructura:
 
+- `RepositorioAlmacen` es una interfaz de Aplicación; su adaptador implementa
+  las operaciones sobre la persistencia.
 - `RepositorioAlmacen.buscarMaterial(id)` devuelve el material o indica que
   no existe.
 - `RepositorioAlmacen.registrarSalidaYActualizarStock(...)` persiste de forma

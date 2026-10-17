@@ -8,17 +8,20 @@ encuentra en fase de análisis, las decisiones marcadas como **Propuesta** no
 deben interpretarse como compromisos de implementación hasta que el equipo y
 los responsables las validen.
 
-## DA-001: Aplicación web como monolito modular en capas
+## DA-001: Monolito modular con Clean Architecture
 
 - **Estado:** Propuesta
 - **Contexto:** Los módulos comparten proyectos y datos operativos. El caso no
   define equipos autónomos, escalado independiente ni despliegue distribuido.
-- **Decisión:** Organizar una aplicación web como monolito modular, separando
-  presentación, aplicación y dominio, acceso a datos y persistencia.
+- **Decisión:** Organizar la aplicación web como monolito modular con las capas
+  Presentación, Aplicación, Dominio e Infraestructura. Las dependencias de
+  código apuntan hacia el Dominio; los puertos requeridos por Aplicación son
+  implementados por adaptadores de Infraestructura.
 - **Alternativas:** Microservicios; aplicación sin límites modulares.
 - **Consecuencias:** Se simplifica el despliegue inicial y se facilita la
-  consistencia entre módulos. Se deberán mantener límites internos para evitar
-  acoplamiento y reevaluar la decisión si surgen necesidades de distribución.
+  consistencia entre módulos. Se deberán mantener límites internos y la regla
+  de dependencias hacia adentro para evitar acoplamiento; reevaluar si surgen
+  necesidades de distribución.
 - **Drivers relacionados:** DA01, DA05, DA07 y DA08.
 
 ## DA-002: Persistencia relacional centralizada

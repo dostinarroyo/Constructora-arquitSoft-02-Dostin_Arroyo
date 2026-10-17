@@ -1,8 +1,8 @@
 # Diseño de software
 
 Esta sección concreta cómo se organizarían internamente los módulos y cómo
-colaborarían sus componentes. Es un diseño propuesto que respeta la
-arquitectura modular en capas. Los diagramas, contratos y responsabilidades
+colaborarían sus componentes. Es un diseño propuesto que respeta el monolito
+modular con Clean Architecture. Los diagramas, contratos y responsabilidades
 describen la solución prevista; no son código implementado.
 
 ## Organización

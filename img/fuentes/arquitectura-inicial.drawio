@@ -7,16 +7,16 @@
         <mxCell id="users" value="Actores internos&#xa;autorizados" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;" vertex="1" parent="1">
           <mxGeometry x="60" y="345" width="160" height="70" as="geometry"/>
         </mxCell>
-        <mxCell id="web" value="Presentación&#xa;Interfaz web&#xa;Formularios · consultas · panel · reportes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=15;" vertex="1" parent="1">
+        <mxCell id="web" value="Presentación&#xa;Interfaz web · controladores&#xa;Formularios · consultas · panel · reportes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=15;" vertex="1" parent="1">
           <mxGeometry x="280" y="325" width="230" height="110" as="geometry"/>
         </mxCell>
-        <mxCell id="app" value="Aplicación y dominio&#xa;Controladores · casos de uso · reglas de negocio&#xa;Autorización por roles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" vertex="1" parent="1">
+        <mxCell id="app" value="Aplicación&#xa;Casos de uso · puertos requeridos&#xa;Coordina operaciones de negocio" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" vertex="1" parent="1">
           <mxGeometry x="570" y="285" width="280" height="190" as="geometry"/>
         </mxCell>
-        <mxCell id="modules" value="Módulos de negocio&#xa;Proyectos y actividades · almacén&#xa;Personal · maquinaria · finanzas&#xa;Reportes · usuarios y roles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=15;" vertex="1" parent="1">
+        <mxCell id="modules" value="Dominio&#xa;Entidades · conceptos · reglas&#xa;Invariantes del negocio" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=15;" vertex="1" parent="1">
           <mxGeometry x="590" y="520" width="240" height="130" as="geometry"/>
         </mxCell>
-        <mxCell id="data-access" value="Acceso a datos&#xa;Repositorios / adaptadores" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" vertex="1" parent="1">
+        <mxCell id="data-access" value="Infraestructura&#xa;Adaptadores de persistencia&#xa;Spring Security" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" vertex="1" parent="1">
           <mxGeometry x="900" y="345" width="210" height="90" as="geometry"/>
         </mxCell>
         <mxCell id="db" value="Persistencia centralizada&#xa;MySQL (tecnología prevista)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f5f5f5;strokeColor=#666666;fontSize=15;" vertex="1" parent="1">
@@ -28,10 +28,10 @@
         <mxCell id="e2" value="interacción" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="web" target="app">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
-        <mxCell id="e3" value="coordina" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="app" target="modules">
+        <mxCell id="e3" value="usa reglas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="app" target="modules">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
-        <mxCell id="e4" value="consulta / persiste" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="modules" target="data-access">
+        <mxCell id="e4" value="implementa puertos" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;dashed=1;" edge="1" parent="1" source="data-access" target="app">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
         <mxCell id="e5" value="lectura / escritura" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="data-access" target="db">
