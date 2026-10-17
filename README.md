@@ -1,4 +1,4 @@
-# Sistema de gestión para una empresa constructora
+# ConstructoraSys
 
 Repositorio del primer sprint de Arquitectura de Software. En esta etapa reúne
 la documentación de análisis, la propuesta arquitectónica, el diseño interno
