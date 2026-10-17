@@ -1,0 +1,20 @@
+flowchart LR
+    admin["Administrador del sistema"]
+    gerencia["Gerente general"]
+    direccion["Director de proyectos"]
+    obra["Residente / ingeniero de obra"]
+    almacen["Encargado de almacén"]
+    rrhh["Responsable de recursos humanos"]
+    maquinaria["Encargado de maquinaria"]
+    finanzas["Responsable de finanzas"]
+
+    sistema(("Sistema de gestión<br/>de la empresa constructora"))
+
+    admin -->|"Administra cuentas y roles"| sistema
+    gerencia -->|"Consulta indicadores y reportes"| sistema
+    direccion -->|"Gestiona proyectos y revisa avances"| sistema
+    obra -->|"Registra actividades y avances"| sistema
+    almacen -->|"Registra movimientos y consulta stock"| sistema
+    rrhh -->|"Gestiona trabajadores y asignaciones"| sistema
+    maquinaria -->|"Gestiona equipos y disponibilidad"| sistema
+    finanzas -->|"Gestiona presupuestos y gastos"| sistema
