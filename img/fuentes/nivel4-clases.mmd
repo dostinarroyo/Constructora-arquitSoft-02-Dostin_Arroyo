@@ -1,0 +1,53 @@
+flowchart LR
+    subgraph PRESENTACION["PRESENTACIÓN"]
+        direction TB
+        controlador["<b>SalidaMaterialController</b><br/>+ solicitarSalida(solicitud)<br/>+ presentarResultado(resultado)"]
+    end
+
+    subgraph APLICACION["APLICACIÓN"]
+        direction TB
+        casoUso["<b>RegistrarSalidaMaterial</b><br/>+ ejecutar(solicitud)<br/>Coordina validación y registro"]
+        solicitud["<b>SolicitudSalida</b><br/>materialId<br/>proyectoId<br/>cantidad"]
+        resultado["<b>ResultadoSalida</b><br/>materialId<br/>proyectoId<br/>cantidad<br/>stockRestante"]
+        repositorio["<b>RepositorioAlmacen</b><br/><i>Contrato de persistencia</i><br/>+ buscarMaterial(id)<br/>+ registrarSalida(...)"]
+    end
+
+    subgraph DOMINIO["DOMINIO"]
+        direction TB
+        material["<b>Material</b><br/>id · nombre · stock<br/>+ descontar(cantidad)"]
+        movimiento["<b>MovimientoAlmacen</b><br/>materialId · proyectoId<br/>cantidad · tipo"]
+        tipo["<b>TipoMovimiento</b><br/>ENTRADA · SALIDA"]
+        regla["<b>Reglas</b><br/>cantidad > 0<br/>stock no negativo"]
+    end
+
+    subgraph INFRAESTRUCTURA["INFRAESTRUCTURA"]
+        direction TB
+        adaptador["<b>Adaptador de almacén</b><br/>Implementa el contrato<br/>Usa persistencia relacional"]
+        mysql[("<b>MySQL</b><br/>Materiales · Movimientos")]
+    end
+
+    controlador -->|"solicitud"| casoUso
+    casoUso --> solicitud
+    casoUso -->|"consulta"| repositorio
+    repositorio -. "implementado por" .-> adaptador
+    adaptador -->|"consulta / transacción"| mysql
+    casoUso -->|"aplica regla"| material
+    material --> regla
+    casoUso -->|"registra"| movimiento
+    movimiento --> tipo
+    casoUso --> resultado
+    resultado -->|"respuesta"| controlador
+
+    controlador ~~~ casoUso
+    casoUso ~~~ material
+    material ~~~ adaptador
+
+    classDef presentacion fill:#e7f0ff,stroke:#2563a6,color:#17365d,stroke-width:1.5px
+    classDef aplicacion fill:#e9f7ef,stroke:#2d8a57,color:#14532d,stroke-width:1.5px
+    classDef dominio fill:#fff3df,stroke:#c27a12,color:#713f12,stroke-width:1.5px
+    classDef infraestructura fill:#f2eaff,stroke:#7646b8,color:#4c1d95,stroke-width:1.5px
+
+    class controlador presentacion
+    class casoUso,solicitud,resultado,repositorio aplicacion
+    class material,movimiento,tipo,regla dominio
+    class adaptador,mysql infraestructura

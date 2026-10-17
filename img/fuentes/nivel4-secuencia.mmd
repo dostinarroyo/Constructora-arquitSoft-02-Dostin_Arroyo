@@ -1,0 +1,15 @@
+sequenceDiagram
+    actor Encargado as Encargado de almacén
+    participant CasoUso as RegistrarSalidaMaterial
+    participant Material as Material
+    participant Repo as RepositorioAlmacen
+
+    Encargado->>CasoUso: ejecutar(material, proyecto, cantidad)
+    CasoUso->>Repo: buscarMaterial(materialId)
+    Repo-->>CasoUso: Material o error explícito
+    CasoUso->>Material: descontar(cantidad)
+    Material-->>CasoUso: Material actualizado o regla rechazada
+    CasoUso->>CasoUso: crear movimiento de salida
+    CasoUso->>Repo: registrarSalida(actualizado, movimiento)
+    Repo-->>CasoUso: confirmación o error
+    CasoUso-->>Encargado: resultado o error explícito
