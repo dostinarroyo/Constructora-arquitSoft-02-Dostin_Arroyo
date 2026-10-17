@@ -4,7 +4,7 @@
 
 Este documento explica el enfoque propuesto para estructurar el sistema de
 gestión de la empresa constructora. Complementa la [arquitectura
-inicial](../arquitectura-inicial.md) con el razonamiento que guía su forma y
+inicial](./arquitectura-inicial.md) con el razonamiento que guía su forma y
 delimita qué aspectos siguen pendientes de confirmación.
 
 ## Enfoque propuesto
@@ -68,6 +68,6 @@ restricciones operativas que lo justifiquen.
 
 ## Trazabilidad
 
-El enfoque responde principalmente a los drivers [DA01–DA08](../../06-drivers-arquitectonicos.md),
+El enfoque responde principalmente a los drivers [DA01–DA08](../01-analisis-de-sistema/06-drivers-arquitectonicos.md),
 en particular a la integración de proyectos y recursos, la seguridad, la
 integridad de la información, la mantenibilidad y el crecimiento funcional.

@@ -104,41 +104,12 @@ control, sujeta a confirmación de viabilidad.
 
 ## 5. Diagrama arquitectónico
 
-```mermaid
-flowchart TD
-    U[Actores internos autorizados]
-    subgraph PRESENTACION["Capa de presentación"]
-        WEB[Interfaz web<br/>formularios, consultas, panel y reportes]
-    end
-    subgraph APLICACION["Capa de aplicación y lógica de negocio"]
-        CTRL[Controladores / puntos de entrada]
-        AUTH[Autenticación y autorización por roles]
-        SERV[Servicios de aplicación y reglas de negocio]
-        MOD[Proyectos · Actividades · Almacén<br/>Personal · Maquinaria · Finanzas<br/>Reportes · Usuarios y roles]
-    end
-    subgraph DATOS["Capa de acceso a datos"]
-        REPO[Repositorios / acceso a persistencia]
-    end
-    subgraph PERSISTENCIA["Capa de datos"]
-        DB[(MySQL<br/>base de datos centralizada)]
-    end
+![Diagrama a color de la arquitectura inicial](../../img/arquitectura-inicial.png)
 
-    U --> WEB
-    WEB --> CTRL
-    CTRL --> AUTH
-    AUTH --> SERV
-    SERV --> MOD
-    MOD --> REPO
-    REPO --> DB
-    DB --> REPO
-    REPO --> MOD
-    MOD --> SERV
-    SERV --> CTRL
-    CTRL --> WEB
-```
+Fuente Mermaid editable: [arquitectura-inicial.mmd](../../img/fuentes/arquitectura-inicial.mmd).
 
-El diagrama editable está disponible en
-[arquitectura-inicial.drawio](./arquitectura-inicial.drawio).
+El diagrama editable de draw.io está disponible en
+[arquitectura-inicial.drawio](../../img/fuentes/arquitectura-inicial.drawio).
 
 ## 6. Persistencia e integridad
 

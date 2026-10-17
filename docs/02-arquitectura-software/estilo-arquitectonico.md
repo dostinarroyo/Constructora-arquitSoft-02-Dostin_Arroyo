@@ -16,6 +16,10 @@ Esta es una propuesta inicial, no una decisión de implementación irreversible.
 | Acceso a datos | Implementar consultas y persistencia mediante repositorios o adaptadores. | Definir reglas funcionales propias de los módulos. |
 | Persistencia | Conservar información relacional centralizada y sus relaciones. | Ser accedida directamente desde la presentación. |
 
+![Diagrama a color del estilo de monolito modular en capas](../../img/estilo-monolito-capas.png)
+
+Fuente Mermaid editable: [estilo-monolito-capas.mmd](../../img/fuentes/estilo-monolito-capas.mmd).
+
 La dirección de dependencias debe apuntar hacia las reglas de aplicación y
 dominio: la presentación invoca casos de uso y estos utilizan abstracciones de
 acceso a datos. Los detalles de persistencia no deben dictar las reglas del
@@ -78,6 +82,6 @@ de escalado independiente, autonomía de equipos o disponibilidad por módulo.
 
 ## Referencias
 
-- [Enfoque arquitectónico](./enfoque/enfoque-arquitectonico.md)
+- [Enfoque arquitectónico](./enfoque-arquitectonico.md)
 - [Arquitectura inicial](./arquitectura-inicial.md)
-- [Drivers arquitectónicos](../06-drivers-arquitectonicos.md)
+- [Drivers arquitectónicos](../01-analisis-de-sistema/06-drivers-arquitectonicos.md)
