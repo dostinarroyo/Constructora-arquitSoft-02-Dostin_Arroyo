@@ -1,0 +1,9 @@
+flowchart LR
+    user["Usuarios internos"]
+    browser["Navegador web<br/>HTML · CSS · JavaScript · Bootstrap"]
+    app["Aplicación de gestión<br/>Java · Spring Boot<br/>monolito modular"]
+    db[("Base de datos relacional<br/>MySQL")]
+
+    user -->|"HTTPS en el entorno desplegado"| browser
+    browser -->|"Solicitudes web"| app
+    app -->|"Consultas y transacciones"| db
