@@ -1,0 +1,44 @@
+flowchart LR
+    browser["Usuarios internos"]
+
+    subgraph presentation["PRESENTACIÓN"]
+        direction TB
+        ui["Interfaz web<br/>Formularios · Consultas<br/>Panel · Reportes"]
+    end
+
+    subgraph application["APLICACIÓN"]
+        direction TB
+        usecases["Casos de uso"]
+        modules["Proyectos · Actividades · Almacén<br/>Personal · Maquinaria · Finanzas<br/>Reportes · Usuarios y roles"]
+        usecases --> modules
+    end
+
+    subgraph domain["DOMINIO"]
+        direction TB
+        rules["Entidades y reglas<br/>de negocio"]
+        ports["Contratos de repositorio"]
+    end
+
+    subgraph infrastructure["INFRAESTRUCTURA"]
+        direction TB
+        adapters["Adaptadores<br/>de persistencia"]
+        db[("MySQL")]
+        adapters --> db
+    end
+
+    browser --> ui --> usecases
+    modules --> rules
+    modules --> ports
+    adapters -. "implementan" .-> ports
+
+    classDef user fill:#f4f4f5,stroke:#52525b,color:#18181b,stroke-width:1.5px
+    classDef presentationStyle fill:#e7f0ff,stroke:#2563a6,color:#17365d,stroke-width:1.5px
+    classDef applicationStyle fill:#e9f7ef,stroke:#2d8a57,color:#14532d,stroke-width:1.5px
+    classDef domainStyle fill:#fff3df,stroke:#c27a12,color:#713f12,stroke-width:1.5px
+    classDef infrastructureStyle fill:#f2eaff,stroke:#7646b8,color:#4c1d95,stroke-width:1.5px
+
+    class browser user
+    class ui presentationStyle
+    class usecases,modules applicationStyle
+    class rules,ports domainStyle
+    class adapters,db infrastructureStyle
