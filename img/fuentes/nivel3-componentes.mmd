@@ -1,56 +1,49 @@
 flowchart LR
-    browser["Navegador web"]
+    user["Usuarios internos"]
 
-    subgraph entrada["PRESENTACIÓN Y SEGURIDAD"]
-        direction TB
-        controller["Controladores web<br/>Validan entrada y respuesta"]
-        security["Spring Security<br/>Autenticación y permisos"]
-        controller --> security
-    end
-
-    subgraph application["APLICACIÓN"]
-        direction TB
-        subgraph modules["MÓDULOS DE NEGOCIO"]
+    subgraph system["APLICACIÓN DE GESTIÓN · MONOLITO MODULAR"]
+        direction LR
+        subgraph presentation["PRESENTACIÓN"]
             direction TB
-            projects["Proyectos y actividades"]
-            warehouse["Materiales y almacén"]
-            people["Personal y asignaciones"]
-            equipment["Maquinaria"]
-            finance["Finanzas"]
-            reports["Reportes y panel"]
-            users["Usuarios y roles"]
+            controller["Controladores web"]
         end
-        usecases["Casos de uso<br/>Coordinan operaciones"]
+
+        subgraph application["APLICACIÓN"]
+            direction TB
+            usecases["Casos de uso y módulos<br/>Proyectos · Actividades · Almacén<br/>Personal · Maquinaria · Finanzas<br/>Reportes · Usuarios y roles"]
+            ports["Puertos de persistencia<br/>Contratos requeridos"]
+        end
+
+        subgraph domain["DOMINIO"]
+            direction TB
+            entities["Entidades y reglas<br/>de negocio"]
+        end
+
+        subgraph infrastructure["INFRAESTRUCTURA"]
+            direction TB
+            security["Autenticación y autorización"]
+            adapters["Adaptadores<br/>de persistencia"]
+        end
     end
 
-    subgraph domain["DOMINIO"]
-        direction TB
-        entities["Entidades y reglas<br/>de negocio"]
-        ports["Contratos<br/>de repositorio"]
-    end
+    db[("MySQL")]
 
-    subgraph infrastructure["INFRAESTRUCTURA"]
-        direction TB
-        adapters["Adaptadores<br/>de persistencia"]
-        db[("MySQL")]
-        adapters --> db
-    end
+    user --> controller
+    controller --> usecases
+    usecases --> entities
+    usecases --> ports
+    adapters -. "implementan" .-> ports
+    adapters --> db
+    security -. "protege acceso" .-> controller
 
-    browser --> controller
-    security --> usecases
-    usecases --> modules
-    modules --> entities
-    modules --> ports
-    adapters -. "implementan contratos" .-> ports
-
-    classDef user fill:#f4f4f5,stroke:#52525b,color:#18181b,stroke-width:1.5px
+    classDef userStyle fill:#f4f4f5,stroke:#52525b,color:#18181b,stroke-width:1.5px
     classDef presentationStyle fill:#e7f0ff,stroke:#2563a6,color:#17365d,stroke-width:1.5px
     classDef applicationStyle fill:#e9f7ef,stroke:#2d8a57,color:#14532d,stroke-width:1.5px
     classDef domainStyle fill:#fff3df,stroke:#c27a12,color:#713f12,stroke-width:1.5px
     classDef infrastructureStyle fill:#f2eaff,stroke:#7646b8,color:#4c1d95,stroke-width:1.5px
 
-    class browser user
-    class controller,security presentationStyle
-    class projects,warehouse,people,equipment,finance,reports,users,usecases applicationStyle
-    class entities,ports domainStyle
-    class adapters,db infrastructureStyle
+    class user userStyle
+    class controller presentationStyle
+    class usecases,ports applicationStyle
+    class entities domainStyle
+    class security,adapters,db infrastructureStyle

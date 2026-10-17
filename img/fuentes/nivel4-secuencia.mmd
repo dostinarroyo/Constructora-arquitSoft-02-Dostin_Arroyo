@@ -1,15 +1,31 @@
 sequenceDiagram
     actor Encargado as Encargado de almacén
-    participant CasoUso as RegistrarSalidaMaterial
-    participant Material as Material
-    participant Repo as RepositorioAlmacen
+    participant UI as Controller
+    participant Auth as Seguridad
+    participant UC as CasoUso
+    participant D as Dominio
+    participant P as Puerto
+    participant A as Adaptador
+    participant DB as MySQL
 
-    Encargado->>CasoUso: ejecutar(material, proyecto, cantidad)
-    CasoUso->>Repo: buscarMaterial(materialId)
-    Repo-->>CasoUso: Material o error explícito
-    CasoUso->>Material: descontar(cantidad)
-    Material-->>CasoUso: Material actualizado o regla rechazada
-    CasoUso->>CasoUso: crear movimiento de salida
-    CasoUso->>Repo: registrarSalida(actualizado, movimiento)
-    Repo-->>CasoUso: confirmación o error
-    CasoUso-->>Encargado: resultado o error explícito
+    Encargado->>UI: Solicita salida(material, proyecto, cantidad)
+    UI->>Auth: Verifica identidad y permiso
+    Auth-->>UI: Autorizado
+    UI->>UC: ejecutar(SolicitudSalida)
+    UC->>P: buscarMaterial(materialId)
+    P->>A: Invoca operación requerida
+    A->>DB: Consulta material y stock
+    DB-->>A: Datos o error
+    A-->>P: Material o error explícito
+    P-->>UC: Material o error explícito
+    UC->>D: descontar(cantidad)
+    D-->>UC: Material actualizado o regla rechazada
+    UC->>UC: Crear movimiento de salida
+    UC->>P: registrarSalida(material, movimiento)
+    P->>A: Invoca operación requerida
+    A->>DB: Transacción: movimiento + stock
+    DB-->>A: Confirmación o error
+    A-->>P: Resultado explícito
+    P-->>UC: Resultado explícito
+    UC-->>UI: ResultadoSalida o error
+    UI-->>Encargado: Confirmación o rechazo explícito
