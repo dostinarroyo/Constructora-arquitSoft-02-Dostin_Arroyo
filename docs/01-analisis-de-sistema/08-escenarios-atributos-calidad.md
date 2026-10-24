@@ -27,7 +27,7 @@ como compromisos.
 | Elemento | Descripción |
 |---|---|
 | Atributo | Rendimiento |
-| Fuente del estímulo | Gerente, director de proyectos y responsables de área. |
+| Fuente del estímulo | Gerente general, responsable de proyectos y obras y responsables funcionales del sistema. |
 | Estímulo | Consultan proyectos, avance, stock o asignaciones. |
 | Artefacto | Casos de uso de consulta, repositorios y base de datos central. |
 | Entorno | Carga inicial de hasta 50 usuarios concurrentes y datos representativos de proyectos y recursos. |
@@ -55,7 +55,7 @@ como compromisos.
 | Elemento | Descripción |
 |---|---|
 | Atributo | Integridad de la información |
-| Fuente del estímulo | Encargado de almacén. |
+| Fuente del estímulo | Responsable de almacén. |
 | Estímulo | Registra la salida de una cantidad de material para un proyecto. |
 | Artefacto | Caso de uso de salida, existencias, movimiento de almacén y proyecto relacionado. |
 | Entorno | Operación normal con material y proyecto previamente registrados; puede haber solicitudes inválidas o concurrentes. |
@@ -69,7 +69,7 @@ como compromisos.
 | Elemento | Descripción |
 |---|---|
 | Atributo | Usabilidad |
-| Fuente del estímulo | Residente o ingeniero de obra. |
+| Fuente del estímulo | Responsable de proyectos y obras. |
 | Estímulo | Registra el avance de una actividad asociada a una obra. |
 | Artefacto | Formulario de avance y flujo de validación de la actividad. |
 | Entorno | Prueba de tareas frecuentes con usuarios representativos y datos de capacitación. |
