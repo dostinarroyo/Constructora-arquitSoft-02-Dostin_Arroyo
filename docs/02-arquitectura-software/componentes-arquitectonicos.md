@@ -24,7 +24,7 @@ Fuente Mermaid editable: [arquitectura-componentes.mmd](../../img/fuentes/arquit
 
 ## Colaboración de ejemplo: registrar una salida de almacén
 
-1. El encargado de almacén solicita registrar una salida para un proyecto.
+1. El responsable de almacén solicita registrar una salida para un proyecto.
 2. El punto de entrada protegido verifica que el usuario tenga permiso; el
    caso de uso aplica las políticas que le correspondan.
 3. El caso de uso coordina la validación de cantidad, material, proyecto y
