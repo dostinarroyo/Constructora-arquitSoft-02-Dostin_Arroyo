@@ -14,4 +14,5 @@ carpeta [`img`](../../img/README.md) de la raíz del repositorio.
 - [C4 nivel 3 - Componentes](../../img/nivel3-componentes.png)
 - [Fuente vectorial del C4 nivel 3](../../img/nivel3-componentes.svg)
 - [C4 nivel 4 - Diseño interno](../../img/nivel4-clases.png)
+- [Fuente vectorial del C4 nivel 4](../../img/nivel4-clases.svg)
 - [Secuencia de salida de almacén](../../img/nivel4-secuencia.png)

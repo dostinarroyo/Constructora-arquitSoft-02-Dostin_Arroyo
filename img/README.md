@@ -18,4 +18,5 @@ Esta es la carpeta de recursos gráficos en la raíz del repositorio.
 - [C4 nivel 3 - Componentes](./nivel3-componentes.png)
 - [Fuente vectorial del C4 nivel 3](./nivel3-componentes.svg)
 - [C4 nivel 4 - Diseño interno](./nivel4-clases.png)
+- [Fuente vectorial del C4 nivel 4](./nivel4-clases.svg)
 - [Secuencia de salida de almacén](./nivel4-secuencia.png)

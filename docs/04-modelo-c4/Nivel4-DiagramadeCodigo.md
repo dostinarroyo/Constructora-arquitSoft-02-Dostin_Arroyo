@@ -2,7 +2,7 @@
 
 > **Proyecto:** Sistema de gestión de una empresa constructora<br>
 > **Módulo detallado:** Materiales y almacén<br>
-> **Modelo:** C4 · Nivel 4 de 4 · **Notación:** UML / Mermaid · **Versión:** 1.0
+> **Modelo:** C4 · Nivel 4 de 4 · **Notación:** UML / Mermaid · **Versión:** 1.1
 
 ---
 
@@ -20,20 +20,29 @@ transaccional. Los diagramas son un diseño, no código implementado.
 | Nivel anterior | [Nivel 3 · Componentes](./Nivel3-Diagrama-de-Componentes.md). |
 | Caso de uso | Registrar una salida de material asociada a un proyecto. |
 
-## 2. Diagrama de clases
+## 2. Diagrama de clases por capas
 
-![Diagrama de clases del caso de uso de salida de almacén](../../img/nivel4-clases.png)
+![Diagrama de código del módulo Materiales y almacén, organizado por capas de Clean Architecture](../../img/nivel4-clases.png)
+
+Fuente vectorial editable: [nivel4-clases.svg](../../img/nivel4-clases.svg).
 
 Fuente Mermaid editable: [nivel4-clases.mmd](../../img/fuentes/nivel4-clases.mmd).
+
+El diagrama sigue el ejemplo UML por capas y detalla un único módulo del
+proyecto. El puerto `RepositorioAlmacen` se declara en Aplicación; su adaptador
+MySQL pertenece a Infraestructura. `proyectoId` vincula el movimiento al
+proyecto, sin convertir Proyectos en un servicio externo ni en otro contenedor.
+La persistencia se propone como transaccional; los nombres de clases no
+representan código implementado.
 
 ## 3. Capas de Clean Architecture
 
 | Capa | Contiene | Regla |
 |---|---|---|
-| Presentación | `SalidaMaterialController` | Traduce la solicitud de entrada y presenta el resultado del caso de uso. |
-| Aplicación | `RegistrarSalidaMaterial`, `SolicitudSalida`, `ResultadoSalida` y `RepositorioAlmacen` | Coordina el flujo y declara el puerto que necesita; no conoce la implementación concreta. |
+| Presentación | `SalidaMaterialController` | Traduce la solicitud web y presenta el resultado del caso de uso. |
+| Aplicación | `RegistrarSalidaMaterial`, `SolicitudSalida`, `ResultadoSalida` y `RepositorioAlmacen` | Coordina el flujo, define los DTO y declara el puerto que necesita; no conoce la implementación concreta. |
 | Dominio | `Material`, `MovimientoAlmacen`, `TipoMovimiento` y reglas de stock | Protege invariantes de negocio sin depender de las otras capas ni de frameworks. |
-| Infraestructura | Adaptador de almacén y MySQL | Implementa el puerto de Aplicación y persiste el movimiento y el stock. |
+| Infraestructura | `AdaptadorAlmacenMySql` y MySQL | Implementa el puerto de Aplicación y persiste el movimiento y el stock en una transacción. |
 
 **Regla de dependencia:** Aplicación depende de las reglas del Dominio y define
 los contratos que necesita. Infraestructura implementa esos contratos; el
@@ -46,12 +55,12 @@ Dominio y el caso de uso no importan MySQL, Spring Data ni detalles HTTP.
 | `SalidaMaterialController` | Controlador | Presentación | Recibe la solicitud web y convierte el resultado del caso de uso en una respuesta. |
 | `RegistrarSalidaMaterial` | Caso de uso | Aplicación | Coordina la validación, lectura del material, creación del movimiento y persistencia. |
 | `SolicitudSalida` | DTO de entrada | Aplicación | Transporta identificador de material, proyecto y cantidad hacia el caso de uso. |
-| `ResultadoSalida` | DTO de salida | Aplicación | Expone el resultado de la operación al adaptador de presentación. |
-| `RepositorioAlmacen` | Puerto / interfaz | Aplicación | Declara operaciones de lectura y persistencia requeridas por el caso de uso. |
+| `ResultadoSalida` | DTO de salida | Aplicación | Expone identificadores, cantidad y stock resultante al adaptador de presentación. |
+| `RepositorioAlmacen` | Puerto / interfaz | Aplicación | Declara la consulta del material y el registro de la salida requeridos por el caso de uso. |
 | `Material` | Entidad | Dominio | Mantiene el stock y rechaza una reducción que viole las reglas de negocio. |
-| `MovimientoAlmacen` | Entidad | Dominio | Representa la salida de material vinculada al proyecto. |
+| `MovimientoAlmacen` | Entidad | Dominio | Representa la salida de material vinculada por identificador al proyecto. |
 | `TipoMovimiento` | Enumeración | Dominio | Distingue entradas de salidas. |
-| `AdaptadorAlmacen` | Adaptador de persistencia | Infraestructura | Implementa `RepositorioAlmacen` y ejecuta las operaciones relacionales necesarias. |
+| `AdaptadorAlmacenMySql` | Adaptador de persistencia | Infraestructura | Implementa `RepositorioAlmacen` y ejecuta las operaciones relacionales necesarias. |
 | MySQL | Base de datos | Infraestructura | Conserva materiales, existencias y movimientos. |
 
 Los nombres y responsabilidades son propuestas para el diseño detallado; no
@@ -93,7 +102,7 @@ probado.
 
 | Elemento | Patrón o principio |
 |---|---|
-| `RepositorioAlmacen` y `AdaptadorAlmacen` | Repository y Adapter. |
+| `RepositorioAlmacen` y `AdaptadorAlmacenMySql` | Repository y Adapter. |
 | Caso de uso que depende de un puerto | Inversión de dependencias (DIP). |
 | `Material` protege el stock | Entidad de dominio y responsabilidad única. |
 | El adaptador implementa el puerto interno | Regla de dependencias de Clean Architecture. |
