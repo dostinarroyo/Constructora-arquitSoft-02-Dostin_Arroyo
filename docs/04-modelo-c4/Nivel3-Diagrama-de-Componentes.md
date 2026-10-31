@@ -2,7 +2,7 @@
 
 > **Proyecto:** Sistema de gestión de una empresa constructora<br>
 > **Contenedor detallado:** Aplicación de gestión<br>
-> **Modelo:** C4 · Nivel 3 de 4 · **Versión:** 1.0
+> **Modelo:** C4 · Nivel 3 de 4 · **Versión:** 1.1
 
 ---
 
@@ -11,7 +11,8 @@
 Abrir el contenedor Aplicación de gestión del Nivel 2 y mostrar sus componentes
 lógicos, responsabilidades y colaboraciones. Los módulos de negocio son
 componentes del monolito; cada módulo mantiene los límites de Clean
-Architecture descritos para el sistema.
+Architecture descritos para el sistema. El navegador y MySQL se muestran como
+contenedores relacionados del Nivel 2 para dar contexto.
 
 | Aspecto | Descripción |
 |---|---|
@@ -25,13 +26,20 @@ Architecture descritos para el sistema.
 
 ![Diagrama de componentes de la aplicación de gestión](../../img/nivel3-componentes.png)
 
+Fuente vectorial editable: [nivel3-componentes.svg](../../img/nivel3-componentes.svg).
+
 Fuente Mermaid editable: [nivel3-componentes.mmd](../../img/fuentes/nivel3-componentes.mmd).
+
+La API REST se representa como un componente de Presentación dentro del
+contenedor Aplicación de gestión; no es un contenedor ni un servicio separado.
+HTTPS/JSON es el protocolo previsto para el despliegue y debe confirmarse al
+implementar la interfaz.
 
 ## 3. Componentes
 
 | Componente | Responsabilidad | Funcionalidades principales |
 |---|---|---|
-| Presentación web | Punto de entrada y salida para usuarios internos. | Recibe solicitudes, transforma entradas/salidas y presenta resultados. |
+| API REST / controladores web | Punto de entrada de la aplicación para el cliente web. | Expone endpoints, valida y transforma solicitudes y respuestas e invoca los casos de uso. La forma REST es una propuesta por confirmar. |
 | Seguridad y autorización | Protege las operaciones según la identidad y rol. | Autenticación y validación de permisos en el servidor mediante el mecanismo técnico seleccionado. |
 | Proyectos y actividades | Gestiona los proyectos, actividades y su avance. | Registrar y consultar proyectos y actividades; actualizar avances. |
 | Materiales y almacén | Gestiona materiales y movimientos. | Registrar materiales, entradas y salidas; consultar existencias por movimientos. |
@@ -44,24 +52,27 @@ Fuente Mermaid editable: [nivel3-componentes.mmd](../../img/fuentes/nivel3-compo
 | Adaptadores de persistencia | Implementan en Infraestructura los puertos requeridos por los módulos. | Traducir contratos a operaciones transaccionales sobre MySQL. |
 
 Los componentes son una descomposición lógica propuesta; sus nombres no
-representan carpetas de código existentes.
+representan carpetas de código existentes. La API REST forma parte de
+Presentación y se ejecuta en el mismo monolito que los módulos de negocio.
 
 ## 4. Relaciones entre componentes
 
 | Origen | Destino | Descripción | Tipo de comunicación |
 |---|---|---|---|
-| Presentación web | Módulos de negocio | Invoca los casos de uso expuestos por la aplicación. | Llamada dentro del proceso. |
-| Seguridad y autorización | Operaciones protegidas | Autoriza la solicitud antes de permitir que el caso de uso continúe. | Verificación en el servidor. |
+| Navegador web | API REST / controladores web | Envía solicitudes y presenta los resultados. | HTTPS/JSON esperado; contrato por confirmar. |
+| Seguridad y autorización | API REST / operaciones protegidas | Autentica al usuario y valida sus permisos antes de ejecutar la operación. | Filtro y verificación en el servidor. |
+| API REST / controladores web | Módulos de negocio | Dirige las solicitudes a los casos de uso correspondientes. | Llamada dentro del proceso. |
 | Proyectos y actividades | Módulos relacionados | Colabora mediante identificadores y contratos explícitos cuando necesita datos de recursos. | Llamada por interfaz definida. |
 | Reportes | Módulos de negocio | Consulta datos de origen para construir proyecciones y agregados. | Puerto o consulta explícita. |
 | Casos de uso de cada módulo | Puertos de persistencia | Declaran y usan las operaciones externas requeridas. | Dependencia de código hacia una abstracción. |
 | Adaptadores de persistencia | Puertos de persistencia | Implementan los contratos requeridos por la aplicación. | Implementación del contrato; dirección de código hacia adentro. |
-| Adaptadores de persistencia | MySQL | Ejecutan consultas y transacciones. | Acceso relacional, detalle técnico por confirmar. |
+| Adaptadores de persistencia | MySQL | Ejecutan consultas y transacciones. | SQL sobre TCP/IP previsto; configuración por confirmar. |
 
 ## 5. Relaciones con contenedores y sistemas externos
 
 | Componente | Destino | Descripción | Protocolo / patrón |
 |---|---|---|---|
+| Navegador web | Aplicación de gestión | Consume el punto de entrada REST de la aplicación. | HTTPS/JSON esperado; confirmar contrato y endpoints. |
 | Adaptadores de persistencia | Base de datos MySQL | Lectura y escritura de los datos del sistema. | Adaptador / Repository; acceso relacional. |
 | Módulos de negocio | Sistemas externos | No se definen integraciones externas en el alcance inicial. | No aplica. |
 

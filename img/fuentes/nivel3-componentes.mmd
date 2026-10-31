@@ -1,49 +1,59 @@
-flowchart LR
-    user["Usuarios internos"]
+flowchart TB
+    browser["Navegador web<br/>[Contenedor del Nivel 2]<br/>Interfaz de los usuarios internos"]
 
-    subgraph system["APLICACIÓN DE GESTIÓN · MONOLITO MODULAR"]
-        direction LR
-        subgraph presentation["PRESENTACIÓN"]
-            direction TB
-            controller["Controladores web"]
+    subgraph app["APLICACIÓN DE GESTIÓN · JAVA · SPRING BOOT · MONOLITO MODULAR"]
+        direction TB
+        api["API REST / Controladores web<br/>[Componente de Presentación]<br/>Expone endpoints y dirige solicitudes a casos de uso"]
+        security["Seguridad y autorización<br/>[Componente transversal]<br/>Autentica y valida permisos por rol"]
+
+        subgraph modules["MÓDULOS DE NEGOCIO"]
+            direction LR
+            projects["Proyectos y actividades"]
+            warehouse["Materiales y almacén"]
+            staff["Personal y asignaciones"]
+            machinery["Maquinaria"]
+            finance["Finanzas<br/>Presupuestos y gastos"]
+            reports["Reportes e información general"]
+            users["Usuarios y roles"]
         end
 
-        subgraph application["APLICACIÓN"]
-            direction TB
-            usecases["Casos de uso y módulos<br/>Proyectos · Actividades · Almacén<br/>Personal · Maquinaria · Finanzas<br/>Reportes · Usuarios y roles"]
-            ports["Puertos de persistencia<br/>Contratos requeridos"]
-        end
-
-        subgraph domain["DOMINIO"]
-            direction TB
-            entities["Entidades y reglas<br/>de negocio"]
-        end
-
-        subgraph infrastructure["INFRAESTRUCTURA"]
-            direction TB
-            security["Autenticación y autorización"]
-            adapters["Adaptadores<br/>de persistencia"]
-        end
+        ports["Puertos de persistencia<br/>[Interfaces definidas en Aplicación]"]
+        adapters["Adaptadores de persistencia<br/>[Implementaciones en Infraestructura]"]
     end
 
-    db[("MySQL")]
+    db[("Base de datos relacional<br/>[Contenedor del Nivel 2 · MySQL]")]
 
-    user --> controller
-    controller --> usecases
-    usecases --> entities
-    usecases --> ports
-    adapters -. "implementan" .-> ports
-    adapters --> db
-    security -. "protege acceso" .-> controller
+    browser -->|"HTTPS / JSON esperado"| api
+    security -.->|"Protege endpoints y operaciones"| api
+    api -->|"Invoca casos de uso"| projects
+    api --> warehouse
+    api --> staff
+    api --> machinery
+    api --> finance
+    api --> reports
+    api --> users
+    projects -->|"Consulta y persiste mediante contratos"| ports
+    warehouse --> ports
+    staff --> ports
+    machinery --> ports
+    finance --> ports
+    reports --> ports
+    users --> ports
+    adapters -.->|"Implementa"| ports
+    adapters -->|"SQL sobre TCP/IP previsto"| db
 
-    classDef userStyle fill:#f4f4f5,stroke:#52525b,color:#18181b,stroke-width:1.5px
-    classDef presentationStyle fill:#e7f0ff,stroke:#2563a6,color:#17365d,stroke-width:1.5px
-    classDef applicationStyle fill:#e9f7ef,stroke:#2d8a57,color:#14532d,stroke-width:1.5px
-    classDef domainStyle fill:#fff3df,stroke:#c27a12,color:#713f12,stroke-width:1.5px
-    classDef infrastructureStyle fill:#f2eaff,stroke:#7646b8,color:#4c1d95,stroke-width:1.5px
+    classDef containerStyle fill:#438FD3,stroke:#2674B5,color:#FFFFFF,stroke-width:2px
+    classDef apiStyle fill:#438FD3,stroke:#2674B5,color:#FFFFFF,stroke-width:2px
+    classDef securityStyle fill:#EEE7FA,stroke:#7646B8,color:#4C1D95,stroke-width:1.5px
+    classDef moduleStyle fill:#DCEEFF,stroke:#438FD3,color:#17365D,stroke-width:1.5px
+    classDef portStyle fill:#E9F7EF,stroke:#2D8A57,color:#14532D,stroke-width:1.5px
+    classDef adapterStyle fill:#F2EAFF,stroke:#7646B8,color:#4C1D95,stroke-width:1.5px
+    classDef databaseStyle fill:#438FD3,stroke:#2674B5,color:#FFFFFF,stroke-width:2px
 
-    class user userStyle
-    class controller presentationStyle
-    class usecases,ports applicationStyle
-    class entities domainStyle
-    class security,adapters,db infrastructureStyle
+    class browser containerStyle
+    class api apiStyle
+    class security securityStyle
+    class projects,warehouse,staff,machinery,finance,reports,users moduleStyle
+    class ports portStyle
+    class adapters adapterStyle
+    class db databaseStyle

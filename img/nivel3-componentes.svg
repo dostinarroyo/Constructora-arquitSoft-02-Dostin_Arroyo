@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1280" viewBox="0 0 1600 1280" role="img" aria-labelledby="title description">
+  <title id="title">Diagrama de componentes de ConstructoraSys</title>
+  <desc id="description">Diagrama C4 nivel 3. El navegador consume una API REST propuesta dentro del monolito Java y Spring Boot. La aplicación contiene seguridad, siete módulos de negocio, puertos y adaptadores de persistencia conectados a MySQL.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#6B7280"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="125%" height="135%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#102A43" flood-opacity=".12"/>
+    </filter>
+    <style>
+      text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { fill: #172B4D; font-size: 30px; font-weight: 700; }
+      .subtitle { fill: #526579; font-size: 17px; }
+      .version { fill: #758397; font-size: 14px; }
+      .boundary { fill: none; stroke: #8A949F; stroke-width: 2; stroke-dasharray: 9 7; }
+      .boundary-title { fill: #26384A; font-size: 17px; font-weight: 700; }
+      .boundary-type { fill: #64748B; font-size: 14px; }
+      .person-card { fill: #104A7E; }
+      .container { fill: #438FD3; stroke: #2674B5; stroke-width: 2; }
+      .container-title { fill: #FFFFFF; font-size: 22px; font-weight: 700; text-anchor: middle; }
+      .container-tech { fill: #E5F2FF; font-size: 13px; text-anchor: middle; }
+      .container-copy { fill: #FFFFFF; font-size: 14px; text-anchor: middle; }
+      .component { fill: #DCEEFF; stroke: #438FD3; stroke-width: 1.7; }
+      .component-title { fill: #17365D; font-size: 16px; font-weight: 700; text-anchor: middle; }
+      .component-type { fill: #526579; font-size: 12px; text-anchor: middle; }
+      .component-copy { fill: #284766; font-size: 12px; text-anchor: middle; }
+      .security { fill: #EEE7FA; stroke: #7646B8; stroke-width: 1.7; }
+      .security-title { fill: #4C1D95; font-size: 16px; font-weight: 700; text-anchor: middle; }
+      .security-copy { fill: #5B4280; font-size: 12px; text-anchor: middle; }
+      .port { fill: #E9F7EF; stroke: #2D8A57; stroke-width: 1.7; }
+      .adapter { fill: #F2EAFF; stroke: #7646B8; stroke-width: 1.7; }
+      .data-title { fill: #17365D; font-size: 17px; font-weight: 700; text-anchor: middle; }
+      .connector { fill: none; stroke: #778391; stroke-width: 2; marker-end: url(#arrow); }
+      .dashed-connector { fill: none; stroke: #778391; stroke-width: 2; stroke-dasharray: 5 4; marker-end: url(#arrow); }
+      .bus { fill: none; stroke: #A0AAB5; stroke-width: 1.5; }
+      .label-bg { fill: #FFFFFF; }
+      .relation { fill: #46576A; font-size: 13px; text-anchor: middle; }
+      .panel { fill: #FFFFFF; stroke: #B8C2CC; stroke-width: 1.5; }
+      .panel-title { fill: #26384A; font-size: 16px; font-weight: 700; }
+      .panel-copy { fill: #405164; font-size: 13px; }
+      .legend-copy { fill: #FFFFFF; font-size: 12px; text-anchor: middle; }
+      .small { fill: #536477; font-size: 12px; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1280" fill="#FFFFFF"/>
+
+  <text class="title" x="55" y="52">Diagrama de componentes del sistema ConstructoraSys</text>
+  <text class="subtitle" x="55" y="82">Modelo C4 · Nivel 3 · Componentes internos de la aplicación de gestión</text>
+  <text class="version" x="1545" y="52" text-anchor="end">Vista de componentes · v1.1</text>
+  <line x1="55" y1="105" x2="1545" y2="105" stroke="#E2E8EF" stroke-width="1"/>
+
+  <g filter="url(#shadow)">
+    <rect class="container" x="625" y="135" width="350" height="100" rx="13"/>
+    <text class="container-title" x="800" y="170">Navegador web</text>
+    <text class="container-tech" x="800" y="193">[Contenedor relacionado · Nivel 2]</text>
+    <text class="container-copy" x="800" y="216">Interfaz de los usuarios internos</text>
+  </g>
+
+  <path class="connector" d="M800 235 V315"/>
+  <rect class="label-bg" x="845" y="245" width="310" height="38" rx="4"/>
+  <text class="relation" x="1000" y="261">
+    <tspan x="1000">Solicitudes y respuestas</tspan>
+    <tspan x="1000" dy="16">HTTPS / JSON esperado</tspan>
+  </text>
+
+  <rect class="boundary" x="65" y="280" width="1470" height="680"/>
+  <rect class="label-bg" x="82" y="268" width="690" height="25"/>
+  <text class="boundary-title" x="90" y="287">Aplicación de gestión</text>
+  <text class="boundary-type" x="267" y="287">[Contenedor: Java · Spring Boot · Spring Security · Monolito modular]</text>
+
+  <g filter="url(#shadow)">
+    <rect class="component" x="440" y="315" width="620" height="115" rx="10"/>
+    <text class="component-title" x="750" y="351" style="font-size:21px">API REST / Controladores web</text>
+    <text class="component-type" x="750" y="374">[Componente de Presentación · propuesta]</text>
+    <text class="component-copy" x="750" y="401">Expone endpoints y dirige solicitudes a los casos de uso</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect class="security" x="1120" y="315" width="340" height="115" rx="10"/>
+    <text class="security-title" x="1290" y="354">Seguridad y autorización</text>
+    <text class="component-type" x="1290" y="379">[Componente transversal]</text>
+    <text class="security-copy" x="1290" y="404">Autentica y valida permisos por rol</text>
+  </g>
+  <path class="dashed-connector" d="M1120 390 H1060"/>
+
+  <rect class="boundary" x="95" y="515" width="1410" height="235"/>
+  <rect class="label-bg" x="112" y="503" width="220" height="24"/>
+  <text class="boundary-title" x="120" y="522">Módulos de negocio</text>
+
+  <path class="connector" d="M750 430 V545"/>
+  <path class="bus" d="M200 545 H1400"/>
+  <path class="connector" d="M200 545 V575"/>
+  <path class="connector" d="M400 545 V575"/>
+  <path class="connector" d="M600 545 V575"/>
+  <path class="connector" d="M800 545 V575"/>
+  <path class="connector" d="M1000 545 V575"/>
+  <path class="connector" d="M1200 545 V575"/>
+  <path class="connector" d="M1400 545 V575"/>
+  <rect class="label-bg" x="620" y="492" width="260" height="28" rx="3"/>
+  <text class="relation" x="750" y="510">Invoca los casos de uso</text>
+
+  <g filter="url(#shadow)">
+    <rect class="component" x="110" y="575" width="180" height="135" rx="9"/>
+    <text class="component-title" x="200" y="612">
+      <tspan x="200">Proyectos y</tspan><tspan x="200" dy="20">actividades</tspan>
+    </text>
+    <text class="component-type" x="200" y="668">[Componente · módulo]</text>
+    <text class="component-copy" x="200" y="689">Gestiona obras y avances</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect class="component" x="310" y="575" width="180" height="135" rx="9"/>
+    <text class="component-title" x="400" y="612">
+      <tspan x="400">Materiales y</tspan><tspan x="400" dy="20">almacén</tspan>
+    </text>
+    <text class="component-type" x="400" y="668">[Componente · módulo]</text>
+    <text class="component-copy" x="400" y="689">Registra movimientos</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect class="component" x="510" y="575" width="180" height="135" rx="9"/>
+    <text class="component-title" x="600" y="612">
+      <tspan x="600">Personal y</tspan><tspan x="600" dy="20">asignaciones</tspan>
+    </text>
+    <text class="component-type" x="600" y="668">[Componente · módulo]</text>
+    <text class="component-copy" x="600" y="689">Gestiona trabajadores</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect class="component" x="710" y="575" width="180" height="135" rx="9"/>
+    <text class="component-title" x="800" y="622">Maquinaria</text>
+    <text class="component-type" x="800" y="658">[Componente · módulo]</text>
+    <text class="component-copy" x="800" y="681">Controla estado y asignación</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect class="component" x="910" y="575" width="180" height="135" rx="9"/>
+    <text class="component-title" x="1000" y="612">Finanzas</text>
+    <text class="component-type" x="1000" y="645">[Componente · módulo]</text>
+    <text class="component-copy" x="1000" y="669">
+      <tspan x="1000">Presupuestos</tspan><tspan x="1000" dy="16">y gastos</tspan>
+    </text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect class="component" x="1110" y="575" width="180" height="135" rx="9"/>
+    <text class="component-title" x="1200" y="606">
+      <tspan x="1200">Reportes e</tspan><tspan x="1200" dy="20">información general</tspan>
+    </text>
+    <text class="component-type" x="1200" y="658">[Componente · módulo]</text>
+    <text class="component-copy" x="1200" y="681">Consulta datos consolidados</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect class="component" x="1310" y="575" width="180" height="135" rx="9"/>
+    <text class="component-title" x="1400" y="622">Usuarios y roles</text>
+    <text class="component-type" x="1400" y="658">[Componente · módulo]</text>
+    <text class="component-copy" x="1400" y="681">Administra cuentas y roles</text>
+  </g>
+
+  <path class="connector" d="M800 750 V815"/>
+  <rect class="label-bg" x="650" y="765" width="300" height="30" rx="3"/>
+  <text class="relation" x="800" y="785">Casos de uso usan contratos</text>
+
+  <g filter="url(#shadow)">
+    <rect class="port" x="320" y="815" width="400" height="95" rx="9"/>
+    <text class="component-title" x="520" y="850" style="fill:#14532D">Puertos de persistencia</text>
+    <text class="component-type" x="520" y="873">[Interfaces definidas en Aplicación]</text>
+    <text class="component-copy" x="520" y="893">Contratos de repositorio, sin SQL ni framework</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect class="adapter" x="880" y="815" width="400" height="95" rx="9"/>
+    <text class="component-title" x="1080" y="850" style="fill:#4C1D95">Adaptadores de persistencia</text>
+    <text class="component-type" x="1080" y="873">[Implementaciones en Infraestructura]</text>
+    <text class="component-copy" x="1080" y="893">Traduce los contratos a operaciones de MySQL</text>
+  </g>
+  <path class="dashed-connector" d="M880 860 H730"/>
+  <rect class="label-bg" x="750" y="842" width="110" height="28" rx="3"/>
+  <text class="relation" x="805" y="861">implementa</text>
+
+  <path class="connector" d="M1080 910 V970 H800 V1000"/>
+  <rect class="label-bg" x="900" y="944" width="240" height="27" rx="3"/>
+  <text class="relation" x="1020" y="963">SQL sobre TCP/IP previsto</text>
+  <g filter="url(#shadow)">
+    <path class="container" d="M650 1022 C650 1008 717 997 800 997 C883 997 950 1008 950 1022 V1065 C950 1079 883 1090 800 1090 C717 1090 650 1079 650 1065 Z"/>
+    <ellipse class="container" cx="800" cy="1022" rx="150" ry="25"/>
+    <text class="container-title" x="800" y="1044" style="font-size:18px">Base de datos relacional</text>
+    <text class="container-tech" x="800" y="1070">[Contenedor del Nivel 2 · MySQL]</text>
+  </g>
+
+  <rect class="panel" x="55" y="1130" width="670" height="112" rx="4"/>
+  <text class="panel-title" x="75" y="1157">Leyenda</text>
+  <rect x="78" y="1174" width="175" height="40" rx="7" fill="#438FD3"/>
+  <text class="legend-copy" x="165" y="1199">Contenedor</text>
+  <rect x="278" y="1174" width="175" height="40" rx="7" fill="#DCEEFF" stroke="#438FD3"/>
+  <text class="small" x="365" y="1199" text-anchor="middle">Componente</text>
+  <line x1="485" y1="1194" x2="535" y2="1194" stroke="#778391" stroke-width="2" marker-end="url(#arrow)"/>
+  <text class="small" x="548" y="1199">Relación</text>
+  <line x1="78" y1="1227" x2="128" y2="1227" stroke="#778391" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text class="small" x="140" y="1231">Implementación de un puerto</text>
+
+  <rect class="panel" x="755" y="1130" width="790" height="112" rx="4"/>
+  <text class="panel-title" x="775" y="1157">Notas</text>
+  <text class="panel-copy" x="775" y="1180">
+    <tspan x="775">• La API REST es un componente de la aplicación; no es un servicio ni contenedor independiente.</tspan>
+    <tspan x="775" dy="19">• REST y HTTPS/JSON son propuestas por confirmar; el repositorio aún está en fase de documentación.</tspan>
+    <tspan x="775" dy="19">• Los módulos se despliegan juntos; cada uno conserva límites y contratos de Clean Architecture.</tspan>
+  </text>
+</svg>
