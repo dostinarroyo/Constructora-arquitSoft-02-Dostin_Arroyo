@@ -9,7 +9,9 @@ diagramas del proyecto.
 | [arquitectura-inicial.mmd](./arquitectura-inicial.mmd) | [Arquitectura inicial con Clean Architecture](../arquitectura-inicial.png). |
 | [arquitectura-componentes.mmd](./arquitectura-componentes.mmd) | [Componentes arquitectónicos](../arquitectura-componentes.png). |
 | [estilo-monolito-capas.mmd](./estilo-monolito-capas.mmd) | [Monolito modular con Clean Architecture](../estilo-monolito-capas.png). |
-| [nivel1-contexto.mmd](./nivel1-contexto.mmd) | [C4, nivel 1: contexto](../nivel1-contexto.png). |
+| [nivel1-contexto.svg](../nivel1-contexto.svg) | [C4, nivel 1: contexto de ConstructoraSys](../nivel1-contexto.png), fuente vectorial editable y base de la exportación. |
+| [nivel1-contexto.mmd](./nivel1-contexto.mmd) | Fuente Mermaid editable con las personas, el sistema y sus relaciones. |
+| [nivel2-contenedores.svg](../nivel2-contenedores.svg) | [C4, nivel 2: contenedores de ConstructoraSys](../nivel2-contenedores.png), fuente vectorial editable y base de la exportación. |
 | [nivel2-contenedores.mmd](./nivel2-contenedores.mmd) | [C4, nivel 2: contenedores](../nivel2-contenedores.png). |
 | [nivel3-componentes.mmd](./nivel3-componentes.mmd) | [C4, nivel 3: componentes](../nivel3-componentes.png). |
 | [nivel4-clases.mmd](./nivel4-clases.mmd) | [C4, nivel 4: diseño interno](../nivel4-clases.png). |

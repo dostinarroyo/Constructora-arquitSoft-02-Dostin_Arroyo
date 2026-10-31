@@ -1,7 +1,7 @@
 # Nivel 2 · Diagrama de contenedores
 
 > **Proyecto:** Sistema de gestión de una empresa constructora<br>
-> **Modelo:** C4 · Nivel 2 de 4 · **Versión:** 1.0
+> **Modelo:** C4 · Nivel 2 de 4 · **Versión:** 1.1
 
 ---
 
@@ -21,9 +21,10 @@ necesariamente una imagen Docker.
 
 ## 2. Diagrama
 
-![Diagrama de contenedores del sistema de gestión de la constructora](../../img/nivel2-contenedores.png)
+![Diagrama de contenedores del sistema ConstructoraSys](../../img/nivel2-contenedores.png)
 
-Fuente Mermaid editable: [nivel2-contenedores.mmd](../../img/fuentes/nivel2-contenedores.mmd).
+> Fuente SVG: [nivel2-contenedores.svg](../../img/nivel2-contenedores.svg) ·
+> Fuente Mermaid: [nivel2-contenedores.mmd](../../img/fuentes/nivel2-contenedores.mmd)
 
 ## 3. Contenedores
 
@@ -43,8 +44,8 @@ almacenamiento separado ni proveedores externos.
 | Origen | Destino | Descripción | Protocolo |
 |---|---|---|---|
 | Usuarios internos | Navegador web | Acceden a la interfaz y realizan las funciones autorizadas para su rol. | Interacción de usuario. |
-| Navegador web | Aplicación de gestión | Envía solicitudes web y presenta los resultados. | HTTP; HTTPS esperado en un entorno desplegado. |
-| Aplicación de gestión | Base de datos relacional | Consulta y persiste información y ejecuta operaciones transaccionales mediante adaptadores. | Acceso relacional; protocolo y configuración por confirmar. |
+| Navegador web | Aplicación de gestión | Envía solicitudes web y presenta los resultados. | HTTPS/JSON esperado en un entorno desplegado; HTTP solo podría usarse en desarrollo local. |
+| Aplicación de gestión | Base de datos relacional | Consulta y persiste información y ejecuta operaciones transaccionales mediante adaptadores. | SQL sobre TCP/IP previsto; configuración por confirmar. |
 
 El uso de HTTPS es una expectativa para el despliegue, no una configuración ya
 implementada. No se agregan llamadas a sistemas externos porque no están

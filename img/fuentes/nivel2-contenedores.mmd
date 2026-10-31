@@ -1,9 +1,32 @@
-flowchart LR
-    user["Usuarios internos"]
-    browser["Navegador web<br/>HTML · CSS · JavaScript · Bootstrap"]
-    app["Aplicación de gestión<br/>Java · Spring Boot<br/>monolito modular"]
-    db[("Base de datos relacional<br/>MySQL")]
+flowchart TB
+    subgraph personas["Usuarios internos"]
+        direction LR
+        admin["Administrador del sistema<br/>[Persona]<br/>Gestiona usuarios y roles"]
+        gerencia["Gerente general<br/>[Persona]<br/>Consulta indicadores y reportes"]
+        proyectos["Responsable de proyectos y obras<br/>[Persona]<br/>Coordina obras y recursos"]
+        almacen["Responsable de almacén<br/>[Persona]<br/>Controla materiales y stock"]
+        personal["Responsable de personal<br/>[Persona]<br/>Gestiona trabajadores y asignaciones"]
+        finanzas["Responsable financiero<br/>[Persona]<br/>Gestiona presupuestos y gastos"]
+    end
 
-    user -->|"HTTPS en el entorno desplegado"| browser
-    browser -->|"Solicitudes web"| app
-    app -->|"Consultas y transacciones"| db
+    subgraph system["ConstructoraSys · Sistema en alcance"]
+        direction TB
+        browser["Navegador web<br/>[Contenedor: HTML · CSS · JavaScript · Bootstrap]<br/>Presenta formularios, consultas, panel y reportes"]
+        app["Aplicación de gestión<br/>[Contenedor: Java · Spring Boot · Spring Security]<br/>Monolito modular con Clean Architecture<br/>Aplica permisos por rol y coordina los módulos"]
+        db[("Base de datos relacional<br/>[Contenedor: MySQL]<br/>Proyectos · actividades · recursos · finanzas · usuarios")]
+
+        browser -->|"Solicitudes y respuestas web<br/>HTTPS / JSON"| app
+        app -->|"Consultas y transacciones<br/>TCP/IP · SQL"| db
+    end
+
+    admin -->|"Accede a la interfaz web"| browser
+    gerencia --> browser
+    proyectos --> browser
+    almacen --> browser
+    personal --> browser
+    finanzas --> browser
+
+    classDef person fill:#104A7E,color:#ffffff,stroke:#104A7E
+    classDef container fill:#438FD3,color:#ffffff,stroke:#2674B5
+    class admin,gerencia,proyectos,almacen,personal,finanzas person
+    class browser,app,db container

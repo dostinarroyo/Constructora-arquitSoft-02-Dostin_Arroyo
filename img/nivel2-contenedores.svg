@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080" role="img" aria-labelledby="title description">
+  <title id="title">Diagrama de contenedores ConstructoraSys</title>
+  <desc id="description">Diagrama C4 nivel 2 con los usuarios internos, el navegador web, la aplicación Java Spring Boot y la base de datos MySQL.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#6B7280"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="125%" height="135%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#102A43" flood-opacity=".12"/>
+    </filter>
+    <style>
+      text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { fill: #172B4D; font-size: 30px; font-weight: 700; }
+      .subtitle { fill: #526579; font-size: 17px; }
+      .version { fill: #758397; font-size: 14px; }
+      .boundary { fill: none; stroke: #8A949F; stroke-width: 2; stroke-dasharray: 9 7; }
+      .boundary-title { fill: #26384A; font-size: 17px; font-weight: 700; }
+      .boundary-type { fill: #64748B; font-size: 14px; }
+      .person-card { fill: #104A7E; }
+      .person-title { fill: #FFFFFF; font-size: 15px; font-weight: 700; text-anchor: middle; }
+      .person-type { fill: #DCEAF7; font-size: 12px; text-anchor: middle; }
+      .person-copy { fill: #FFFFFF; font-size: 12px; text-anchor: middle; }
+      .container { fill: #438FD3; stroke: #2674B5; stroke-width: 2; }
+      .container-title { fill: #FFFFFF; font-size: 23px; font-weight: 700; text-anchor: middle; }
+      .container-tech { fill: #E5F2FF; font-size: 14px; text-anchor: middle; }
+      .container-copy { fill: #FFFFFF; font-size: 15px; text-anchor: middle; }
+      .connector { fill: none; stroke: #778391; stroke-width: 2; marker-end: url(#arrow); }
+      .bus { fill: none; stroke: #A0AAB5; stroke-width: 1.5; }
+      .label-bg { fill: #FFFFFF; }
+      .relation { fill: #46576A; font-size: 14px; text-anchor: middle; }
+      .panel { fill: #FFFFFF; stroke: #B8C2CC; stroke-width: 1.5; }
+      .panel-title { fill: #26384A; font-size: 16px; font-weight: 700; }
+      .panel-copy { fill: #405164; font-size: 14px; }
+      .legend-copy { fill: #FFFFFF; font-size: 12px; text-anchor: middle; }
+      .small { fill: #536477; font-size: 12px; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1080" fill="#FFFFFF"/>
+
+  <text class="title" x="55" y="52">Diagrama de contenedores del sistema ConstructoraSys</text>
+  <text class="subtitle" x="55" y="82">Modelo C4 · Nivel 2 · Aplicaciones y almacenes de datos que forman el sistema</text>
+  <text class="version" x="1545" y="52" text-anchor="end">Vista de contenedores · v1.1</text>
+  <line x1="55" y1="105" x2="1545" y2="105" stroke="#E2E8EF" stroke-width="1"/>
+
+  <!-- Personas externas al límite del software. -->
+  <g filter="url(#shadow)">
+    <rect class="person-card" x="50" y="150" width="220" height="125" rx="14"/>
+    <circle class="person-card" cx="160" cy="150" r="20"/>
+    <text class="person-title" x="160" y="181">
+      <tspan x="160">Administrador del</tspan>
+      <tspan x="160" dy="18">sistema</tspan>
+    </text>
+    <text class="person-type" x="160" y="221">[Persona]</text>
+    <text class="person-copy" x="160" y="241">
+      <tspan x="160">Gestiona usuarios</tspan>
+      <tspan x="160" dy="15">y roles</tspan>
+    </text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect class="person-card" x="300" y="150" width="220" height="125" rx="14"/>
+    <circle class="person-card" cx="410" cy="150" r="20"/>
+    <text class="person-title" x="410" y="190">Gerente general</text>
+    <text class="person-type" x="410" y="213">[Persona]</text>
+    <text class="person-copy" x="410" y="233">
+      <tspan x="410">Consulta indicadores</tspan>
+      <tspan x="410" dy="15">y reportes</tspan>
+    </text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect class="person-card" x="550" y="150" width="220" height="125" rx="14"/>
+    <circle class="person-card" cx="660" cy="150" r="20"/>
+    <text class="person-title" x="660" y="181">
+      <tspan x="660">Responsable de</tspan>
+      <tspan x="660" dy="18">proyectos y obras</tspan>
+    </text>
+    <text class="person-type" x="660" y="221">[Persona]</text>
+    <text class="person-copy" x="660" y="241">
+      <tspan x="660">Coordina obras</tspan>
+      <tspan x="660" dy="15">y recursos</tspan>
+    </text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect class="person-card" x="800" y="150" width="220" height="125" rx="14"/>
+    <circle class="person-card" cx="910" cy="150" r="20"/>
+    <text class="person-title" x="910" y="190">Responsable de almacén</text>
+    <text class="person-type" x="910" y="213">[Persona]</text>
+    <text class="person-copy" x="910" y="233">
+      <tspan x="910">Controla materiales</tspan>
+      <tspan x="910" dy="15">y existencias</tspan>
+    </text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect class="person-card" x="1050" y="150" width="220" height="125" rx="14"/>
+    <circle class="person-card" cx="1160" cy="150" r="20"/>
+    <text class="person-title" x="1160" y="181">
+      <tspan x="1160">Responsable de</tspan>
+      <tspan x="1160" dy="18">personal</tspan>
+    </text>
+    <text class="person-type" x="1160" y="221">[Persona]</text>
+    <text class="person-copy" x="1160" y="241">
+      <tspan x="1160">Gestiona trabajadores</tspan>
+      <tspan x="1160" dy="15">y asignaciones</tspan>
+    </text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect class="person-card" x="1300" y="150" width="220" height="125" rx="14"/>
+    <circle class="person-card" cx="1410" cy="150" r="20"/>
+    <text class="person-title" x="1410" y="190">Responsable financiero</text>
+    <text class="person-type" x="1410" y="213">[Persona]</text>
+    <text class="person-copy" x="1410" y="233">
+      <tspan x="1410">Gestiona presupuestos</tspan>
+      <tspan x="1410" dy="15">y gastos</tspan>
+    </text>
+  </g>
+
+  <!-- Todos los roles acceden mediante el navegador web. -->
+  <path class="bus" d="M160 275 V305 M410 275 V305 M660 275 V305 M910 275 V305 M1160 275 V305 M1410 275 V305 M160 305 H1410"/>
+  <path class="connector" d="M800 305 V400"/>
+  <rect class="label-bg" x="660" y="315" width="280" height="50" rx="5"/>
+  <text class="relation" x="800" y="335">
+    <tspan x="800">Los roles autorizados acceden a la interfaz</tspan>
+    <tspan x="800" dy="18">mediante el navegador web</tspan>
+  </text>
+
+  <!-- Límite del sistema y sus contenedores. -->
+  <rect class="boundary" x="70" y="385" width="1460" height="520"/>
+  <rect class="label-bg" x="88" y="374" width="390" height="24"/>
+  <text class="boundary-title" x="96" y="392">ConstructoraSys</text>
+  <text class="boundary-type" x="235" y="392">[Sistema de software]</text>
+
+  <g filter="url(#shadow)">
+    <rect class="container" x="440" y="410" width="720" height="120" rx="13"/>
+    <text class="container-title" x="800" y="449">Navegador web</text>
+    <text class="container-tech" x="800" y="472">[Contenedor: HTML · CSS · JavaScript · Bootstrap]</text>
+    <text class="container-copy" x="800" y="504">Presenta formularios, consultas, panel y reportes a los usuarios internos</text>
+  </g>
+
+  <path class="connector" d="M800 530 V600"/>
+  <rect class="label-bg" x="815" y="544" width="255" height="40" rx="5"/>
+  <text class="relation" x="942" y="560">
+    <tspan x="942">Solicitudes y respuestas web</tspan>
+    <tspan x="942" dy="17">HTTPS / JSON</tspan>
+  </text>
+
+  <g filter="url(#shadow)">
+    <rect class="container" x="370" y="600" width="860" height="170" rx="15"/>
+    <text class="container-title" x="800" y="642">Aplicación de gestión</text>
+    <text class="container-tech" x="800" y="667">[Contenedor: Java · Spring Boot · Spring Security]</text>
+    <line x1="500" y1="682" x2="1100" y2="682" stroke="#9CCBF0" stroke-width="1"/>
+    <text class="container-copy" x="800" y="712">
+      <tspan x="800">Monolito modular con Clean Architecture</tspan>
+      <tspan x="800" dy="22">Aplica permisos por rol, ejecuta casos de uso y coordina los módulos</tspan>
+    </text>
+  </g>
+
+  <path class="connector" d="M800 770 V825"/>
+  <rect class="label-bg" x="1090" y="780" width="300" height="38" rx="5"/>
+  <text class="relation" x="1240" y="796">
+    <tspan x="1240">Consulta y persiste datos</tspan>
+    <tspan x="1240" dy="16">TCP/IP · SQL</tspan>
+  </text>
+
+  <g filter="url(#shadow)">
+    <path class="container" d="M595 838 C595 820 685 805 800 805 C915 805 1005 820 1005 838 V863 C1005 881 915 896 800 896 C685 896 595 881 595 863 Z"/>
+    <ellipse class="container" cx="800" cy="838" rx="205" ry="33"/>
+    <text class="container-title" x="800" y="850" style="font-size:20px">Base de datos relacional</text>
+    <text class="container-tech" x="800" y="874">[Contenedor: MySQL · Datos centrales y relaciones]</text>
+  </g>
+
+  <!-- Leyenda -->
+  <rect class="panel" x="55" y="935" width="670" height="112" rx="4"/>
+  <text class="panel-title" x="75" y="962">Leyenda</text>
+  <rect x="78" y="979" width="175" height="40" rx="8" fill="#104A7E"/>
+  <circle cx="165" cy="979" r="10" fill="#104A7E"/>
+  <text class="legend-copy" x="165" y="1004">Persona</text>
+  <rect x="278" y="979" width="200" height="40" rx="7" fill="#438FD3"/>
+  <text class="legend-copy" x="378" y="1004">Contenedor</text>
+  <line x1="500" y1="999" x2="550" y2="999" stroke="#778391" stroke-width="2" marker-end="url(#arrow)"/>
+  <text class="small" x="562" y="1004">Relación</text>
+  <text class="small" x="78" y="1037">Contenedor: unidad ejecutable o almacén de datos; no implica Docker.</text>
+
+  <!-- Notas -->
+  <rect class="panel" x="755" y="935" width="790" height="112" rx="4"/>
+  <text class="panel-title" x="775" y="962">Notas</text>
+  <text class="panel-copy" x="775" y="986">
+    <tspan x="775">• Las tecnologías son propuestas; el diagrama no representa un despliegue existente.</tspan>
+    <tspan x="775" dy="19">• El navegador es el cliente web; no presupone un frontend desplegado por separado.</tspan>
+    <tspan x="775" dy="19">• No se definen caché ni integraciones externas en el alcance inicial.</tspan>
+  </text>
+</svg>
