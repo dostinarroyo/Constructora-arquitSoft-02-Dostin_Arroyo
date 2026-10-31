@@ -10,8 +10,8 @@ sistema ya los use en código de producción.
 
 - **Problema:** los casos de uso necesitan consultar y guardar proyectos,
   materiales, asignaciones y otros registros sin depender de sentencias SQL.
-- **Aplicación:** definir contratos como `RepositorioAlmacen` y proporcionar
-  adaptadores concretos para pruebas y persistencia.
+- **Aplicación:** definir los puertos/interfaces como `RepositorioAlmacen` y
+  proporcionar adaptadores en Infraestructura para pruebas y persistencia.
 - **Beneficio:** separa reglas de negocio de la tecnología de almacenamiento y
   facilita probar casos de uso.
 - **Riesgo:** no crear interfaces sin una responsabilidad clara ni permitir
@@ -24,8 +24,9 @@ sistema ya los use en código de producción.
 - **Problema:** los contratos de dominio/aplicación deben conectarse con
   tecnologías concretas, como MySQL y Spring Data, sin exponer esas APIs a las
   reglas.
-- **Aplicación:** una implementación de repositorio traduce las operaciones del
-  contrato a consultas y transacciones de persistencia.
+- **Aplicación:** un adaptador de Infraestructura implementa el puerto definido
+  en Aplicación y traduce sus operaciones a consultas y transacciones de
+  persistencia.
 - **Beneficio:** los detalles de infraestructura permanecen sustituibles y
   fuera del dominio.
 - **Riesgo:** evitar adaptadores que oculten errores de persistencia o devuelvan

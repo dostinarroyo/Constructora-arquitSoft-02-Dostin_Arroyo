@@ -40,8 +40,8 @@ Fuente Mermaid editable: [nivel3-componentes.mmd](../../img/fuentes/nivel3-compo
 | Finanzas | Gestiona la información financiera de las obras. | Registrar gastos y versiones de presupuestos; consultar la versión vigente y su historial por proyecto. |
 | Reportes e información general | Construye vistas de consulta consolidadas a partir de datos existentes. | Generar reportes y presentar el panel principal; no es dueño de los datos operativos. |
 | Usuarios y roles | Administra cuentas y roles de acceso. | Registrar usuarios y asignar roles. |
-| Puertos de persistencia | Contratos requeridos por los casos de uso para consultar y guardar información. | Definir operaciones de repositorio sin incluir SQL ni dependencias de MySQL/Spring Data. |
-| Adaptadores de persistencia | Implementa los puertos requeridos por los módulos. | Traduce contratos a operaciones transaccionales sobre MySQL. |
+| Puertos de persistencia | Interfaces definidas en Aplicación y requeridas por los casos de uso para consultar y guardar información. | Definir operaciones de repositorio sin incluir SQL ni dependencias de MySQL/Spring Data. |
+| Adaptadores de persistencia | Implementan en Infraestructura los puertos requeridos por los módulos. | Traducir contratos a operaciones transaccionales sobre MySQL. |
 
 Los componentes son una descomposición lógica propuesta; sus nombres no
 representan carpetas de código existentes.
