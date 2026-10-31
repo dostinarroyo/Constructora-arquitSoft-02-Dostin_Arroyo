@@ -1,7 +1,7 @@
 # Nivel 1 · Diagrama de contexto del sistema
 
 > **Proyecto:** Sistema de gestión de una empresa constructora
-> **Modelo:** C4 · Nivel 1 de 4 · **Versión:** 1.0
+> **Modelo:** C4 · Nivel 1 de 4 · **Versión:** 1.1
 
 ---
 
@@ -22,9 +22,10 @@ múltiples, sin incluir tecnologías, infraestructura ni módulos internos.
 
 ## 2. Diagrama
 
-![Diagrama de contexto del sistema de gestión de la constructora](../../img/nivel1-contexto.png)
+![Diagrama de contexto del sistema ConstructoraSys](../../img/nivel1-contexto.png)
 
-> Archivo editable: [nivel1-contexto.mmd](../../img/fuentes/nivel1-contexto.mmd)
+> Fuente SVG editable: [nivel1-contexto.svg](../../img/nivel1-contexto.svg) ·
+> Fuente Mermaid: [nivel1-contexto.mmd](../../img/fuentes/nivel1-contexto.mmd)
 
 ---
 

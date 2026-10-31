@@ -1,16 +1,21 @@
-flowchart LR
-    admin["Administrador del sistema"]
-    gerencia["Gerente general"]
-    proyectos["Responsable de proyectos y obras"]
-    almacen["Responsable de almacén"]
-    personal["Responsable de personal"]
-    finanzas["Responsable financiero"]
+flowchart TB
+    admin["Administrador del sistema<br/>[Persona]<br/>Gestiona usuarios, roles y permisos"]
+    gerencia["Gerente general<br/>[Persona]<br/>Consulta indicadores y reportes consolidados"]
+    proyectos["Responsable de proyectos y obras<br/>[Persona]<br/>Coordina obras, actividades y recursos"]
+    almacen["Responsable de almacén<br/>[Persona]<br/>Registra movimientos y consulta existencias"]
+    personal["Responsable de personal<br/>[Persona]<br/>Gestiona trabajadores y asignaciones"]
+    finanzas["Responsable financiero<br/>[Persona]<br/>Registra gastos y consulta presupuestos"]
 
-    sistema(("Sistema de gestión<br/>de la empresa constructora"))
+    sistema["ConstructoraSys<br/>[Sistema de software]<br/>Centraliza la gestión operativa y financiera de proyectos,<br/>actividades, materiales, personal, maquinaria y gastos"]
 
-    admin -->|"Administra cuentas y roles"| sistema
-    gerencia -->|"Consulta indicadores y reportes"| sistema
-    proyectos -->|"Gestiona proyectos, actividades y avances"| sistema
-    almacen -->|"Registra movimientos y consulta stock"| sistema
+    admin -->|"Administra usuarios, roles y permisos"| sistema
+    gerencia -->|"Consulta indicadores y reportes consolidados"| sistema
+    proyectos -->|"Gestiona proyectos, actividades y recursos"| sistema
+    almacen -->|"Controla materiales, movimientos y existencias"| sistema
     personal -->|"Gestiona trabajadores y asignaciones"| sistema
-    finanzas -->|"Gestiona presupuestos y gastos"| sistema
+    finanzas -->|"Registra gastos y consulta presupuestos por proyecto"| sistema
+
+    classDef person fill:#104A7E,color:#ffffff,stroke:#104A7E
+    classDef software fill:#1672BD,color:#ffffff,stroke:#0B5594
+    class admin,gerencia,proyectos,almacen,personal,finanzas person
+    class sistema software

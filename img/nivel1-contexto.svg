@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080" role="img" aria-labelledby="title description">
+  <title id="title">Diagrama de contexto del sistema ConstructoraSys</title>
+  <desc id="description">Diagrama C4 nivel 1 con seis roles internos que interactúan con ConstructoraSys. No se definen sistemas externos.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#6B7280"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="125%" height="135%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#102A43" flood-opacity=".12"/>
+    </filter>
+    <style>
+      text { font-family: "Segoe UI", Arial, sans-serif; }
+      .title { fill: #172B4D; font-size: 30px; font-weight: 700; }
+      .subtitle { fill: #526579; font-size: 17px; }
+      .version { fill: #758397; font-size: 14px; }
+      .card { fill: #104A7E; }
+      .person-title { fill: #FFFFFF; font-size: 17px; font-weight: 700; text-anchor: middle; }
+      .person-type { fill: #DCEAF7; font-size: 12px; text-anchor: middle; }
+      .person-copy { fill: #FFFFFF; font-size: 13px; text-anchor: middle; }
+      .connector { fill: none; stroke: #778391; stroke-width: 2; marker-end: url(#arrow); }
+      .label-bg { fill: #FFFFFF; }
+      .relation { fill: #46576A; font-size: 13px; text-anchor: middle; }
+      .system { fill: #1672BD; stroke: #0B5594; stroke-width: 2; }
+      .system-title { fill: #FFFFFF; font-size: 28px; font-weight: 700; text-anchor: middle; }
+      .system-type { fill: #DCEEFF; font-size: 14px; text-anchor: middle; }
+      .system-copy { fill: #FFFFFF; font-size: 16px; text-anchor: middle; }
+      .panel { fill: #FFFFFF; stroke: #B8C2CC; stroke-width: 1.5; }
+      .panel-title { fill: #26384A; font-size: 16px; font-weight: 700; }
+      .panel-copy { fill: #405164; font-size: 14px; }
+      .legend-copy { fill: #FFFFFF; font-size: 12px; text-anchor: middle; }
+      .small { fill: #536477; font-size: 12px; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1080" fill="#FFFFFF"/>
+
+  <text class="title" x="55" y="52">Diagrama de contexto del sistema ConstructoraSys</text>
+  <text class="subtitle" x="55" y="82">Modelo C4 · Nivel 1 · Quién usa el sistema y cómo interactúa</text>
+  <text class="version" x="1545" y="52" text-anchor="end">Vista de contexto · v1.1</text>
+  <line x1="55" y1="105" x2="1545" y2="105" stroke="#E2E8EF" stroke-width="1"/>
+
+  <!-- Personas internas -->
+  <g filter="url(#shadow)">
+    <rect class="card" x="105" y="155" width="320" height="115" rx="16"/>
+    <circle class="card" cx="265" cy="155" r="22"/>
+    <text class="person-title" x="265" y="190">Administrador del sistema</text>
+    <text class="person-type" x="265" y="208">[Persona]</text>
+    <text class="person-copy" x="265" y="229">
+      <tspan x="265">Gestiona cuentas y configuración</tspan>
+      <tspan x="265" dy="17">de accesos del sistema</tspan>
+    </text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect class="card" x="640" y="155" width="320" height="115" rx="16"/>
+    <circle class="card" cx="800" cy="155" r="22"/>
+    <text class="person-title" x="800" y="190">Gerente general</text>
+    <text class="person-type" x="800" y="208">[Persona]</text>
+    <text class="person-copy" x="800" y="229">
+      <tspan x="800">Supervisa el estado general</tspan>
+      <tspan x="800" dy="17">y consulta reportes consolidados</tspan>
+    </text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect class="card" x="1175" y="155" width="320" height="115" rx="16"/>
+    <circle class="card" cx="1335" cy="155" r="22"/>
+    <text class="person-title" x="1335" y="190">Responsable de proyectos</text>
+    <text class="person-type" x="1335" y="208">[Persona]</text>
+    <text class="person-copy" x="1335" y="229">
+      <tspan x="1335">Coordina obras, actividades</tspan>
+      <tspan x="1335" dy="17">y recursos operativos</tspan>
+    </text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect class="card" x="105" y="740" width="320" height="115" rx="16"/>
+    <circle class="card" cx="265" cy="740" r="22"/>
+    <text class="person-title" x="265" y="775">Responsable de almacén</text>
+    <text class="person-type" x="265" y="793">[Persona]</text>
+    <text class="person-copy" x="265" y="814">
+      <tspan x="265">Registra entradas, salidas</tspan>
+      <tspan x="265" dy="17">y consulta existencias</tspan>
+    </text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect class="card" x="640" y="740" width="320" height="115" rx="16"/>
+    <circle class="card" cx="800" cy="740" r="22"/>
+    <text class="person-title" x="800" y="775">Responsable de personal</text>
+    <text class="person-type" x="800" y="793">[Persona]</text>
+    <text class="person-copy" x="800" y="814">
+      <tspan x="800">Administra trabajadores</tspan>
+      <tspan x="800" dy="17">y asignaciones a proyectos</tspan>
+    </text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect class="card" x="1175" y="740" width="320" height="115" rx="16"/>
+    <circle class="card" cx="1335" cy="740" r="22"/>
+    <text class="person-title" x="1335" y="775">Responsable financiero</text>
+    <text class="person-type" x="1335" y="793">[Persona]</text>
+    <text class="person-copy" x="1335" y="814">
+      <tspan x="1335">Registra gastos y gestiona</tspan>
+      <tspan x="1335" dy="17">presupuestos por proyecto</tspan>
+    </text>
+  </g>
+
+  <!-- Sistema en alcance -->
+  <g filter="url(#shadow)">
+    <rect class="system" x="490" y="412" width="620" height="238" rx="14"/>
+    <text class="system-title" x="800" y="472">ConstructoraSys</text>
+    <text class="system-type" x="800" y="497">[Sistema de software]</text>
+    <line x1="590" y1="518" x2="1010" y2="518" stroke="#72B5EB" stroke-width="1"/>
+    <text class="system-copy" x="800" y="551">
+      <tspan x="800">Centraliza la gestión operativa y financiera</tspan>
+      <tspan x="800" dy="24">de proyectos, actividades, materiales, personal,</tspan>
+      <tspan x="800" dy="24">maquinaria, presupuestos y gastos</tspan>
+    </text>
+  </g>
+
+  <!-- Relaciones: cada rol interno interactúa directamente con el sistema. -->
+  <path class="connector" d="M265 270 V326 H610 V412"/>
+  <path class="connector" d="M800 270 V412"/>
+  <path class="connector" d="M1335 270 V356 H990 V412"/>
+  <path class="connector" d="M265 740 V690 H610 V650"/>
+  <path class="connector" d="M800 740 V650"/>
+  <path class="connector" d="M1335 740 V690 H990 V650"/>
+
+  <rect class="label-bg" x="354" y="304" width="230" height="38" rx="5"/>
+  <text class="relation" x="469" y="320">
+    <tspan x="469">Administra usuarios,</tspan>
+    <tspan x="469" dy="16">roles y permisos</tspan>
+  </text>
+  <rect class="label-bg" x="675" y="323" width="250" height="38" rx="5"/>
+  <text class="relation" x="800" y="339">
+    <tspan x="800">Consulta indicadores y</tspan>
+    <tspan x="800" dy="16">reportes consolidados</tspan>
+  </text>
+  <rect class="label-bg" x="1050" y="329" width="235" height="38" rx="5"/>
+  <text class="relation" x="1167" y="345">
+    <tspan x="1167">Gestiona proyectos,</tspan>
+    <tspan x="1167" dy="16">actividades y recursos</tspan>
+  </text>
+
+  <rect class="label-bg" x="354" y="670" width="230" height="38" rx="5"/>
+  <text class="relation" x="469" y="686">
+    <tspan x="469">Controla materiales,</tspan>
+    <tspan x="469" dy="16">movimientos y existencias</tspan>
+  </text>
+  <rect class="label-bg" x="675" y="672" width="250" height="38" rx="5"/>
+  <text class="relation" x="800" y="688">
+    <tspan x="800">Gestiona trabajadores</tspan>
+    <tspan x="800" dy="16">y asignaciones</tspan>
+  </text>
+  <rect class="label-bg" x="1050" y="670" width="235" height="38" rx="5"/>
+  <text class="relation" x="1167" y="686">
+    <tspan x="1167">Registra gastos y consulta</tspan>
+    <tspan x="1167" dy="16">presupuestos por proyecto</tspan>
+  </text>
+
+  <!-- Leyenda -->
+  <rect class="panel" x="55" y="915" width="720" height="120" rx="4"/>
+  <text class="panel-title" x="75" y="944">Leyenda</text>
+  <rect x="78" y="960" width="190" height="42" rx="8" fill="#104A7E"/>
+  <circle cx="173" cy="960" r="10" fill="#104A7E"/>
+  <text class="legend-copy" x="173" y="986">Persona</text>
+  <rect x="295" y="960" width="205" height="42" rx="7" fill="#1672BD"/>
+  <text class="legend-copy" x="397" y="986">Sistema en alcance</text>
+  <line x1="532" y1="981" x2="590" y2="981" stroke="#778391" stroke-width="2" marker-end="url(#arrow)"/>
+  <text class="small" x="603" y="986">Relación</text>
+  <text class="small" x="78" y="1020">Flecha: interacción entre un rol interno y el sistema.</text>
+
+  <!-- Alcance -->
+  <rect class="panel" x="805" y="915" width="740" height="120" rx="4"/>
+  <text class="panel-title" x="825" y="944">Alcance</text>
+  <text class="panel-copy" x="825" y="970">
+    <tspan x="825">• En azul: ConstructoraSys, sistema propuesto para la gestión de la constructora.</tspan>
+    <tspan x="825" dy="21">• Los seis roles mostrados son usuarios internos; reportes sujetos a permisos por rol.</tspan>
+    <tspan x="825" dy="21">• No se definen sistemas externos ni integraciones en el alcance inicial.</tspan>
+  </text>
+</svg>
