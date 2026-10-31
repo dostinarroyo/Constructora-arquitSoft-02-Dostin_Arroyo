@@ -21,7 +21,7 @@ Describir las principales necesidades de los usuarios del sistema para la gesti�
 | **HU11** | Como responsable de personal o responsable de proyectos y obras, quiero asignar trabajadores a proyectos o actividades, para identificar el personal asociado a cada obra. |
 | **HU12** | Como responsable de proyectos y obras, quiero registrar la maquinaria y los equipos de la empresa, para mantener un inventario de los recursos disponibles para las obras. |
 | **HU13** | Como responsable de proyectos y obras, quiero actualizar el estado y la asignación de los equipos, para conocer su disponibilidad y el proyecto en que se utilizan. |
-| **HU14** | Como responsable financiero, quiero registrar el presupuesto asignado a cada proyecto, para disponer de una referencia financiera para el seguimiento de la obra. |
+| **HU14** | Como responsable financiero, quiero registrar el presupuesto de un proyecto y crear una nueva versión cada vez que cambie, para consultar la versión vigente y conservar el historial con la fecha, el usuario y el motivo de cada cambio. |
 | **HU15** | Como responsable financiero, quiero registrar y consultar los gastos realizados en cada proyecto, para mantener el seguimiento de los costos de la obra. |
 | **HU16** | Como gerente general, responsable de proyectos y obras o responsable de un área, quiero generar reportes de proyectos, materiales, personal, maquinaria y gastos, para revisar información consolidada que apoye el seguimiento y la toma de decisiones. |
 

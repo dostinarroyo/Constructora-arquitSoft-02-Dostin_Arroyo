@@ -24,7 +24,7 @@ roles.
 | RF09 | Personal | El sistema deberá permitir asignar trabajadores a proyectos o actividades y consultar dichas asignaciones. | Responsable de personal, responsable de proyectos y obras | HU11 |
 | RF10 | Maquinaria | El sistema deberá permitir registrar, modificar y consultar la maquinaria y los equipos de la empresa. | Responsable de proyectos y obras | HU12 |
 | RF11 | Maquinaria | El sistema deberá permitir consultar y actualizar el estado y la asignación de la maquinaria y los equipos. | Responsable de proyectos y obras | HU13 |
-| RF12 | Finanzas | El sistema deberá permitir registrar, modificar y consultar el presupuesto asignado a cada proyecto. | Responsable financiero | HU14 |
+| RF12 | Finanzas | El sistema deberá permitir registrar el presupuesto de un proyecto y conservar cada modificación como una nueva versión inmutable que no pueda modificarse ni eliminarse, identificada con número consecutivo, monto, fecha, usuario que la registra y motivo del cambio. Cada proyecto deberá tener como máximo una versión vigente; el sistema permitirá consultar la versión vigente y el historial. | Responsable financiero | HU14 |
 | RF13 | Finanzas | El sistema deberá permitir registrar y consultar los gastos asociados a cada proyecto. | Responsable financiero | HU15 |
 | RF14 | Reportes | El sistema deberá permitir generar reportes de proyectos, materiales, personal, maquinaria y gastos. | Gerencia y responsables del sistema | HU16 |
 | RF15 | Información general | El sistema deberá mostrar un panel principal con información resumida de la empresa y sus proyectos, según los datos disponibles. | Gerente general | HU02 |

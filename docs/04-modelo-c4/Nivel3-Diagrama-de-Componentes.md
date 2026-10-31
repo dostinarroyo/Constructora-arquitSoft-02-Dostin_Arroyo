@@ -37,7 +37,7 @@ Fuente Mermaid editable: [nivel3-componentes.mmd](../../img/fuentes/nivel3-compo
 | Materiales y almacén | Gestiona materiales y movimientos. | Registrar materiales, entradas y salidas; consultar existencias por movimientos. |
 | Personal y asignaciones | Mantiene trabajadores y su relación con proyectos o actividades. | Registrar trabajadores y gestionar asignaciones. |
 | Maquinaria | Mantiene los equipos, su estado y asignación. | Registrar y consultar maquinaria; actualizar estado y asignación. |
-| Finanzas | Gestiona la información financiera de las obras. | Registrar presupuestos y gastos por proyecto. |
+| Finanzas | Gestiona la información financiera de las obras. | Registrar gastos y versiones de presupuestos; consultar la versión vigente y su historial por proyecto. |
 | Reportes e información general | Construye vistas de consulta consolidadas a partir de datos existentes. | Generar reportes y presentar el panel principal; no es dueño de los datos operativos. |
 | Usuarios y roles | Administra cuentas y roles de acceso. | Registrar usuarios y asignar roles. |
 | Puertos de persistencia | Contratos requeridos por los casos de uso para consultar y guardar información. | Definir operaciones de repositorio sin incluir SQL ni dependencias de MySQL/Spring Data. |

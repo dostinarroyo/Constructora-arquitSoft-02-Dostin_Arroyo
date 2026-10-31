@@ -31,7 +31,7 @@ Fuente Mermaid editable: [nivel2-contenedores.mmd](../../img/fuentes/nivel2-cont
 |---|---|---|---|
 | Navegador web | HTML, CSS, JavaScript y Bootstrap | Presenta formularios, consultas, panel y reportes a los usuarios internos. | Estado temporal de la interfaz; no es persistencia del negocio. |
 | Aplicación de gestión | Java, Spring Boot y Spring Security | Expone las funciones web, aplica autorización, ejecuta los casos de uso y coordina los módulos. Se propone como monolito modular con Clean Architecture. | Datos operativos durante la ejecución; delega la persistencia en adaptadores. |
-| Base de datos relacional | MySQL | Conserva la información central y sus relaciones y soporta transacciones. | Proyectos, actividades, materiales y movimientos, trabajadores y asignaciones, maquinaria, presupuestos, gastos, usuarios y roles. |
+| Base de datos relacional | MySQL | Conserva la información central y sus relaciones y soporta transacciones. | Proyectos, actividades, materiales y movimientos, trabajadores y asignaciones, maquinaria, versiones de presupuestos, gastos, usuarios y roles. |
 
 Las tecnologías se proponen en el caso y quedan sujetas a confirmación. El
 navegador representa el entorno de interacción; no se afirma que la interfaz
