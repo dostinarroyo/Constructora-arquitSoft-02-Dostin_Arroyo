@@ -26,7 +26,7 @@ roles.
 | RF11 | Maquinaria | El sistema deberá permitir consultar y actualizar el estado y la asignación de la maquinaria y los equipos. | Responsable de proyectos y obras | HU13 |
 | RF12 | Finanzas | El sistema deberá permitir registrar el presupuesto de un proyecto y conservar cada modificación como una nueva versión inmutable que no pueda modificarse ni eliminarse, identificada con número consecutivo, monto, fecha, usuario que la registra y motivo del cambio. Cada proyecto deberá tener como máximo una versión vigente; el sistema permitirá consultar la versión vigente y el historial. | Responsable financiero | HU14 |
 | RF13 | Finanzas | El sistema deberá permitir registrar y consultar los gastos asociados a cada proyecto. | Responsable financiero | HU15 |
-| RF14 | Reportes | El sistema deberá permitir generar reportes de proyectos, materiales, personal, maquinaria y gastos. | Gerencia y responsables del sistema | HU16 |
+| RF14 | Reportes | El sistema deberá permitir consultar y generar reportes de proyectos, materiales, personal, maquinaria y finanzas de acuerdo con la matriz de permisos definida en este documento. | Gerente general y responsables de proyectos, almacén, personal y finanzas, según el reporte | HU16 |
 | RF15 | Información general | El sistema deberá mostrar un panel principal con información resumida de la empresa y sus proyectos, según los datos disponibles. | Gerente general | HU02 |
 | RF16 | Usuarios y roles | El sistema deberá permitir administrar usuarios y asignarles roles de acceso. | Administrador del sistema | HU01 |
 
@@ -40,6 +40,27 @@ roles.
   información registrada en sus respectivos módulos.
 - Los reportes y el panel principal presentarán información que ya se gestione
   en el sistema; no implican integración con plataformas externas.
+- La autorización se valida en el servidor para cada consulta y generación de
+  reportes. Administrar usuarios y roles no concede acceso implícito a los
+  reportes del negocio.
+
+## Permisos de consulta de reportes (RF14)
+
+| Tipo de reporte | Gerente general | Responsable de proyectos y obras | Responsable de almacén | Responsable de personal | Responsable financiero | Administrador del sistema |
+|---|---|---|---|---|---|---|
+| Proyectos, actividades y avance | Sí, consolidado | Sí | No | No | Sí, para seguimiento financiero del proyecto | No |
+| Materiales, existencias y movimientos | Sí, consolidado | Sí, para coordinación de obra | Sí | No | Sí, para revisión de costos por proyecto | No |
+| Trabajadores y asignaciones | Sí, agregado y sin datos personales individuales | Sí, para coordinación de obra | No | Sí | No | No |
+| Maquinaria, estado y asignaciones | Sí, consolidado | Sí | No | No | No | No |
+| Presupuestos, gastos e historial de versiones | Sí, consolidado | Sí, resumen por proyecto | No | No | Sí, detalle e historial | No |
+
+La matriz concede solo consulta/generación de reportes, no permisos para
+registrar o modificar los datos de origen. Los permisos de escritura siguen
+siendo los definidos para cada módulo. El administrador del sistema conserva
+sus funciones de gestión de usuarios y roles, sin acceso automático a
+información operativa o financiera. La matriz constituye la política inicial
+propuesta; cualquier cambio deberá reflejarse también en la configuración de
+roles y en las pruebas de autorización.
 
 ## Trazabilidad
 

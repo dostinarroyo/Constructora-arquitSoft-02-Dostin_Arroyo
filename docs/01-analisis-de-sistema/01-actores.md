@@ -50,7 +50,8 @@ recursos y la detección temprana de desviaciones o riesgos.
 El responsable de proyectos y obras coordina la ejecución de las obras y la
 asignación de recursos necesarios para cumplir cronogramas y objetivos. Este
 actor requiere información detallada sobre el progreso general de cada proyecto,
-los indicadores de cumplimiento, los costos y las actividades críticas.
+los indicadores de cumplimiento, los costos resumidos por proyecto y las
+actividades críticas.
 
 Es responsable de asegurar la alineación entre la programación, la ejecución y
 la disponibilidad de recursos humanos, materiales y maquinaria.
@@ -90,7 +91,11 @@ gestión:
 - Gestión de maquinaria: responsable de proyectos y obras.
 - Gestión financiera: responsable financiero, gerente general.
 - Gestión de usuarios y roles: administrador del sistema.
-- Generación de reportes: gerente general, responsable de proyectos y obras, responsable financiero y responsable de almacén.
+- Generación de reportes: cada responsable consulta los reportes autorizados
+  para su área; gerencia accede a reportes consolidados. La matriz de permisos
+  se detalla en [RF14](./03-requisitos-funcionales.md#permisos-de-consulta-de-reportes-rf14).
+- El administrador del sistema gestiona usuarios y roles, pero no obtiene por
+  ese motivo acceso automático a reportes operativos o financieros.
 
 ## Conclusión
 
