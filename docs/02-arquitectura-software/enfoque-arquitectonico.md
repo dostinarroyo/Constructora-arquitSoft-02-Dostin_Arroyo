@@ -16,15 +16,16 @@ la información en una base de datos relacional central.
 
 La solución separa cuatro capas:
 
-- **Presentación:** interfaz web y puntos de entrada que reciben solicitudes,
-  validan el formato de entrada y presentan resultados.
+- **Presentación:** interfaz web y adaptadores de entrada (controladores) que
+  reciben solicitudes, validan el formato de entrada y presentan resultados.
 - **Aplicación:** casos de uso que coordinan operaciones y dependen de
   abstracciones, no de frameworks ni de persistencia concreta.
 - **Dominio:** entidades, conceptos y reglas de negocio independientes de la
   aplicación web y de las tecnologías externas.
-- **Infraestructura:** adaptadores que implementan los puertos requeridos por
-  la aplicación y conectan con tecnologías como Spring, Spring Security y
-  MySQL.
+- **Infraestructura:** adaptadores de salida que implementan los puertos
+  requeridos por la aplicación y conectan con tecnologías como Spring, Spring
+  Security y MySQL. Para el alcance actual se muestra el adaptador de
+  persistencia; otros se incorporarían si se definen nuevas integraciones.
 
 La regla de dependencias apunta hacia el núcleo: Presentación depende de
 Aplicación; Infraestructura implementa contratos definidos por Aplicación; el
@@ -41,10 +42,10 @@ operativa de distribuir el sistema en servicios independientes.
 ## Diagrama del enfoque arquitectónico
 
 Este diagrama detalla la estructura interna siguiendo Clean Architecture:
-componentes de presentación, casos de uso, entidades y contratos del Dominio,
-adaptadores de Infraestructura y raíz de composición. La base de datos MySQL
-aparece fuera del límite de despliegue de la aplicación, pero forma parte de
-ConstructoraSys. No se muestran servicios externos.
+componentes de presentación, casos de uso, entidades del Dominio, puertos de
+Aplicación, adaptadores de Infraestructura y raíz de composición. La base de
+datos MySQL aparece fuera del límite de despliegue de la aplicación, pero forma
+parte de ConstructoraSys. No se muestran servicios externos.
 
 En particular, **gestionar el presupuesto y los gastos de un proyecto** es un
 caso de uso de Aplicación, no todo el Dominio ni una función aislada. Utiliza
@@ -64,8 +65,8 @@ Fuente editable: [enfoque-clean-architecture.mmd](../../img/fuentes/enfoque-clea
    equipos separados ni una escala que justifique microservicios.
 3. **Mantenibilidad:** las capas y módulos delimitan responsabilidades; la
    regla de dependencias protege las reglas de negocio de los cambios técnicos.
-4. **Seguridad coherente:** la autenticación y autorización pueden aplicarse de
-   forma transversal a los puntos de entrada y a los casos de uso protegidos.
+4. **Seguridad coherente:** la autenticación protege los puntos de entrada y la
+   autorización se verifica en el servidor para las operaciones protegidas.
 5. **Evolución gradual:** la solución puede ampliarse mientras se mantengan
    interfaces explícitas y se evite que los módulos dependan de detalles de
    persistencia.

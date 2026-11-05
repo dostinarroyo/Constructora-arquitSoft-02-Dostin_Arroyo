@@ -7,27 +7,28 @@ flowchart LR
         subgraph presentation["PRESENTACIÓN"]
             direction TB
             web["Interfaz web<br/>HTML · CSS · JavaScript · Bootstrap"]
-            controller["Controladores web<br/>Reciben solicitudes, validan formato<br/>y devuelven resultados"]
+            controller["🔒 Adaptador de entrada<br/>Controladores web<br/>Reciben solicitudes y validan formato"]
             web --> controller
         end
 
         subgraph application["APLICACIÓN · CASOS DE USO"]
             direction TB
-            useCases["Gestionar proyectos y actividades<br/>Registrar movimientos de materiales<br/>Asignar personal y maquinaria<br/>Gestionar presupuesto y gastos<br/>Consultar reportes y gestionar usuarios"]
+            useCases["🔒 Gestionar proyectos y actividades<br/>Registrar movimientos de materiales<br/>Asignar personal y maquinaria<br/>Gestionar presupuesto y gastos<br/>Consultar reportes y gestionar usuarios"]
+            ports["Puertos de persistencia<br/>Repositorios y consultas requeridos"]
         end
 
         subgraph domain["DOMINIO · NÚCLEO DEL NEGOCIO"]
             direction TB
-            entities["Entidades y reglas<br/>Proyecto · Actividad · Material<br/>Trabajador · Equipo · Presupuesto<br/>Gasto · Usuario · Rol"]
-            ports["Contratos (puertos)<br/>Repositorios y consultas requeridos"]
+            entities["Entidades y reglas<br/>Proyecto · Actividad · Material<br/>Trabajador · Equipo · VersionPresupuesto<br/>Gasto · Usuario · Rol"]
         end
 
         subgraph infrastructure["INFRAESTRUCTURA"]
             direction TB
-            security["Seguridad<br/>Spring Security · permisos por rol"]
-            persistence["Adaptador de persistencia<br/>Implementa los puertos"]
-            composition["Raíz de composición<br/>Configuración Spring Boot"]
+            security["Autenticación<br/>Spring Security · mecanismo técnico"]
+            persistence["Adaptador de salida · Persistencia<br/>Implementa los puertos"]
+            framework["Integración con Spring Boot<br/>Framework de la aplicación"]
         end
+        composition["Raíz de composición<br/>Configuración Spring Boot"]
     end
 
     database[("MySQL<br/>Base de datos central")]
@@ -35,12 +36,8 @@ flowchart LR
     user --> web
     controller -->|"invoca"| useCases
     useCases --> entities
-    useCases -.-> ports
     persistence -.->|"implementa"| ports
     persistence -->|"SQL"| database
-    composition --> persistence
-    security -.-> controller
-
     classDef presentationStyle fill:#e5f0ff,stroke:#3481d1,color:#17365d
     classDef applicationStyle fill:#e9f6ec,stroke:#39a052,color:#21632c
     classDef domainStyle fill:#fff2d1,stroke:#d39a11,color:#79520b
@@ -48,7 +45,7 @@ flowchart LR
     classDef externalStyle fill:#e8eef5,stroke:#59616d,color:#172033
 
     class web,controller presentationStyle
-    class useCases applicationStyle
-    class entities,ports domainStyle
-    class security,persistence,composition infrastructureStyle
+    class useCases,ports applicationStyle
+    class entities domainStyle
+    class security,persistence,framework,composition infrastructureStyle
     class user,database externalStyle
