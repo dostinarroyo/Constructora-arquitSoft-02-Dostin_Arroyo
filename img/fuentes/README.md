@@ -8,6 +8,7 @@ diagramas del proyecto.
 | [arquitectura-inicial.drawio](./arquitectura-inicial.drawio) | [Arquitectura inicial con Clean Architecture](../arquitectura-inicial.svg) (version vectorial). |
 | [arquitectura-inicial.mmd](./arquitectura-inicial.mmd) | [Arquitectura inicial con Clean Architecture](../arquitectura-inicial.svg). |
 | [arquitectura-componentes.mmd](./arquitectura-componentes.mmd) | [Componentes arquitectónicos de ConstructoraSys](../arquitectura-componentes.svg). |
+| [enfoque-clean-architecture.mmd](./enfoque-clean-architecture.mmd) | [Enfoque Clean Architecture de ConstructoraSys](../enfoque-clean-architecture.svg). |
 | [estilo-monolito-capas.mmd](./estilo-monolito-capas.mmd) | [Enfoque arquitectónico de ConstructoraSys](../estilo-monolito-capas.svg). |
 | [nivel1-contexto.svg](../nivel1-contexto.svg) | [C4, nivel 1: contexto de ConstructoraSys](../nivel1-contexto.png), fuente vectorial editable y base de la exportación. |
 | [nivel1-contexto.mmd](./nivel1-contexto.mmd) | Fuente Mermaid editable con las personas, el sistema y sus relaciones. |

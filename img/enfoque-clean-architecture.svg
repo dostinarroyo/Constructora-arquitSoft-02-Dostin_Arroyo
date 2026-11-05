@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1030" viewBox="0 0 1800 1030" style="width: 100%; height: auto;" role="img" aria-labelledby="title description">
+  <title id="title">Enfoque arquitectónico de ConstructoraSys</title>
+  <desc id="description">Diagrama Clean Architecture con presentación, casos de uso, entidades, puertos, adaptadores, configuración y base de datos MySQL, con relaciones separadas y alineadas.</desc>
+  <defs>
+    <marker id="runtime-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#243247"/>
+    </marker>
+    <marker id="dependency-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#188044"/>
+    </marker>
+    <marker id="implementation-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7138bd"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #172033; }
+      .title { font-size: 30px; font-weight: 700; }
+      .subtitle { font-size: 16px; fill: #475569; }
+      .boundary-title { font-size: 18px; font-weight: 700; }
+      .zone-title { font-size: 17px; font-weight: 700; }
+      .card-title { font-size: 15px; font-weight: 700; }
+      .copy { font-size: 14px; }
+      .small { font-size: 13px; fill: #475569; }
+      .label { font-size: 13px; font-weight: 700; fill: #334155; }
+      .runtime { fill: none; stroke: #243247; stroke-width: 2.6; marker-end: url(#runtime-arrow); }
+      .dependency { fill: none; stroke: #188044; stroke-width: 2.6; stroke-dasharray: 9 6; marker-end: url(#dependency-arrow); }
+      .implementation { fill: none; stroke: #7138bd; stroke-width: 2.6; stroke-dasharray: 9 6; marker-end: url(#implementation-arrow); }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1030" fill="#ffffff"/>
+  <text x="45" y="48" class="title">Enfoque arquitectónico | ConstructoraSys</text>
+  <text x="45" y="76" class="subtitle">Monolito modular · Clean Architecture</text>
+
+  <rect x="70" y="112" width="1425" height="725" rx="10" fill="#ffffff" stroke="#424b57" stroke-width="2.4" stroke-dasharray="12 8"/>
+  <text x="96" y="143" class="boundary-title">«aplicación» ConstructoraSys · Java · Spring Boot</text>
+
+  <rect x="97" y="165" width="1370" height="560" rx="16" fill="#f7f8fa" stroke="#929aa5" stroke-width="1.7"/>
+  <text x="782" y="191" text-anchor="middle" class="zone-title">ADAPTADORES Y FRAMEWORKS</text>
+
+  <rect x="122" y="220" width="270" height="450" rx="10" fill="#e5f0ff" stroke="#3481d1" stroke-width="1.8"/>
+  <text x="257" y="253" text-anchor="middle" class="zone-title">PRESENTACIÓN</text>
+  <text x="257" y="277" text-anchor="middle" class="small">Interfaz y entrada web</text>
+  <rect x="145" y="305" width="224" height="88" rx="7" fill="#ffffff" stroke="#3481d1" stroke-width="1.5"/>
+  <text x="257" y="339" text-anchor="middle" class="card-title">Interfaz web</text>
+  <text x="257" y="365" text-anchor="middle" class="copy">HTML · CSS · JavaScript</text>
+  <text x="257" y="384" text-anchor="middle" class="small">Bootstrap</text>
+  <rect x="145" y="443" width="224" height="106" rx="7" fill="#ffffff" stroke="#3481d1" stroke-width="1.5"/>
+  <text x="257" y="478" text-anchor="middle" class="card-title">Controladores web</text>
+  <text x="257" y="505" text-anchor="middle" class="copy">Reciben solicitudes</text>
+  <text x="257" y="527" text-anchor="middle" class="copy">y validan su formato</text>
+  <text x="257" y="610" text-anchor="middle" class="small">Devuelven resultados</text>
+  <text x="257" y="631" text-anchor="middle" class="small">sin acceder a MySQL</text>
+
+  <rect x="432" y="220" width="610" height="245" rx="12" fill="#e9f6ec" stroke="#39a052" stroke-width="1.8"/>
+  <text x="737" y="252" text-anchor="middle" class="zone-title">APLICACIÓN · CASOS DE USO</text>
+  <text x="737" y="276" text-anchor="middle" class="small">Coordina operaciones y solicita persistencia mediante puertos</text>
+
+  <rect x="454" y="300" width="270" height="60" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
+  <text x="589" y="326" text-anchor="middle" class="card-title">Gestionar proyectos</text>
+  <text x="589" y="348" text-anchor="middle" class="copy">y actividades</text>
+  <rect x="744" y="300" width="276" height="60" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
+  <text x="882" y="326" text-anchor="middle" class="card-title">Registrar movimientos</text>
+  <text x="882" y="348" text-anchor="middle" class="copy">de materiales</text>
+  <rect x="454" y="377" width="270" height="60" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
+  <text x="589" y="403" text-anchor="middle" class="card-title">Asignar personal y</text>
+  <text x="589" y="425" text-anchor="middle" class="copy">maquinaria a proyectos</text>
+  <rect x="744" y="377" width="276" height="60" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
+  <text x="882" y="403" text-anchor="middle" class="card-title">Gestionar presupuesto</text>
+  <text x="882" y="425" text-anchor="middle" class="copy">y gastos · reglas por definir</text>
+
+  <rect x="432" y="490" width="610" height="180" rx="12" fill="#fff2d1" stroke="#d39a11" stroke-width="1.8"/>
+  <text x="737" y="521" text-anchor="middle" class="zone-title">DOMINIO · NÚCLEO DEL NEGOCIO</text>
+  <text x="737" y="544" text-anchor="middle" class="small">Entidades, reglas y contratos independientes de tecnologías</text>
+  <rect x="454" y="563" width="270" height="84" rx="6" fill="#ffffff" stroke="#d39a11" stroke-width="1.4"/>
+  <text x="589" y="590" text-anchor="middle" class="card-title">Entidades y reglas</text>
+  <text x="589" y="615" text-anchor="middle" class="copy">Proyecto · Actividad · Material</text>
+  <text x="589" y="636" text-anchor="middle" class="small">Presupuesto · Gasto · Usuario · Rol</text>
+  <rect x="744" y="563" width="276" height="84" rx="6" fill="#ffffff" stroke="#d39a11" stroke-width="1.4"/>
+  <text x="858" y="590" text-anchor="middle" class="card-title">Contratos (puertos)</text>
+  <text x="858" y="615" text-anchor="middle" class="copy">Repositorios y consultas requeridos</text>
+  <text x="858" y="636" text-anchor="middle" class="small">por los casos de uso</text>
+
+  <rect x="1082" y="220" width="355" height="450" rx="10" fill="#f0e9fa" stroke="#7b4bbc" stroke-width="1.8"/>
+  <text x="1259.5" y="253" text-anchor="middle" class="zone-title">INFRAESTRUCTURA</text>
+  <text x="1259.5" y="277" text-anchor="middle" class="small">Adaptadores y mecanismos técnicos</text>
+  <rect x="1110" y="315" width="299" height="92" rx="7" fill="#ffffff" stroke="#7b4bbc" stroke-width="1.5"/>
+  <text x="1259.5" y="350" text-anchor="middle" class="card-title">Seguridad</text>
+  <text x="1259.5" y="377" text-anchor="middle" class="copy">Spring Security · permisos por rol</text>
+  <rect x="1110" y="563" width="299" height="84" rx="7" fill="#ffffff" stroke="#7b4bbc" stroke-width="1.5"/>
+  <text x="1259.5" y="592" text-anchor="middle" class="card-title">Adaptador de persistencia</text>
+  <text x="1259.5" y="617" text-anchor="middle" class="copy">Implementa los puertos y conecta MySQL</text>
+
+  <rect x="122" y="753" width="1285" height="60" rx="7" fill="#ffffff" stroke="#59616d" stroke-width="1.5"/>
+  <text x="764.5" y="779" text-anchor="middle" class="card-title">Raíz de composición · configuración Spring Boot</text>
+  <text x="764.5" y="801" text-anchor="middle" class="small">Conecta cada puerto con su adaptador concreto.</text>
+
+  <rect x="8" y="444" width="55" height="74" rx="4" fill="#ffffff" stroke="#424b57" stroke-width="1.8"/>
+  <text x="35.5" y="543" text-anchor="middle" class="small">Usuario interno</text>
+  <path class="runtime" d="M 63 480 H 145"/>
+
+  <path class="runtime" d="M 257 393 V 443"/>
+  <path class="runtime" d="M 369 496 H 410 V 330 H 454"/>
+  <text x="411" y="317" text-anchor="middle" class="label">invoca</text>
+  <path class="runtime" d="M 454 437 V 465 H 410 V 605 H 454"/>
+  <path class="dependency" d="M 1020 437 V 465 H 1050 V 580 H 1020"/>
+  <path class="implementation" d="M 1110 605 H 1065 V 630 H 1020"/>
+  <path class="runtime" d="M 1409 605 H 1498 V 475 H 1547"/>
+  <text x="1514" y="462" text-anchor="middle" class="label">SQL</text>
+
+  <rect x="1547" y="414" width="235" height="176" rx="10" fill="#e8eef5" stroke="#59616d" stroke-width="1.8"/>
+  <text x="1664.5" y="442" text-anchor="middle" class="small">«base de datos»</text>
+  <ellipse cx="1664.5" cy="480" rx="57" ry="17" fill="#ffffff" stroke="#59616d" stroke-width="1.8"/>
+  <path d="M 1607.5 480 V 535 C 1607.5 545 1633 553 1664.5 553 C 1696 553 1721.5 545 1721.5 535 V 480" fill="#dbeafe" stroke="#59616d" stroke-width="1.8"/>
+  <path d="M 1607.5 507 C 1607.5 517 1633 525 1664.5 525 C 1696 525 1721.5 517 1721.5 507" fill="none" stroke="#59616d" stroke-width="1.4"/>
+  <text x="1664.5" y="491" text-anchor="middle" class="card-title">MySQL</text>
+  <text x="1664.5" y="574" text-anchor="middle" class="small">Base de datos central</text>
+
+  <rect x="45" y="885" width="740" height="112" rx="7" fill="#ffffff" stroke="#a3aab3" stroke-width="1.3"/>
+  <text x="66" y="911" class="card-title">Leyenda</text>
+  <path d="M 68 938 H 120" stroke="#243247" stroke-width="2.6" marker-end="url(#runtime-arrow)"/>
+  <text x="134" y="943" class="small">Llamada en tiempo de ejecución</text>
+  <path d="M 390 938 H 442" stroke="#188044" stroke-width="2.6" stroke-dasharray="9 6" marker-end="url(#dependency-arrow)"/>
+  <text x="456" y="943" class="small">Dependencia del caso de uso</text>
+  <path d="M 68 970 H 120" stroke="#7138bd" stroke-width="2.6" stroke-dasharray="9 6" marker-end="url(#implementation-arrow)"/>
+  <text x="134" y="975" class="small">El adaptador implementa el puerto</text>
+
+  <rect x="805" y="885" width="977" height="112" rx="7" fill="#ffffff" stroke="#a3aab3" stroke-width="1.3"/>
+  <text x="827" y="911" class="card-title">Reglas de dependencia</text>
+  <text x="827" y="941" class="small">1. El Dominio no depende de Presentación, frameworks ni persistencia.</text>
+  <text x="827" y="970" class="small">2. Aplicación define los puertos; Infraestructura los implementa.</text>
+  <text x="1330" y="941" class="small">3. La configuración conecta las implementaciones.</text>
+  <text x="1330" y="970" class="small">4. Cambiar tecnología no cambia las reglas del negocio.</text>
+</svg>

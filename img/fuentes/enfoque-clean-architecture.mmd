@@ -1,0 +1,54 @@
+flowchart LR
+    user["Usuario interno"]
+
+    subgraph app["CONSTRUCTORASYS · Java · Spring Boot"]
+        direction LR
+
+        subgraph presentation["PRESENTACIÓN"]
+            direction TB
+            web["Interfaz web<br/>HTML · CSS · JavaScript · Bootstrap"]
+            controller["Controladores web<br/>Reciben solicitudes, validan formato<br/>y devuelven resultados"]
+            web --> controller
+        end
+
+        subgraph application["APLICACIÓN · CASOS DE USO"]
+            direction TB
+            useCases["Gestionar proyectos y actividades<br/>Registrar movimientos de materiales<br/>Asignar personal y maquinaria<br/>Gestionar presupuesto y gastos<br/>Consultar reportes y gestionar usuarios"]
+        end
+
+        subgraph domain["DOMINIO · NÚCLEO DEL NEGOCIO"]
+            direction TB
+            entities["Entidades y reglas<br/>Proyecto · Actividad · Material<br/>Trabajador · Equipo · Presupuesto<br/>Gasto · Usuario · Rol"]
+            ports["Contratos (puertos)<br/>Repositorios y consultas requeridos"]
+        end
+
+        subgraph infrastructure["INFRAESTRUCTURA"]
+            direction TB
+            security["Seguridad<br/>Spring Security · permisos por rol"]
+            persistence["Adaptador de persistencia<br/>Implementa los puertos"]
+            composition["Raíz de composición<br/>Configuración Spring Boot"]
+        end
+    end
+
+    database[("MySQL<br/>Base de datos central")]
+
+    user --> web
+    controller -->|"invoca"| useCases
+    useCases --> entities
+    useCases -.-> ports
+    persistence -.->|"implementa"| ports
+    persistence -->|"SQL"| database
+    composition --> persistence
+    security -.-> controller
+
+    classDef presentationStyle fill:#e5f0ff,stroke:#3481d1,color:#17365d
+    classDef applicationStyle fill:#e9f6ec,stroke:#39a052,color:#21632c
+    classDef domainStyle fill:#fff2d1,stroke:#d39a11,color:#79520b
+    classDef infrastructureStyle fill:#f0e9fa,stroke:#7b4bbc,color:#54288c
+    classDef externalStyle fill:#e8eef5,stroke:#59616d,color:#172033
+
+    class web,controller presentationStyle
+    class useCases applicationStyle
+    class entities,ports domainStyle
+    class security,persistence,composition infrastructureStyle
+    class user,database externalStyle

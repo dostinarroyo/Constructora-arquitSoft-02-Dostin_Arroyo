@@ -30,6 +30,9 @@ servicio externo.
 
 Fuente Mermaid editable: [estilo-monolito-capas.mmd](../../img/fuentes/estilo-monolito-capas.mmd).
 
+Para ver los casos de uso, entidades, puertos y adaptadores en una vista
+detallada de Clean Architecture, consulta el [enfoque arquitectónico](./enfoque-arquitectonico.md).
+
 ### Regla de dependencias
 
 Las dependencias de código apuntan hacia adentro: Presentación invoca los

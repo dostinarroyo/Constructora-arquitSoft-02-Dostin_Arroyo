@@ -8,6 +8,7 @@ visuales. Los diagramas y las fuentes Mermaid/draw.io se guardan en la carpeta
 
 - [Arquitectura inicial (vectorial)](../../img/arquitectura-inicial.svg)
 - [Componentes arquitectónicos de ConstructoraSys (vectorial)](../../img/arquitectura-componentes.svg)
+- [Enfoque Clean Architecture de ConstructoraSys (vectorial)](../../img/enfoque-clean-architecture.svg)
 - [Enfoque arquitectónico de ConstructoraSys (vectorial)](../../img/estilo-monolito-capas.svg)
 - [C4 nivel 1 - Contexto](../../img/nivel1-contexto.png)
 - [C4 nivel 2 - Contenedores](../../img/nivel2-contenedores.png)

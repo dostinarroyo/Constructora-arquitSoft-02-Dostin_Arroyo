@@ -38,21 +38,23 @@ Los módulos comparten los límites iniciales de despliegue y persistencia. Esta
 separación busca reducir el acoplamiento interno sin introducir la complejidad
 operativa de distribuir el sistema en servicios independientes.
 
-## Vista del enfoque propuesto
+## Diagrama del enfoque arquitectónico
 
-El diagrama muestra las capas, los casos de uso representativos, las reglas
-del negocio, los puertos de persistencia y el adaptador MySQL. La base de datos
-se representa fuera del despliegue de la aplicación, pero forma parte de
-ConstructoraSys; no se proponen integraciones con servicios de terceros.
+Este diagrama detalla la estructura interna siguiendo Clean Architecture:
+componentes de presentación, casos de uso, entidades y contratos del Dominio,
+adaptadores de Infraestructura y raíz de composición. La base de datos MySQL
+aparece fuera del límite de despliegue de la aplicación, pero forma parte de
+ConstructoraSys. No se muestran servicios externos.
+
 En particular, **gestionar el presupuesto y los gastos de un proyecto** es un
-caso de uso de Aplicación, no todo el Dominio ni una función aislada. Este caso
-usa las entidades `Presupuesto` y `Gasto` y solicita guardar los datos mediante
-un puerto de persistencia. Las reglas específicas de cálculo aún deben
-definirse; el diagrama no presupone fórmulas.
+caso de uso de Aplicación, no todo el Dominio ni una función aislada. Utiliza
+las entidades `Presupuesto` y `Gasto` y solicita persistencia mediante un
+puerto. Las reglas específicas de cálculo deben definirse con los requisitos
+del negocio; el diagrama no presupone fórmulas.
 
-![Diagrama del enfoque arquitectónico de ConstructoraSys](../../img/estilo-monolito-capas.svg)
+![Diagrama del enfoque Clean Architecture de ConstructoraSys](../../img/enfoque-clean-architecture.svg)
 
-Fuente editable: [estilo-monolito-capas.mmd](../../img/fuentes/estilo-monolito-capas.mmd).
+Fuente editable: [enfoque-clean-architecture.mmd](../../img/fuentes/enfoque-clean-architecture.mmd).
 
 ## Razones para esta propuesta
 

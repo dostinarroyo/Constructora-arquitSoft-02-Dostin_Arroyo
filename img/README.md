@@ -12,6 +12,7 @@ Esta es la carpeta de recursos gráficos en la raíz del repositorio.
 
 - [Arquitectura inicial (vectorial)](./arquitectura-inicial.svg)
 - [Componentes arquitectónicos de ConstructoraSys (vectorial)](./arquitectura-componentes.svg)
+- [Enfoque Clean Architecture de ConstructoraSys (vectorial)](./enfoque-clean-architecture.svg)
 - [Enfoque arquitectónico de ConstructoraSys (vectorial)](./estilo-monolito-capas.svg)
 - [C4 nivel 1 - Contexto](./nivel1-contexto.png)
 - [C4 nivel 2 - Contenedores](./nivel2-contenedores.png)
