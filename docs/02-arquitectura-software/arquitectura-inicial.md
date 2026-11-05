@@ -109,7 +109,7 @@ deben permanecer independientes del framework.
 
 ## 5. Diagrama arquitectónico
 
-![Diagrama a color de la arquitectura inicial](../../img/arquitectura-inicial.png)
+![Diagrama vectorial de la arquitectura inicial](../../img/arquitectura-inicial.svg)
 
 Fuente Mermaid editable: [arquitectura-inicial.mmd](../../img/fuentes/arquitectura-inicial.mmd).
 
