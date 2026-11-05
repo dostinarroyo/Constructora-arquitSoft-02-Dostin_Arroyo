@@ -37,67 +37,64 @@
   <rect x="97" y="165" width="1370" height="570" rx="16" fill="#f7f8fa" stroke="#929aa5" stroke-width="1.7"/>
   <text x="782" y="191" text-anchor="middle" class="zone-title">CAPAS DE CONSTRUCTORASYS</text>
 
-  <rect x="122" y="205" width="920" height="45" rx="7" fill="#f0e9fa" stroke="#7b4bbc" stroke-width="1.5"/>
-  <text x="582" y="224" text-anchor="middle" class="card-title">Seguridad transversal · Spring Security</text>
-  <text x="582" y="242" text-anchor="middle" class="small">Autentica en el punto de entrada · permisos por rol en los casos de uso</text>
+  <rect x="122" y="215" width="270" height="515" rx="10" fill="#e5f0ff" stroke="#3481d1" stroke-width="1.8"/>
+  <text x="257" y="246" text-anchor="middle" class="zone-title">PRESENTACIÓN</text>
+  <text x="257" y="269" text-anchor="middle" class="small">Interfaz y entrada web</text>
+  <rect x="145" y="290" width="224" height="100" rx="7" fill="#ffffff" stroke="#3481d1" stroke-width="1.5"/>
+  <text x="257" y="324" text-anchor="middle" class="card-title">Interfaz web</text>
+  <text x="257" y="350" text-anchor="middle" class="copy">HTML · CSS · JavaScript</text>
+  <text x="257" y="369" text-anchor="middle" class="small">Bootstrap</text>
+  <rect x="145" y="425" width="224" height="110" rx="7" fill="#ffffff" stroke="#3481d1" stroke-width="1.5"/>
+  <text x="257" y="453" text-anchor="middle" class="card-title">Adaptador de entrada</text>
+  <text x="257" y="474" text-anchor="middle" class="copy">Controladores web</text>
+  <text x="257" y="497" text-anchor="middle" class="copy">Reciben solicitudes</text>
+  <text x="257" y="520" text-anchor="middle" class="copy">y validan su formato</text>
+  <text x="257" y="627" text-anchor="middle" class="small">Devuelven resultados</text>
+  <text x="257" y="648" text-anchor="middle" class="small">sin acceder a MySQL</text>
 
-  <rect x="122" y="265" width="270" height="465" rx="10" fill="#e5f0ff" stroke="#3481d1" stroke-width="1.8"/>
-  <text x="257" y="296" text-anchor="middle" class="zone-title">PRESENTACIÓN</text>
-  <text x="257" y="319" text-anchor="middle" class="small">Interfaz y entrada web</text>
-  <rect x="145" y="340" width="224" height="88" rx="7" fill="#ffffff" stroke="#3481d1" stroke-width="1.5"/>
-  <text x="257" y="374" text-anchor="middle" class="card-title">Interfaz web</text>
-  <text x="257" y="400" text-anchor="middle" class="copy">HTML · CSS · JavaScript</text>
-  <text x="257" y="419" text-anchor="middle" class="small">Bootstrap</text>
-  <rect x="145" y="485" width="224" height="110" rx="7" fill="#ffffff" stroke="#3481d1" stroke-width="1.5"/>
-  <text x="257" y="513" text-anchor="middle" class="card-title">Adaptador de entrada</text>
-  <text x="257" y="534" text-anchor="middle" class="copy">Controladores web</text>
-  <text x="257" y="557" text-anchor="middle" class="copy">Reciben solicitudes</text>
-  <text x="257" y="580" text-anchor="middle" class="copy">y validan su formato</text>
-  <text x="257" y="647" text-anchor="middle" class="small">Devuelven resultados</text>
-  <text x="257" y="668" text-anchor="middle" class="small">sin acceder a MySQL</text>
+  <rect x="432" y="215" width="610" height="290" rx="12" fill="#e9f6ec" stroke="#39a052" stroke-width="1.8"/>
+  <text x="737" y="246" text-anchor="middle" class="zone-title">APLICACIÓN · CASOS DE USO</text>
+  <text x="737" y="269" text-anchor="middle" class="small">Coordina operaciones y solicita persistencia mediante puertos</text>
 
-  <rect x="432" y="265" width="610" height="290" rx="12" fill="#e9f6ec" stroke="#39a052" stroke-width="1.8"/>
-  <text x="737" y="296" text-anchor="middle" class="zone-title">APLICACIÓN · CASOS DE USO</text>
-  <text x="737" y="319" text-anchor="middle" class="small">Coordina operaciones y solicita persistencia mediante puertos</text>
+  <rect x="454" y="288" width="270" height="46" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
+  <text x="589" y="309" text-anchor="middle" class="card-title">Gestionar proyectos</text>
+  <text x="589" y="328" text-anchor="middle" class="copy">y actividades</text>
+  <rect x="744" y="288" width="276" height="46" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
+  <text x="882" y="309" text-anchor="middle" class="card-title">Registrar movimientos</text>
+  <text x="882" y="328" text-anchor="middle" class="copy">de materiales</text>
+  <rect x="454" y="341" width="270" height="46" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
+  <text x="589" y="362" text-anchor="middle" class="card-title">Asignar personal y</text>
+  <text x="589" y="381" text-anchor="middle" class="copy">maquinaria a proyectos</text>
+  <rect x="744" y="341" width="276" height="46" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
+  <text x="882" y="362" text-anchor="middle" class="card-title">Gestionar presupuesto</text>
+  <text x="882" y="381" text-anchor="middle" class="copy">y gastos · reglas por definir</text>
+  <rect x="454" y="394" width="566" height="36" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
+  <text x="737" y="418" text-anchor="middle" class="copy">Consultar reportes y gestionar usuarios</text>
+  <rect x="454" y="437" width="566" height="54" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
+  <text x="737" y="459" text-anchor="middle" class="card-title">Puertos de persistencia</text>
+  <text x="737" y="480" text-anchor="middle" class="small">Repositorios y consultas requeridos por los casos de uso</text>
 
-  <rect x="454" y="338" width="270" height="46" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
-  <text x="589" y="359" text-anchor="middle" class="card-title">Gestionar proyectos</text>
-  <text x="589" y="378" text-anchor="middle" class="copy">y actividades</text>
-  <rect x="744" y="338" width="276" height="46" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
-  <text x="882" y="359" text-anchor="middle" class="card-title">Registrar movimientos</text>
-  <text x="882" y="378" text-anchor="middle" class="copy">de materiales</text>
-  <rect x="454" y="391" width="270" height="46" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
-  <text x="589" y="412" text-anchor="middle" class="card-title">Asignar personal y</text>
-  <text x="589" y="431" text-anchor="middle" class="copy">maquinaria a proyectos</text>
-  <rect x="744" y="391" width="276" height="46" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
-  <text x="882" y="412" text-anchor="middle" class="card-title">Gestionar presupuesto</text>
-  <text x="882" y="431" text-anchor="middle" class="copy">y gastos · reglas por definir</text>
-  <rect x="454" y="444" width="566" height="36" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
-  <text x="737" y="468" text-anchor="middle" class="copy">Consultar reportes y gestionar usuarios</text>
-  <rect x="454" y="487" width="566" height="54" rx="6" fill="#ffffff" stroke="#39a052" stroke-width="1.4"/>
-  <text x="737" y="509" text-anchor="middle" class="card-title">Puertos de persistencia</text>
-  <text x="737" y="530" text-anchor="middle" class="small">Repositorios y consultas requeridos por los casos de uso</text>
+  <rect x="432" y="535" width="610" height="195" rx="12" fill="#fff2d1" stroke="#d39a11" stroke-width="1.8"/>
+  <text x="737" y="564" text-anchor="middle" class="zone-title">DOMINIO · NÚCLEO DEL NEGOCIO</text>
+  <text x="737" y="586" text-anchor="middle" class="small">Entidades y reglas de negocio independientes de tecnologías</text>
+  <rect x="454" y="602" width="566" height="96" rx="6" fill="#ffffff" stroke="#d39a11" stroke-width="1.4"/>
+  <text x="737" y="628" text-anchor="middle" class="card-title">Entidades y reglas</text>
+  <text x="737" y="651" text-anchor="middle" class="small">Proyecto · Actividad · Material · Trabajador · Equipo</text>
+  <text x="737" y="673" text-anchor="middle" class="small">Gasto · VersionPresupuesto · Usuario · Rol</text>
 
-  <rect x="432" y="585" width="610" height="145" rx="12" fill="#fff2d1" stroke="#d39a11" stroke-width="1.8"/>
-  <text x="737" y="614" text-anchor="middle" class="zone-title">DOMINIO · NÚCLEO DEL NEGOCIO</text>
-  <text x="737" y="636" text-anchor="middle" class="small">Entidades y reglas de negocio independientes de tecnologías</text>
-  <rect x="454" y="652" width="566" height="62" rx="6" fill="#ffffff" stroke="#d39a11" stroke-width="1.4"/>
-  <text x="737" y="674" text-anchor="middle" class="card-title">Entidades y reglas</text>
-  <text x="737" y="693" text-anchor="middle" class="small">Proyecto · Actividad · Material · Trabajador · Equipo</text>
-  <text x="737" y="709" text-anchor="middle" class="small">Gasto · VersionPresupuesto · Usuario · Rol</text>
-
-  <rect x="1082" y="265" width="355" height="465" rx="10" fill="#f0e9fa" stroke="#7b4bbc" stroke-width="1.8"/>
-  <text x="1259.5" y="296" text-anchor="middle" class="zone-title">INFRAESTRUCTURA</text>
-  <text x="1259.5" y="319" text-anchor="middle" class="small">Adaptadores y mecanismos técnicos</text>
-  <rect x="1110" y="350" width="299" height="70" rx="7" fill="#ffffff" stroke="#7b4bbc" stroke-width="1.5"/>
-  <text x="1259.5" y="378" text-anchor="middle" class="card-title">Autenticación</text>
-  <text x="1259.5" y="401" text-anchor="middle" class="copy">Spring Security · mecanismo técnico</text>
-  <rect x="1110" y="475" width="299" height="60" rx="7" fill="#ffffff" stroke="#7b4bbc" stroke-width="1.5"/>
-  <text x="1259.5" y="500" text-anchor="middle" class="card-title">Adaptador de salida · Persistencia</text>
-  <text x="1259.5" y="522" text-anchor="middle" class="copy">Implementa los puertos y conecta MySQL</text>
-  <rect x="1110" y="585" width="299" height="70" rx="7" fill="#ffffff" stroke="#7b4bbc" stroke-width="1.5"/>
-  <text x="1259.5" y="613" text-anchor="middle" class="card-title">Integración con Spring Boot</text>
-  <text x="1259.5" y="636" text-anchor="middle" class="copy">Framework de la aplicación</text>
+  <rect x="1082" y="215" width="355" height="515" rx="10" fill="#f0e9fa" stroke="#7b4bbc" stroke-width="1.8"/>
+  <text x="1259.5" y="246" text-anchor="middle" class="zone-title">INFRAESTRUCTURA</text>
+  <text x="1259.5" y="269" text-anchor="middle" class="small">Adaptadores y mecanismos técnicos</text>
+  <rect x="1110" y="290" width="299" height="80" rx="7" fill="#ffffff" stroke="#7b4bbc" stroke-width="1.5"/>
+  <text x="1259.5" y="319" text-anchor="middle" class="card-title">Seguridad · Spring Security</text>
+  <text x="1259.5" y="342" text-anchor="middle" class="copy">Autenticación y mecanismo técnico</text>
+  <text x="1259.5" y="361" text-anchor="middle" class="small">Permisos por rol en casos protegidos</text>
+  <rect x="1110" y="432" width="299" height="64" rx="7" fill="#ffffff" stroke="#7b4bbc" stroke-width="1.5"/>
+  <text x="1259.5" y="458" text-anchor="middle" class="card-title">Adaptador de salida · Persistencia</text>
+  <text x="1259.5" y="482" text-anchor="middle" class="copy">Implementa puertos · MySQL</text>
+  <rect x="1110" y="535" width="299" height="80" rx="7" fill="#ffffff" stroke="#7b4bbc" stroke-width="1.5"/>
+  <text x="1259.5" y="564" text-anchor="middle" class="card-title">Integración con Spring Boot</text>
+  <text x="1259.5" y="587" text-anchor="middle" class="copy">Framework de la aplicación</text>
 
   <rect x="122" y="753" width="1285" height="60" rx="7" fill="#ffffff" stroke="#59616d" stroke-width="1.5"/>
   <text x="764.5" y="779" text-anchor="middle" class="card-title">Raíz de composición · configuración Spring Boot</text>
@@ -108,14 +105,14 @@
   <text x="35.5" y="398" text-anchor="middle" class="small">interno</text>
   <path class="runtime" d="M 63 384 H 145"/>
 
-  <path class="runtime" d="M 257 428 V 485"/>
-  <path class="runtime" d="M 369 540 H 432"/>
-  <text x="400" y="530" text-anchor="middle" class="label">invoca</text>
-  <path class="dependency" d="M 737 555 V 585"/>
-  <path class="implementation" d="M 1110 505 H 1020"/>
-  <text x="1065" y="460" text-anchor="middle" class="label">implementa</text>
-  <path class="runtime" d="M 1409 505 H 1547"/>
-  <text x="1478" y="489" text-anchor="middle" class="label">SQL</text>
+  <path class="runtime" d="M 257 378 V 425"/>
+  <path class="runtime" d="M 369 480 H 432"/>
+  <text x="400" y="470" text-anchor="middle" class="label">invoca</text>
+  <path class="dependency" d="M 737 505 V 535"/>
+  <path class="implementation" d="M 1110 464 H 1020"/>
+  <text x="1065" y="449" text-anchor="middle" class="label">implementa</text>
+  <path class="runtime" d="M 1409 464 H 1547"/>
+  <text x="1478" y="449" text-anchor="middle" class="label">SQL</text>
 
   <rect x="1547" y="417" width="235" height="176" rx="10" fill="#e8eef5" stroke="#59616d" stroke-width="1.8"/>
   <text x="1664.5" y="445" text-anchor="middle" class="small">«base de datos»</text>

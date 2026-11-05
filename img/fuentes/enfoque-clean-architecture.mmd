@@ -7,13 +7,13 @@ flowchart LR
         subgraph presentation["PRESENTACIÓN"]
             direction TB
             web["Interfaz web<br/>HTML · CSS · JavaScript · Bootstrap"]
-            controller["🔒 Adaptador de entrada<br/>Controladores web<br/>Reciben solicitudes y validan formato"]
+            controller["Adaptador de entrada<br/>Controladores web<br/>Reciben solicitudes y validan formato"]
             web --> controller
         end
 
         subgraph application["APLICACIÓN · CASOS DE USO"]
             direction TB
-            useCases["🔒 Gestionar proyectos y actividades<br/>Registrar movimientos de materiales<br/>Asignar personal y maquinaria<br/>Gestionar presupuesto y gastos<br/>Consultar reportes y gestionar usuarios"]
+            useCases["Gestionar proyectos y actividades<br/>Registrar movimientos de materiales<br/>Asignar personal y maquinaria<br/>Gestionar presupuesto y gastos<br/>Consultar reportes y gestionar usuarios"]
             ports["Puertos de persistencia<br/>Repositorios y consultas requeridos"]
         end
 
@@ -24,7 +24,7 @@ flowchart LR
 
         subgraph infrastructure["INFRAESTRUCTURA"]
             direction TB
-            security["Autenticación<br/>Spring Security · mecanismo técnico"]
+            security["Seguridad · Spring Security<br/>Autenticación y permisos por rol"]
             persistence["Adaptador de salida · Persistencia<br/>Implementa los puertos"]
             framework["Integración con Spring Boot<br/>Framework de la aplicación"]
         end
