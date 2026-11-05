@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1530" viewBox="0 0 1800 1530" role="img" aria-labelledby="title description">
+  <title id="title">Diagrama de componentes de ConstructoraSys</title>
+  <desc id="description">Diagrama C4 con los usuarios, la interfaz web, los módulos de negocio, las capas internas y la base de datos de ConstructoraSys.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#334155"/>
+    </marker>
+    <marker id="arrow-muted" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#64748b"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #172033; }
+      .title { font-size: 30px; font-weight: 700; }
+      .subtitle { font-size: 17px; fill: #475569; }
+      .section { font-size: 19px; font-weight: 700; }
+      .actor-title { font-size: 17px; font-weight: 700; fill: #fff; }
+      .container-title { font-size: 20px; font-weight: 700; fill: #fff; }
+      .container-copy { font-size: 16px; fill: #fff; }
+      .component-title { font-size: 18px; font-weight: 700; }
+      .component-copy { font-size: 15px; }
+      .label { font-size: 14px; font-weight: 600; fill: #475569; }
+      .note { font-size: 14px; fill: #475569; }
+      .flow { fill: none; stroke: #334155; stroke-width: 2.5; marker-end: url(#arrow); }
+      .line { fill: none; stroke: #64748b; stroke-width: 2; }
+      .dashed { fill: none; stroke: #64748b; stroke-width: 2.5; stroke-dasharray: 8 6; marker-end: url(#arrow-muted); }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1530" fill="#fff"/>
+  <text x="64" y="58" class="title">Diagrama de componentes | ConstructoraSys</text>
+  <text x="64" y="88" class="subtitle">C4 · Nivel 3  |  Monolito modular con Clean Architecture  |  Propuesta inicial</text>
+
+  <text x="90" y="132" class="section">Usuarios internos</text>
+  <g>
+    <rect x="90" y="154" width="220" height="82" rx="13" fill="#24477f"/>
+    <circle cx="200" cy="174" r="9" fill="#fff"/><path d="M 185 198 Q 187 184 200 184 Q 213 184 215 198 Z" fill="#fff"/>
+    <text x="200" y="220" text-anchor="middle" class="actor-title">Administrador</text>
+
+    <rect x="370" y="154" width="220" height="82" rx="13" fill="#24477f"/>
+    <circle cx="480" cy="174" r="9" fill="#fff"/><path d="M 465 198 Q 467 184 480 184 Q 493 184 495 198 Z" fill="#fff"/>
+    <text x="480" y="220" text-anchor="middle" class="actor-title">Gerencia</text>
+
+    <rect x="650" y="154" width="220" height="82" rx="13" fill="#24477f"/>
+    <circle cx="760" cy="174" r="9" fill="#fff"/><path d="M 745 198 Q 747 184 760 184 Q 773 184 775 198 Z" fill="#fff"/>
+    <text x="760" y="220" text-anchor="middle" class="actor-title">Proyectos y obras</text>
+
+    <rect x="930" y="154" width="220" height="82" rx="13" fill="#24477f"/>
+    <circle cx="1040" cy="174" r="9" fill="#fff"/><path d="M 1025 198 Q 1027 184 1040 184 Q 1053 184 1055 198 Z" fill="#fff"/>
+    <text x="1040" y="220" text-anchor="middle" class="actor-title">Almacén</text>
+
+    <rect x="1210" y="154" width="220" height="82" rx="13" fill="#24477f"/>
+    <circle cx="1320" cy="174" r="9" fill="#fff"/><path d="M 1305 198 Q 1307 184 1320 184 Q 1333 184 1335 198 Z" fill="#fff"/>
+    <text x="1320" y="220" text-anchor="middle" class="actor-title">Personal</text>
+
+    <rect x="1490" y="154" width="220" height="82" rx="13" fill="#24477f"/>
+    <circle cx="1600" cy="174" r="9" fill="#fff"/><path d="M 1585 198 Q 1587 184 1600 184 Q 1613 184 1615 198 Z" fill="#fff"/>
+    <text x="1600" y="220" text-anchor="middle" class="actor-title">Finanzas</text>
+  </g>
+  <path class="line" d="M 200 236 V 264 M 480 236 V 264 M 760 236 V 264 M 1040 236 V 264 M 1320 236 V 264 M 1600 236 V 264 M 200 264 H 1600"/>
+  <path class="flow" d="M 900 264 V 294"/>
+  <text x="920" y="286" class="label">acceden</text>
+
+  <rect x="480" y="298" width="840" height="118" rx="14" fill="#3c70b8" stroke="#285899" stroke-width="2"/>
+  <text x="900" y="344" text-anchor="middle" class="container-title">Navegador web</text>
+  <text x="900" y="376" text-anchor="middle" class="container-copy">Interfaz web · HTML · CSS · JavaScript · Bootstrap</text>
+  <text x="900" y="400" text-anchor="middle" class="container-copy">Punto de acceso al sistema</text>
+
+  <rect x="64" y="484" width="1672" height="856" rx="8" fill="#fff" stroke="#7b8490" stroke-width="2" stroke-dasharray="10 7"/>
+  <text x="92" y="520" class="section">ConstructoraSys | Aplicación de gestión · Java · Spring Boot · Spring Security</text>
+  <text x="92" y="548" class="note">Una aplicación organizada por módulos; MySQL se muestra fuera de este límite.</text>
+
+  <path class="flow" d="M 900 416 V 574"/>
+  <text x="920" y="490" class="label">HTTPS / JSON</text>
+
+  <rect x="450" y="582" width="820" height="112" rx="12" fill="#3c70b8" stroke="#285899" stroke-width="2"/>
+  <text x="860" y="625" text-anchor="middle" class="container-title">Controladores web y casos de uso</text>
+  <text x="860" y="657" text-anchor="middle" class="container-copy">Reciben solicitudes y coordinan las operaciones del sistema</text>
+
+  <rect x="1320" y="582" width="340" height="112" rx="12" fill="#eee7fa" stroke="#7654a6" stroke-width="2"/>
+  <text x="1490" y="620" text-anchor="middle" class="component-title" fill="#4c1d75">Seguridad</text>
+  <text x="1490" y="649" text-anchor="middle" class="component-copy">Infraestructura · Spring Security</text>
+  <text x="1490" y="674" text-anchor="middle" class="component-copy">Permisos por rol · componente interno</text>
+  <path class="dashed" d="M 1320 637 H 1282"/>
+  <text x="1300" y="622" text-anchor="middle" class="label">protege</text>
+
+  <rect x="100" y="754" width="1600" height="390" rx="14" fill="#f8fbff" stroke="#b6c8dc" stroke-width="2"/>
+  <text x="132" y="795" class="section">Módulos de negocio</text>
+  <text x="132" y="821" class="note">Cada módulo agrupa las funciones de su área dentro de la misma aplicación.</text>
+
+  <path class="line" d="M 860 694 V 728 H 900"/>
+  <path class="flow" d="M 900 728 V 768"/>
+  <text x="920" y="750" class="label">invoca casos de uso</text>
+
+  <g>
+    <rect x="145" y="850" width="350" height="112" rx="10" fill="#91b5e3" stroke="#557cae" stroke-width="2"/>
+    <text x="320" y="890" text-anchor="middle" class="component-title">Proyectos y actividades</text>
+    <text x="320" y="925" text-anchor="middle" class="component-copy">Obras · avance</text>
+
+    <rect x="525" y="850" width="350" height="112" rx="10" fill="#91b5e3" stroke="#557cae" stroke-width="2"/>
+    <text x="700" y="890" text-anchor="middle" class="component-title">Materiales y almacén</text>
+    <text x="700" y="925" text-anchor="middle" class="component-copy">Catálogo · movimientos · stock</text>
+
+    <rect x="905" y="850" width="350" height="112" rx="10" fill="#91b5e3" stroke="#557cae" stroke-width="2"/>
+    <text x="1080" y="890" text-anchor="middle" class="component-title">Personal</text>
+    <text x="1080" y="925" text-anchor="middle" class="component-copy">Trabajadores · asignaciones</text>
+
+    <rect x="1285" y="850" width="350" height="112" rx="10" fill="#91b5e3" stroke="#557cae" stroke-width="2"/>
+    <text x="1460" y="890" text-anchor="middle" class="component-title">Maquinaria</text>
+    <text x="1460" y="925" text-anchor="middle" class="component-copy">Equipos · estado · asignaciones</text>
+
+    <rect x="335" y="1000" width="350" height="112" rx="10" fill="#91b5e3" stroke="#557cae" stroke-width="2"/>
+    <text x="510" y="1040" text-anchor="middle" class="component-title">Finanzas</text>
+    <text x="510" y="1075" text-anchor="middle" class="component-copy">Presupuestos · gastos</text>
+
+    <rect x="725" y="1000" width="350" height="112" rx="10" fill="#91b5e3" stroke="#557cae" stroke-width="2"/>
+    <text x="900" y="1040" text-anchor="middle" class="component-title">Reportes e información</text>
+    <text x="900" y="1075" text-anchor="middle" class="component-copy">Consultas consolidadas</text>
+
+    <rect x="1115" y="1000" width="350" height="112" rx="10" fill="#91b5e3" stroke="#557cae" stroke-width="2"/>
+    <text x="1290" y="1040" text-anchor="middle" class="component-title">Usuarios y roles</text>
+    <text x="1290" y="1075" text-anchor="middle" class="component-copy">Cuentas · permisos</text>
+  </g>
+
+  <rect x="100" y="1165" width="1600" height="175" rx="12" fill="#fbfcfd" stroke="#d4dce5" stroke-width="1.5"/>
+  <text x="132" y="1202" class="section">Capas internas de la aplicación</text>
+  <path class="line" d="M 900 1112 V 1218 H 360 M 900 1218"/>
+  <path class="flow" d="M 360 1218 V 1230 M 900 1218 V 1230"/>
+
+  <rect x="140" y="1230" width="440" height="96" rx="10" fill="#d9f0e2" stroke="#438365" stroke-width="2"/>
+  <text x="360" y="1267" text-anchor="middle" class="component-title">Dominio</text>
+  <text x="360" y="1297" text-anchor="middle" class="component-copy">Reglas y conceptos del negocio</text>
+
+  <rect x="680" y="1230" width="440" height="96" rx="10" fill="#d9f0e2" stroke="#438365" stroke-width="2"/>
+  <text x="900" y="1267" text-anchor="middle" class="component-title">Puertos de persistencia</text>
+  <text x="900" y="1297" text-anchor="middle" class="component-copy">Contratos que define Aplicación</text>
+
+  <rect x="1220" y="1230" width="440" height="96" rx="10" fill="#e9e1f5" stroke="#7654a6" stroke-width="2"/>
+  <text x="1440" y="1267" text-anchor="middle" class="component-title">Infraestructura</text>
+  <text x="1440" y="1297" text-anchor="middle" class="component-copy">Seguridad y adaptador de persistencia</text>
+
+  <path class="dashed" d="M 1220 1278 H 1128"/>
+  <text x="1172" y="1262" text-anchor="middle" class="label">implementa</text>
+
+  <rect x="64" y="1340" width="980" height="142" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="92" y="1376" class="section">Leyenda</text>
+  <rect x="200" y="1361" width="22" height="18" rx="4" fill="#24477f"/><text x="232" y="1376" class="note">Actor</text>
+  <rect x="320" y="1361" width="22" height="18" rx="4" fill="#3c70b8"/><text x="352" y="1376" class="note">Contenedor</text>
+  <rect x="470" y="1361" width="22" height="18" rx="4" fill="#91b5e3" stroke="#557cae"/><text x="502" y="1376" class="note">Módulo</text>
+  <rect x="590" y="1361" width="22" height="18" rx="4" fill="#d9f0e2" stroke="#438365"/><text x="622" y="1376" class="note">Dominio / Aplicación</text>
+  <rect x="820" y="1361" width="22" height="18" rx="4" fill="#e9e1f5" stroke="#7654a6"/><text x="852" y="1376" class="note">Infraestructura</text>
+  <text x="92" y="1420" class="note">Verde y lila indican capas internas; no son sistemas externos.</text>
+  <text x="92" y="1446" class="note">El contorno punteado marca la aplicación. La base de datos queda fuera de ese contorno.</text>
+
+  <path class="flow" d="M 1440 1326 V 1385"/>
+  <text x="1460" y="1360" class="label">SQL</text>
+  <rect x="1120" y="1385" width="616" height="96" rx="12" fill="#3c70b8" stroke="#285899" stroke-width="2"/>
+  <text x="1428" y="1424" text-anchor="middle" class="container-title">MySQL</text>
+  <text x="1428" y="1455" text-anchor="middle" class="container-copy">Base de datos central · fuera del contenedor de aplicación</text>
+
+  <text x="64" y="1512" class="note">La arquitectura y las tecnologías mostradas son una propuesta inicial, pendiente de validación.</text>
+</svg>

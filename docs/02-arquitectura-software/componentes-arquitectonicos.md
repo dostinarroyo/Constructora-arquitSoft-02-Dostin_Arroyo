@@ -4,14 +4,18 @@
 
 Este documento descompone la propuesta de arquitectura inicial en
 responsabilidades que colaboran dentro de una sola aplicación web. El diagrama
-es una vista lógica editable en Mermaid; no representa una infraestructura ya
-desplegada.
+toma como referencia una vista C4 de nivel 3 y la adapta a los módulos de
+gestión de la constructora. No representa una infraestructura ya desplegada.
 
 ## Vista de componentes
 
-![Diagrama a color de componentes arquitectónicos](../../img/arquitectura-componentes.png)
+![Diagrama de componentes de ConstructoraSys](../../img/arquitectura-componentes.svg)
 
-Fuente Mermaid editable: [arquitectura-componentes.mmd](../../img/fuentes/arquitectura-componentes.mmd).
+El navegador se muestra como punto de acceso, sin listar funciones de interfaz
+que no son componentes. Fuente editable:
+[arquitectura-componentes.mmd](../../img/fuentes/arquitectura-componentes.mmd).
+Las tecnologías y relaciones de despliegue son propuestas pendientes de
+validación.
 
 ## Responsabilidades y límites
 

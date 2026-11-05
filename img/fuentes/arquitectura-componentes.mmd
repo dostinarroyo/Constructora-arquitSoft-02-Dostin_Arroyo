@@ -1,21 +1,49 @@
-flowchart LR
-    actor["Usuarios internos<br/>Gerencia · Proyectos · Obra<br/>Almacén · RR. HH. · Finanzas · Admin"]
-    web["Presentación<br/>Interfaz web · controladores"]
-
-    subgraph app["Aplicación monolítica modular"]
-        usecases["Casos de uso<br/>Proyectos · Almacén · Personal<br/>Maquinaria · Finanzas · Reportes · Usuarios"]
-        ports["Puertos de entrada/salida<br/>Contratos de repositorio"]
-        usecases --> ports
+flowchart TB
+    subgraph actors["Usuarios internos"]
+        direction LR
+        admin["Administrador"]
+        management["Gerencia"]
+        project_user["Proyectos y obras"]
+        warehouse_user["Almacén"]
+        staff_user["Personal"]
+        finance_user["Finanzas"]
     end
 
-    domain["Dominio<br/>Entidades · objetos de valor<br/>reglas e invariantes"]
-    subgraph infra["Infraestructura"]
-        adapters["Adaptadores<br/>Persistencia · seguridad"]
-        mysql[("MySQL<br/>persistencia central")]
-        adapters --> mysql
+    browser["Navegador web<br/>[Contenedor: HTML · CSS · JavaScript · Bootstrap]<br/>Interfaz para usuarios internos"]
+
+    subgraph app["CONSTRUCTORASYS · [Contenedor: Java + Spring Boot · monolito modular]"]
+        direction TB
+        api["Controladores web / API<br/>Reciben solicitudes y las dirigen a los casos de uso"]
+        security["Seguridad · Infraestructura<br/>Componente interno · Spring Security"]
+
+        subgraph modules["MÓDULOS DE NEGOCIO"]
+            direction TB
+            projects["Proyectos y actividades<br/>Obras, actividades y avances"]
+            warehouse["Materiales y almacén<br/>Catálogo, movimientos y stock"]
+            staff["Personal<br/>Trabajadores y asignaciones"]
+            machinery["Maquinaria<br/>Equipos, estado y asignaciones"]
+            finance["Finanzas<br/>Presupuestos y gastos"]
+            reports["Reportes e información<br/>Consultas consolidadas"]
+            users["Usuarios y roles<br/>Cuentas y permisos"]
+        end
+
+        domain["Dominio · capa interna<br/>Reglas y conceptos del negocio"]
+        ports["Puertos de persistencia · Aplicación<br/>Contratos internos"]
+        adapter["Infraestructura · capa interna<br/>Adaptador de persistencia"]
     end
 
-    actor --> web
-    web --> usecases
-    usecases --> domain
-    adapters -. "implementan" .-> ports
+    database[("MySQL<br/>Base de datos · fuera del contenedor")]
+
+    admin --> browser
+    management --> browser
+    project_user --> browser
+    warehouse_user --> browser
+    staff_user --> browser
+    finance_user --> browser
+    browser -->|"HTTPS / JSON"| api
+    security -.->|"Protege"| api
+    api -->|"Invoca casos de uso"| modules
+    modules --> domain
+    modules --> ports
+    adapter -.->|"Implementa"| ports
+    adapter -->|"SQL"| database
