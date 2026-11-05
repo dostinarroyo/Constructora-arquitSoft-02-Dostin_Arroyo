@@ -17,7 +17,16 @@ implementación irreversible.
 | Dominio | Representar entidades, conceptos y reglas de negocio invariantes. | Depender de la aplicación, la interfaz, frameworks o tecnologías de persistencia. |
 | Infraestructura | Implementar adaptadores para los puertos y conectar frameworks, seguridad y base de datos. | Ser fuente de reglas de negocio o ser invocada directamente por Presentación. |
 
-![Diagrama a color del monolito modular con Clean Architecture](../../img/estilo-monolito-capas.png)
+![Diagrama del monolito modular con Clean Architecture](../../img/estilo-monolito-capas.svg)
+
+El diagrama organiza las capas en franjas y agrupa las áreas funcionales a
+través de ellas, siguiendo la lectura visual del ejemplo de referencia. Se
+conservan las cuatro capas de Clean Architecture; no se presenta como una
+arquitectura de tres capas. Las agrupaciones funcionales son ilustrativas y no
+definen límites definitivos entre módulos. Los componentes y tecnologías son
+propuestas por validar, no nombres confirmados de clases ni decisiones finales
+de implementación. La base de datos es parte de ConstructoraSys, no un
+servicio externo.
 
 Fuente Mermaid editable: [estilo-monolito-capas.mmd](../../img/fuentes/estilo-monolito-capas.mmd).
 

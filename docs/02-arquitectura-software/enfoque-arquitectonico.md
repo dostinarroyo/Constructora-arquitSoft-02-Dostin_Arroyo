@@ -38,6 +38,22 @@ Los módulos comparten los límites iniciales de despliegue y persistencia. Esta
 separación busca reducir el acoplamiento interno sin introducir la complejidad
 operativa de distribuir el sistema en servicios independientes.
 
+## Vista del enfoque propuesto
+
+El diagrama muestra las capas, los casos de uso representativos, las reglas
+del negocio, los puertos de persistencia y el adaptador MySQL. La base de datos
+se representa fuera del despliegue de la aplicación, pero forma parte de
+ConstructoraSys; no se proponen integraciones con servicios de terceros.
+En particular, **gestionar el presupuesto y los gastos de un proyecto** es un
+caso de uso de Aplicación, no todo el Dominio ni una función aislada. Este caso
+usa las entidades `Presupuesto` y `Gasto` y solicita guardar los datos mediante
+un puerto de persistencia. Las reglas específicas de cálculo aún deben
+definirse; el diagrama no presupone fórmulas.
+
+![Diagrama del enfoque arquitectónico de ConstructoraSys](../../img/estilo-monolito-capas.svg)
+
+Fuente editable: [estilo-monolito-capas.mmd](../../img/fuentes/estilo-monolito-capas.mmd).
+
 ## Razones para esta propuesta
 
 1. **Cohesión con el alcance:** los procesos comparten proyectos, recursos y

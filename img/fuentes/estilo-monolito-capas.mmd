@@ -1,45 +1,96 @@
-flowchart LR
-    browser["Usuarios internos"]
+flowchart TB
+    staff["Personal autorizado<br/>roles por confirmar"]
+    browser["Navegador web<br/>HTML · CSS · JavaScript · Bootstrap"]
+    staff --> browser
 
-    subgraph presentation["PRESENTACIÓN"]
+    subgraph system["CONSTRUCTORASYS · monolito modular"]
         direction TB
-        ui["Interfaz web<br/>Formularios · Consultas<br/>Panel · Reportes"]
+
+        subgraph presentation["1. PRESENTACIÓN · Controladores web"]
+            direction LR
+            p_projects["Proyectos y actividades"]
+            p_materials["Materiales y almacén"]
+            p_resources["Recursos<br/>Personal y maquinaria"]
+            p_finance["Presupuesto y gastos"]
+            p_admin["Administración e informes"]
+        end
+
+        subgraph application["2. APLICACIÓN · Casos de uso y puertos"]
+            direction LR
+            a_projects["Gestionar proyectos y actividades<br/>Puerto: proyectos y actividades"]
+            a_materials["Registrar movimientos y consultar existencias<br/>Puerto: materiales y almacén"]
+            a_resources["Asignar personal y maquinaria<br/>Puerto: recursos y asignaciones"]
+            a_finance["Gestionar presupuesto y gastos por proyecto<br/>Puerto: presupuesto y gastos"]
+            a_admin["Gestionar usuarios y roles; consultar información<br/>Puerto: usuarios y consultas de lectura"]
+        end
+
+        subgraph domain["3. DOMINIO · Entidades y reglas del negocio"]
+            direction LR
+            d_projects["Proyecto · Actividad"]
+            d_materials["Material · Movimiento"]
+            d_resources["Trabajador · Equipo<br/>Asignación"]
+            d_finance["Presupuesto · Gasto<br/>Reglas de cálculo por definir"]
+            d_admin["Usuario · Rol<br/>Los reportes consultan otros módulos"]
+        end
+
+        subgraph infrastructure["4. INFRAESTRUCTURA · Adaptadores y mecanismos técnicos"]
+            direction LR
+            i_projects["Adaptador de persistencia"]
+            i_materials["Adaptador de persistencia"]
+            i_resources["Adaptador de persistencia"]
+            i_finance["Adaptador de persistencia"]
+            i_admin["Adaptadores de datos<br/>Persistencia y consultas"]
+        end
+
+        security["Mecanismos transversales<br/>Autenticación y autorización · configuración Spring Boot · gestión de errores"]
     end
 
-    subgraph application["APLICACIÓN"]
-        direction TB
-        usecases["Casos de uso"]
-        ports["Puertos requeridos<br/>Repositorios"]
-        modules["Proyectos · Actividades · Almacén<br/>Personal · Maquinaria · Finanzas<br/>Reportes · Usuarios y roles"]
-        usecases --> modules
-        usecases --> ports
-    end
+    database[("MySQL<br/>Base de datos relacional")]
 
-    subgraph domain["DOMINIO"]
-        direction TB
-        rules["Entidades y reglas<br/>de negocio"]
-    end
+    browser -->|"solicitudes web"| p_projects
+    browser -->|"solicitudes web"| p_materials
+    browser -->|"solicitudes web"| p_resources
+    browser -->|"solicitudes web"| p_finance
+    browser -->|"solicitudes web"| p_admin
 
-    subgraph infrastructure["INFRAESTRUCTURA"]
-        direction TB
-        adapters["Adaptadores<br/>de persistencia"]
-        db[("MySQL")]
-        adapters --> db
-    end
+    p_projects --> a_projects
+    p_materials --> a_materials
+    p_resources --> a_resources
+    p_finance --> a_finance
+    p_admin --> a_admin
 
-    browser --> ui --> usecases
-    modules --> rules
-    adapters -. "implementan" .-> ports
+    a_projects --> d_projects
+    a_materials --> d_materials
+    a_resources --> d_resources
+    a_finance --> d_finance
+    a_admin --> d_admin
 
-    classDef user fill:#f4f4f5,stroke:#52525b,color:#18181b,stroke-width:1.5px
-    classDef presentationStyle fill:#e7f0ff,stroke:#2563a6,color:#17365d,stroke-width:1.5px
-    classDef applicationStyle fill:#e9f7ef,stroke:#2d8a57,color:#14532d,stroke-width:1.5px
-    classDef domainStyle fill:#fff3df,stroke:#c27a12,color:#713f12,stroke-width:1.5px
-    classDef infrastructureStyle fill:#f2eaff,stroke:#7646b8,color:#4c1d95,stroke-width:1.5px
+    i_projects -.->|"implementa puerto"| a_projects
+    i_materials -.->|"implementa puerto"| a_materials
+    i_resources -.->|"implementa puerto"| a_resources
+    i_finance -.->|"implementa puerto"| a_finance
+    i_admin -.->|"implementa puerto"| a_admin
 
-    class browser user
-    class ui presentationStyle
-    class usecases,modules applicationStyle
-    class rules domainStyle
-    class ports applicationStyle
-    class adapters,db infrastructureStyle
+    i_projects --> database
+    i_materials --> database
+    i_resources --> database
+    i_finance --> database
+    i_admin --> database
+
+    security -.-> p_projects
+    security -.-> p_materials
+    security -.-> p_resources
+    security -.-> p_finance
+    security -.-> p_admin
+
+    classDef presentationStyle fill:#dcecff,stroke:#2780d7,color:#17365d
+    classDef applicationStyle fill:#eaf7ed,stroke:#35a64a,color:#21632c
+    classDef domainStyle fill:#fff3d4,stroke:#d39a11,color:#79520b
+    classDef infrastructureStyle fill:#f1eafb,stroke:#7945c2,color:#54288c
+    classDef externalStyle fill:#f4f4f5,stroke:#52525b,color:#18181b
+
+    class p_projects,p_materials,p_resources,p_finance,p_admin presentationStyle
+    class a_projects,a_materials,a_resources,a_finance,a_admin applicationStyle
+    class d_projects,d_materials,d_resources,d_finance,d_admin domainStyle
+    class i_projects,i_materials,i_resources,i_finance,i_admin,security infrastructureStyle
+    class staff,browser,database externalStyle
