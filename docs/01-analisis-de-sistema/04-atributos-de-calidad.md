@@ -21,11 +21,30 @@ nivel de servicio ya establecidos.
 | AC06 | Mantenibilidad | El equipo de desarrollo necesita modificar una regla de un módulo; puede localizar y cambiar su responsabilidad sin afectar innecesariamente a módulos no relacionados. | Las responsabilidades de presentación, negocio y persistencia deben estar separadas; las reglas principales deben contar con pruebas que permitan verificar regresiones. | RF01–RF16 |
 | AC07 | Escalabilidad | La empresa incorpora más proyectos, trabajadores y movimientos; el sistema admite el aumento de datos y la incorporación de módulos sin reorganizar por completo la solución. | El diseño debe permitir ampliar la capacidad de persistencia y agregar funciones conservando las interfaces entre capas; validar el comportamiento con un conjunto de datos representativo. | RF01–RF16 |
 
+## Herramientas, aplicación y medición
+
+Las siguientes herramientas y procedimientos se proponen para verificar los
+criterios de la tabla anterior. Los resultados deben registrarse como evidencia
+de prueba; las metas numéricas siguen sujetas a validación con la empresa.
+
+| ID | Herramienta | Cómo se usará | Qué se medirá y qué evidencia registrar |
+|---|---|---|---|
+| AC01 | Spring Security y pruebas con JUnit | Preparar casos para cada rol definido e intentar operaciones permitidas y restringidas, tanto en las rutas como en las operaciones protegidas del sistema. | Porcentaje de operaciones protegidas probadas que aplican la autorización esperada; registrar casos aprobados, rechazados y fallidos por rol. |
+| AC02 | k6 | Ejecutar una prueba de carga con hasta 50 usuarios concurrentes que consulten proyectos, stock y asignaciones, y generen reportes. | Porcentaje de consultas que responden en 3 segundos o menos, tiempo de respuesta del percentil 95, tiempo de los reportes y cantidad de errores. Comparar con las metas iniciales de la tabla. |
+| AC03 | Uptime Kuma y prueba de restauración | Configurar Uptime Kuma para consultar periódicamente la aplicación durante el horario operativo acordado. Realizar por separado una restauración de una copia de seguridad siguiendo el procedimiento definido. | Calcular disponibilidad como el tiempo disponible dividido entre el tiempo monitoreado acordado, excluyendo mantenimientos planificados. Registrar el historial mensual y el resultado de la restauración; Uptime Kuma no sustituye la prueba de respaldo. |
+| AC04 | JUnit y MySQL | Crear pruebas de integración que registren movimientos válidos e inválidos y comprueben las validaciones y relaciones de los datos. | Casos aprobados y fallidos; confirmar que los datos inválidos se rechazan, que las relaciones apuntan a registros existentes y que el stock no queda negativo. |
+| AC05 | Pruebas con usuarios y cuestionario SUS | Pedir a usuarios representativos que completen tareas frecuentes, como registrar un avance o una salida de almacén, sin asistencia; al finalizar, aplicar el cuestionario SUS. | Porcentaje de usuarios que completan cada tarea sin ayuda ni errores que alteren datos, comparado con la meta inicial del 90 %. Registrar también el puntaje SUS de 0 a 100 como medida complementaria de percepción de usabilidad. |
+| AC06 | SonarQube y JUnit | Analizar el código con SonarQube y ejecutar las pruebas de regresión después de modificar una regla o módulo. | Registrar los hallazgos del análisis, las pruebas ejecutadas y sus resultados; revisar separación por capas y que las pruebas principales continúen aprobando. No fijar un umbral de calidad hasta acordarlo con el equipo. |
+| AC07 | k6 | Ejecutar escenarios comparables con 10, 50 y 100 usuarios concurrentes usando datos representativos del sistema. | Comparar tiempos de respuesta, especialmente el percentil 95, y porcentaje de errores entre niveles de carga. Acordar previamente los límites aceptables para interpretar si el sistema escala adecuadamente. |
+
 ## Consideraciones para la validación
 
 - Las metas de concurrencia, tiempos de respuesta y disponibilidad son
   referencias iniciales. Antes de considerarlas compromisos, deben confirmarse
   con la empresa y medirse en el entorno previsto.
+- La selección de herramientas y la forma de aplicación descritas arriba son
+  propuestas; deben confirmarse según el entorno técnico y los recursos
+  disponibles para ejecutar las pruebas.
 - La disponibilidad requiere definir horario operativo, ventanas de
   mantenimiento, frecuencia de respaldos y tiempo objetivo de recuperación.
 - La integridad depende de validaciones funcionales y de que las operaciones
